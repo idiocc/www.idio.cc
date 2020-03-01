@@ -1,12 +1,12 @@
-# my-new-package
+# @idio/www.idio.cc
 
-{{ description }}
+Idio Web Server Website.
 
-A new website made with [Splendid][1]: {{ URL }}.
+A new website made with [Splendid][1]: https://www.idio.cc.
 
 ## Copyright
 
-(c) [{{ trademark }}][2] {{ year }}
+(c) [Idio][2] 2020
 
 [1]: https://www.npmjs.com/package/splendid
-[2]: {{ website }}
+[2]: https://idio.cc

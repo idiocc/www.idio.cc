@@ -4,18 +4,18 @@ const config = {
   replacements: [
     {
       re: /{{ company }}/g,
-      replacement: '[{{ trademark }}]({{ website }})',
+      replacement: '[Idio](https://idio.cc)',
     },
   ],
   pages: '../pages',
-  elements: ['elements', '../help/elements'],
-  blocks: ['blocks', '../help/blocks'],
+  elements: ['elements'],
+  blocks: ['blocks'],
   // which prefixes to keep in the main CSS
   prefixes: ['-webkit-hyphens', '-ms-hyphens'],
   // for sitemap and social-buttons
-  url: 'https://mnpjs.github.io/splendid/',
+  url: 'https://www.idio.cc',
   // required when pages are at org.github.io/pages-name
-  mount: '/splendid',
+  /* mount: '/', */
   potracePath: '~/.splendid/potrace',
 }
 

@@ -1,7 +1,7 @@
 {
-  "name": "my-new-package",
+  "name": "@idio/www.idio.cc",
   "version": "0.0.0",
-  "description": "{{ description }}",
+  "description": "Idio Web Server Website.",
   "scripts": {
     "t": "zoroaster -a",
     "test": "yarn t test/spec test/mask",
@@ -15,17 +15,19 @@
   "files": [],
   "repository": {
     "type": "git",
-    "url": "{{ repo.git_url }}"
+    "url": "git://github.com/idiocc/www.idio.cc.git"
   },
   "keywords": [
-    "{{ keywords }}"
+    "idio",
+    "web",
+    "server"
   ],
-  "author": "{{ author_name }} <{{ author_email }}>",
-  "license": "{{ license_spdx }}",
+  "author": "Anton <anton@adc.sh>",
+  "license": "AGPL-3.0",
   "bugs": {
-    "url": "{{ repo.html_url }}/issues"
+    "url": "https://github.com/idiocc/www.idio.cc/issues"
   },
-  "homepage": "{{ URL }}",
+  "homepage": "https://www.idio.cc",
   "devDependencies": {
     "documentary": "^1.35.9",
     "splendid": "^1.16.11",
