@@ -13,4 +13,4 @@ export const index = {
 }
 
 // additional directories
-// export const dir = '~/dir'
+export const articles = '~/articles'

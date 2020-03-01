@@ -2,8 +2,10 @@
 <div text-center>
 <!-- help: * Use webp attribute on img to automatically generate responsive
          webp images. -->
-    <img img-fluid rounded src="../img/splash.jpg" alt="@idio/www.idio.cc logo"
-      webp="photo" />
+    <a href="index">
+      <img img-fluid rounded src="../img/building.JPG" alt="Idio Web Server logo"
+        webp="photo" />
+    </a>
   </div>
   <div text-center>
     <github-badge name="www.idio.cc" org="idiocc" />
@@ -14,9 +16,16 @@
 
   ### Pages
 
-<pages />
+  <pages />
+
+  ### Articles
+
+  <pages dir="articles" />
 
   <sidebar pt-3>
-<social-buttons meta mb-3 d-inline-block />
+
+    <on-this-page />
+
+    <social-buttons meta mb-3 d-inline-block />
   </sidebar>
 </column>

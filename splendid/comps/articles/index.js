@@ -1,15 +1,15 @@
-import __initOnThisPage from './__init/on-this-page'
-import __initSidebar from './__init/sidebar'
-import __renameMap0 from './__rename-maps/styles/sidebar'
-import __renameMap1 from './__rename-maps/styles/on-this-page'
-import makeClassGetter from './__mcg'
+import __initOnThisPage from '../__init/on-this-page'
+import __initSidebar from '../__init/sidebar'
+import __renameMap0 from '../__rename-maps/styles/sidebar'
+import __renameMap1 from '../__rename-maps/styles/on-this-page'
+import makeClassGetter from '../__mcg'
 const renameMaps = { 'styles/sidebar.css': __renameMap0,
   'styles/on-this-page.css': __renameMap1 }
 __initOnThisPage(),__initSidebar()
 import { Component, render, h } from '@externs/preact'
-import { makeIo, init, start } from './__competent-lib'
-import Ellipsis from '../components/ellipsis.jsx'
-import GithubBadge from '../components/github-badge.jsx'
+import { makeIo, init, start } from '../__competent-lib'
+import Ellipsis from '../../components/ellipsis.jsx'
+import GithubBadge from '../../components/github-badge.jsx'
 import SocialButtons from 'splendid/build/components/social-buttons'
 
 const __components = {
@@ -23,9 +23,9 @@ const io = makeIo()
 /** @type {!Array<!preact.PreactProps>} */
 const meta = [{
   key: 'social-buttons',
-  id: 'cfc1c',
+  id: 'cbbf8',
   props: {
-    url: 'https://www.idio.cc/',
+    url: 'https://www.idio.cc/articles/',
     meta: true,
     className: 'b-xq b-Hk',
   },
