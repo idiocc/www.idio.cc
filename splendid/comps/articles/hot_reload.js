@@ -8,10 +8,12 @@ const renameMaps = { 'styles/sidebar.css': __renameMap0,
 __initOnThisPage(),__initSidebar()
 import { Component, render, h } from '@externs/preact'
 import { makeIo, init, start } from '../__competent-lib'
+import GifVideo from '../../components/gif-video.js'
 import GithubBadge from '../../components/github-badge.jsx'
 import SocialButtons from 'splendid/build/components/social-buttons'
 
 const __components = {
+  'gif-video': GifVideo,
   'github-badge': GithubBadge,
   'social-buttons': SocialButtons,
 }
@@ -20,15 +22,6 @@ const io = makeIo()
 
 /** @type {!Array<!preact.PreactProps>} */
 const meta = [{
-  key: 'social-buttons',
-  id: 'c64f7',
-  props: {
-    url: 'https://www.idio.cc/articles/hot-reload.html',
-    meta: true,
-    className: 'b-xq b-Hk',
-  },
-},
-{
   key: 'github-badge',
   id: 'ce314',
   props: {
@@ -37,11 +30,27 @@ const meta = [{
   },
 },
 {
+  key: 'gif-video',
+  id: 'c3492',
+  props: {
+    src: 'hot_reload/img/dan.mp4',
+  },
+},
+{
   key: 'github-badge',
   id: 'ce149',
   props: {
     owner: 'idiocc',
     name: 'www.idio.cc',
+  },
+},
+{
+  key: 'social-buttons',
+  id: 'c28db',
+  props: {
+    url: 'https://www.idio.cc/articles/pure-hot-reload.html',
+    meta: true,
+    className: 'b-xq b-Hk',
   },
 }]
 meta.forEach(({ key, id, props = {}, children = [] }) => {

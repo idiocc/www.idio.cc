@@ -30,6 +30,7 @@
   "homepage": "https://www.idio.cc",
   "devDependencies": {
     "documentary": "^1.37.1",
+    "spawncommand": "^2.2.0",
     "splendid": "^1.17.5",
     "zoroaster": "^4.3.0"
   }

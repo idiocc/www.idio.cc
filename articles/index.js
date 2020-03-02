@@ -13,8 +13,8 @@ export const index = {
  * @type {import('splendid').Page}
  */
 export const hot_reload = {
-  title: 'Hot Reload',
-  seo: 'Implementing a simple native hot reload for ES6 modules, with minimal interference with the original source code and without complex bulid chains.',
+  title: 'Pure Hot Reload',
+  seo: 'Implementing the simplest native hot reload for ES6 modules, with minimal interference with the original source code and without complex bulid chains.',
   og: {
     image: '/img/logo.jpg',
   },

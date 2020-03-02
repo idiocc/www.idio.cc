@@ -1,9 +1,17 @@
-<critical-path-font text="Hot Reload" family="Finger Paint">
-  h1 { font-family: 'Finger Paint' }
-</critical-path-font>
+<critical-path-font text="Pure Hot Reload" family="Share Tech" />
 
-# Hot Reload
+#![## Pure Hot Reload] Pure Hot Reload
 
+2 March 2020
 
+Developing front-end applications requires constant switching between the IDE (or simple text editor) and the browser window. Additionally, when the code is updated, the developer needs to refresh the page which takes a little bit of time. Although this time span can be pretty short (e.g., 1-2 seconds), if the process is repeated over and over again, it adds up to hours in total by the end of the work week (e.g., 2s per refresh &#215; 50  refreshes per hour &#215; 8 hours a day &#215; 5 days = 4000s = 66 min = ~1 hour). It's much better to free up this time and use it more productively, for example, to add a few extra tests or examples in documentation.
+
+<p>
+  <img placeholder-auto rounded img-fluid webp="photo" src="./img/hot-reload-splash.jpg" alt="hot reload in javascript"/>
+</p>
+
+This is why the concept of *hot reload* was invented: to watch changes in the source code, and send the browser a message, that an update is needed. But HR is more than that: it's not just about reloading the window, it's about substituting existing code (functions, classes), for new one SEAMLESSLY for maximum productivity and efficiency. This is not just a "nice" feature to have, it's a functional requirement for Preact and React components that can have a STATE: if we just refreshed a component, the state will be lost and we'd have to restart our testing process from the beginning (e.g., select destination from the list, then select a car, to get to the state when the "continue" button is showing). Hot reload allows to preserve components' state and helps us develop applications quickly.
+
+Idio web server belongs to a new generation of tooling that take the maximum advantage of language features. ES6 standard has been completed in 2015, and everything that we need for web development is available to us already without any need to transpile language features, making such tools as _Webpack_ and _Babel_ redundant for development. And for the build step, our [Node.JS development company](https://www.artd.eco) is using _Closure Compiler_. The requirements are thus to transpile JSX, serve packages as modules, and enable hot reload. All of these features are provided by Idio that aims to implement effective solutions using bare minimum of additional code, and just let browsers do the work. In this article, I'll explain, how *pure* hot reload can work, that is, using JavaScript itself instead of getting vendor-locked into complex packages like _Webpack_.
 
 <section-break/>

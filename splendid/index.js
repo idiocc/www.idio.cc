@@ -10,6 +10,10 @@ const config = {
       re: / Idio /g,
       replacement: ' _Idio_ ',
     },
+    {
+      re: /^Idio /mg,
+      replacement: '_Idio_ ',
+    },
   ],
   pages: '../pages',
   elements: ['elements'],

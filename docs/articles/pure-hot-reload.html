@@ -1,0 +1,198 @@
+<!doctype html>
+<html class="no-js b-Op" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Pure Hot Reload</title>
+    <meta
+      content="Implementing the simplest native hot reload for ES6 modules, with minimal interference with the original source code and without complex bulid chains." name="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link sizes="57x57" rel="apple-touch-icon" href="/img/favicon-57.png">
+  <link sizes="76x76" rel="apple-touch-icon" href="/img/favicon-76.png">
+  <link sizes="120x120" rel="apple-touch-icon" href="/img/favicon-120.png">
+  <link sizes="152x152" rel="apple-touch-icon" href="/img/favicon-152.png">
+  <link sizes="167x167" rel="apple-touch-icon" href="/img/favicon-167.png">
+  <link sizes="180x180" rel="apple-touch-icon" href="/img/favicon-180.png">
+  <link sizes="192x192" rel="icon" href="/img/favicon-192.png">
+  <link sizes="128x128" rel="icon" href="/img/favicon-128.png">
+  <link sizes="32x32" rel="icon" href="/img/favicon-32.png">
+  <link
+    href="https://fonts.googleapis.com/css?display=swap&amp;family=Ruda%3A400%2C700%7CShare%20Tech" rel="preload" as="fetch" crossOrigin>
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin>
+    <link href="https://fonts.googleapis.com/css?family=Source%20Code%20Pro" rel="preload" as="style">
+    <script>
+      (function(b){var a=document.createElement("link");a.href=b;a.rel="stylesheet";a.crossOrigin="crossorigin";document.head.appendChild(a)})('https://fonts.googleapis.com/css?family=Source%20Code%20Pro')
+    </script>
+    <style id="cpt">
+      
+      @font-face {
+        font-family: 'Share Tech';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('Share Tech Regular'), local('ShareTech-Regular'), url('data:application/font-woff2;base64,d09GMgABAAAAAASEAA4AAAAACJwAAAQzAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGhQbehwaBmAAfBEICoYchH4LHAABNgIkAzQEIAWEGAcgG+8GyAQeeDb3fy5ggTNzViTWdDir33yR9aM67g/XfF0CjxPAt3fX71ZtFUnD+cRm0Vg/AYv4A/pfZNcejPeIYgTgi+AReANq+U06cWQjlk+vX8nrQM/Qf4R32fxaEEgF0FBwwEa/VjGFMPLpywoqOp54yI/xlO/hhcQ+Sl3+ju8mDQ/5D57yJ7wosQ85qiKMCFo7o4nHxYl4gHJUGYISTD9PTFAositNHs2WUaEfs0xXDw9CYqi6QfqBuoGf7fOOIX5V7kUG+4xJLC4EoEYZgob7c2EEoOKJnXb66GeaeZazirVskBKTLpPPidY/JD+Sd8tb5M3yUnmxPFeeLc+UZ4w3yCgUCCnxR1KbOIoLZNMCRObqmU6wq7SJgtfDp319dT891hZgC9F9AwJsIaE2VVd0D0MxVEP74lU9kXPMa/D6/UyFccwDQizJZ3Y7h/X3yy4dd3nYlbp+9HUh9hiG2EMJosUzlxnor58jhH70Xth9lWHM3slzb7DFhqa/foNQK0T3GY4phG6o53zoo32Zj14Ldcc8LzwMbfdpJQufvNoHPT1GEj3gHzW4p80tR69F0Y95Xai6MISBga7MwIHO+1RDaf4D10SrhqJvbXy+0XWvK//5fNe93DJmdTknAlz33mINdjrWDl6YkOoOc6cmph5ASxhOLNs+tWY4+mjhZHpPQqpbq/lX1rH0h+tWpLZ0NVd3hpxzsrsw3pFyyNzh6jedP/qvjG4tm+z8J2zlYlRgVGHUpqgWnGGeeaFDjk7rVme/6Zp60rq3L7nz55C0pSmO+HfjHSkZnOnotG4d7OgYjG5r7+na+7sZ70g5xtzTnWBGBUalJj9ob2VnXvGQNRDwX3CIWcblZr/psrn6TWd/gi0Mfe5ISQBC+V16f+mL1vM6+gYS/gmdtTimpKG0oMFs2GxtXm+uLw1zhLeZU7SHeeb5OXpMp9NyxyXGJdp/CN5g/dp3o3RwTUSe1Wcd8+6kf/Vv3qr6ZZH/lW+PxMDGV9ufPiyvkaFag+oC9HorBAb5ptbWzpbXyGu0hhv+NTbxOw1CAyUVS3yDpXhjidfJEb/RKl6mlb8xxXe0im76RBkh4itMAhkbc3jNq6/h9WbhlVo0Hx4ffbcQewQhPAlaBT/e1KqU87lWI1nEaT2IEo1aTxLF2Pv9KBY7aWIVq9nCWhZZgpv12CkknwIKuZgTN/OceMA3zVo118k8s7i5wj7WsoqlacApbGAD63H/Dtw6tDud1axiHeupZxYX2sYWWUcu2r2KFWSQjZ1NLOLE7PQzjzbPs5aNzDOHnVYeVxL29DANMPpU2lxW2yPJnRkQ4ZYgXF76twXkUkA++VRhYeKihyocmpuXA0OsuU89Ds7Vt47FWU7bxxmRNOz1pvWsppI88lgHcAbcag72B8j5lpO7l+1LyKOXVrr+/ZXyNgq/WQ==') format('woff2');
+      }
+      
+    </style>
+    <script>
+      (function(){var b=/url\('([\s\S]+?)'\)/.exec(document.head.querySelector("#cpt").textContent);if(b){var a=document.createElement("link");a.rel="preload";a.as="font";a.href=b[1];document.head.appendChild(a)}})()
+    </script>
+    <script>(function(h,r){var a=Object.keys(h),c=!0;"CSS"in window&&"supports"in CSS?(a=a.reduce(function(k,b){var l=h[b];b=b.split("|");for(var m=!1,d={},f=0;f<b.length;d={a:d.a},f++)if(d.a=b[f],l.map(function(n){return function(e){e=e.split("|");for(var p=!1,g=0;g<e.length;g++){var q=e[g];if(CSS.supports(n.a,q)){p=!0;break}else k.push(n.a+": "+q)}return p}}(d)).filter(Boolean).length==l.length){m=!0;break}m||(c=!1);return k},[]),a.length?c&&console.log("\ud83d\udcbf Browser does not support CSS properties: %s",
+a.join("\n "),"but supports alternatives."):console.log("\ud83d\udcbd Browser supports all modern CSS properties.")):(c=!1,console.log("\ud83d\udce0 Browser does not support CSS checks."));c||(a=document.createElement("link"),a.rel="stylesheet",a.href=r,document.head.appendChild(a))})({"border-radius":[".25rem"],"box-shadow":["none"],"flex|-ms-flex":["0 0 25%"],"display":["flex|-ms-flexbox"],"hyphens|-webkit-hyphens|-ms-hyphens":["auto"],"flex-shrink|-ms-flex-negative":["0"],"position":["sticky|-webkit-sticky"],"flex-wrap|-ms-flex-wrap":["wrap"],"box-sizing":["border-box"],"flex-direction|-ms-flex-direction":["column"]}, '/css/articles/combined-prefixes.css')</script>
+    <script>
+      (function(q,k){function x(a){for(var f=/url\((.+?)\).*?;\s+unicode-range: (.+?);/g,b={},d=[],h;h=f.exec(a);){var r=h[2];d.push({url:h[1],a:r});b[r]=1}b=Object.keys(b).reduce(function(c,e){var g=e.split(/,\s/).map(function(l){return l.replace("U+","\\u").replace("-","-\\u")}).join("").toLowerCase();c[e]=new RegExp("["+g+"]");return c},{});var t=document.body?document.body.textContent:"",y=t?Object.keys(b).reduce(function(c,e){b[e].test(t)&&(c[e]=!0);return c},{}):Object.keys(b).reduce(function(c,
+      e){e in k&&(c[e]=!0);return c},{});m=d.filter(function(c){return c.a in y}).map(function(c){return c.url});if(!m.length)return u();var v=document.createDocumentFragment();m.forEach(function(c,e){var g=document.createElement("link");g.href=c;g.rel="preload";g.as="font";var l=e+1;;g.onload=function(){return u(l)};g.setAttribute("crossorigin",!0);v.appendChild(g)});document.head.appendChild(v)}k=void 0===k?{}:k;var n=document.createElement("link");if(function(a,
+      f){if(!a||!a.supports)return!1;try{return a.supports(f)}catch(b){return!1}}(n.relList,"preload")){var z=function(a,f,b){b=void 0===b?"":b;;var d=new XMLHttpRequest;d.onreadystatechange=function(){4==d.readyState&&(200==d.status?(f(d.responseText)):console.error("Error loading webfont: server responded with code %s at %s",d.status,a))};d.open("GET",a);try{d.send(null)}catch(h){console.error(h)}};
+      ;var p;(function(a,f){z(a.href,function(b){p=b;x(p)},"-"+(void 0===f?"link":f))})({href:q},"js");var m=[],w=0,u=function(a){w++;w>=m.length&&(a=document.createElement("style"),a.innerHTML=p,document.head.appendChild(a))}}else n.rel="stylesheet",n.href=q,document.head.appendChild(n)})('https://fonts.googleapis.com/css?display=swap&family=Ruda%3A400%2C700%7CShare%20Tech', {"U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD":true})
+    </script>
+    <link rel="stylesheet" href="/css/articles/combined.css">
+    <style>
+      .no-js [data-io], .no-js .ImageHolder, .no-js [data-loading] { display: none!important }
+    </style>
+    <noscript>
+      <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?display=swap&amp;family=Share%20Tech&amp;text=Pure%20Hot%20Reload">
+      <link rel="stylesheet" href="/css/articles/combined-prefixes.css">
+      <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?display=swap&amp;family=Ruda%3A400%2C700%7CShare%20Tech">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source%20Code%20Pro">
+    </noscript>
+    <script defer src="/js/polyfill/intersection-observer.js"></script>
+    <script defer src="/js/images.js"></script>
+    <script crossorigin data-src="/preact/dist/preact.min.js"></script>
+    <script crossorigin data-src="/comps/articles/common.js"></script>
+    <script crossorigin data-src="/comps/articles/hot_reload.js"></script>
+    <script>
+      document.documentElement.classList.remove("no-js")
+    </script>
+  </head>
+  <body class="b-Mk b-Ol b-Op">
+    
+    
+    <main class="b-Xl" role="main">
+      <div class="b-z">
+        <div class="b-B">
+          <div class="left-column b-hb">
+            <div class="b-kC">
+                <a href="/">
+                  <img class="ImageHolder b-t b-vk" sizes="(max-width: 575.8px) 100vw,(max-width: 767.8px) 510px,(max-width: 991.8px) 150px,(max-width: 1199.8px) 210px,255px" alt="Idio Web Server logo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2816' height='1880'/%3E">
+                  <noscript>
+                    <picture>
+                      <source
+                        srcset="/img/building-1140.webp 1140w,/img/building-768.webp 768w,/img/building-576.webp 576w,/img/building-319.webp 319w"
+                        sizes="(max-width: 575.8px) 100vw,(max-width: 767.8px) 510px,(max-width: 991.8px) 150px,(max-width: 1199.8px) 210px,255px" type="image/webp">
+                      <img class="b-t b-vk" onLoad="webploaded(this)" alt="Idio Web Server logo" src="/img/building-1140.JPG" srcset="/img/building-1140.JPG 1140w,/img/building-768.JPG 768w,/img/building-576.JPG 576w,/img/building-319.JPG 319w" sizes="(max-width: 575.8px) 100vw,(max-width: 767.8px) 510px,(max-width: 991.8px) 150px,(max-width: 1199.8px) 210px,255px">
+                    </picture>
+                  </noscript></a>
+              </div>
+              <div class="b-kC">
+                <a title="@Goa/Koa Web Server Bundled With Essential Middleware, SSR And Router."
+                  class="GitHubBadge" id="ce314" href="https://github.com/idiocc/idio">
+                  <span class="a">GitHub</span><span class="b" data-stargazers>⭐️ 2</span></a>
+                <a
+                  title="2-Dependency Koa Web Server Compiled With Closure Compiler And Bundled With Essential Middleware: Static, Compress, Session, Cors, File Upload, Router And JSX Front End." class="NPMBadge" href="https://www.npmjs.com/package/@idio/idio">
+                  <span class="a"><em>Idio</em></span><span class="b">1.4.1</span></a>
+              </div>
+              <h3 id="pages">Pages</h3>
+              <ul><li class><a data-file="index" href="/">Www.idio.cc</a></li></ul>
+              <h3 id="articles">Articles</h3>
+              <ul>
+                <li class="Active">
+                  <a data-file="./hot_reload" href="pure-hot-reload.html">Pure Hot Reload</a>
+                </li>
+              </ul>
+              <div class="SideBarMenu sidebarshowing b-jr b-zp">
+                <div class="a">
+                  
+                                  <h3 id="on-this-page">On This Page</h3>
+                                  <ul class="OnThisPage">
+                                    <li data-heading="-pure-hot-reload"><a href="#-pure-hot-reload">Pure Hot Reload</a></li>
+                                    <li data-heading="history-of-hmr"><a href="#history-of-hmr">History of HMR</a></li>
+                                  </ul>
+                                  <h3 id="share-now">Share Now!</h3>
+                                  <span class="b-xq b-Hk" id="c28db"><span class="b-Hk" style="height:32px" data-loading>Loading sharing buttons...</span><noscript>Please enable JavaScript to Share</noscript></span>
+                                
+                </div>
+                <a id="HideMenu" style="color:grey!important;" href="#">hide menu</a>
+                <a id="ShowMenu" style="color:grey!important;" href="#">show menu</a>
+              </div>
+          </div>
+          
+          <div class="right-column b-xq b-nb" id="Content">
+            
+            
+            <div data-section id="-pure-hot-reload">
+            <h1>Pure Hot Reload</h1>
+            
+            <p>2 March 2020</p>
+            
+            <p>Developing front-end applications requires constant switching between the IDE (or simple text editor) and the browser window. Additionally, when the code is updated, the developer needs to refresh the page which takes a little bit of time. Although this time span can be pretty short (e.g., 1-2 seconds), if the process is repeated over and over again, it adds up to hours in total by the end of the work week (e.g., 2s per refresh &#215; 50  refreshes per hour &#215; 8 hours a day &#215; 5 days = 4000s = 66 min = ~1 hour). It's much better to free up this time and use it more productively, for example, to add a few extra tests or examples in documentation.</p>
+            
+            <p>
+              <img class="ImageHolder b-vk b-t" sizes="(max-width: 575.8px) 100vw,(max-width: 991.8px) 540px,(max-width: 1199.8px) 720px,855px" alt="hot reload in javascript" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2816' height='1880'/%3E">
+              <noscript>
+                <picture>
+                  <source
+                    srcset="hot_reload/img/hot-reload-splash-1140.webp 1140w,hot_reload/img/hot-reload-splash-768.webp 768w,hot_reload/img/hot-reload-splash-576.webp 576w,hot_reload/img/hot-reload-splash-319.webp 319w" sizes="(max-width: 575.8px) 100vw,(max-width: 991.8px) 540px,(max-width: 1199.8px) 720px,855px"
+                    type="image/webp">
+                  <img class="b-vk b-t" onLoad="webploaded(this)" alt="hot reload in javascript" src="hot_reload/img/hot-reload-splash-1140.jpg" srcset="hot_reload/img/hot-reload-splash-1140.jpg 1140w,hot_reload/img/hot-reload-splash-768.jpg 768w,hot_reload/img/hot-reload-splash-576.jpg 576w,hot_reload/img/hot-reload-splash-319.jpg 319w" sizes="(max-width: 575.8px) 100vw,(max-width: 991.8px) 540px,(max-width: 1199.8px) 720px,855px">
+                </picture>
+              </noscript>
+            </p>
+            
+            <p>This is why the concept of <strong>hot reload</strong> was invented: to watch changes in the source code, and send the browser a message, that an update is needed. But HR is more than that: it's not just about reloading the window, it's about substituting existing code (functions, classes), for new one SEAMLESSLY for maximum productivity and efficiency. This is not just a "nice" feature to have, it's a functional requirement for Preact and React components that can have a STATE: if we just refreshed a component, the state will be lost and we'd have to restart our testing process from the beginning (e.g., select destination from the list, then select a car, to get to the state when the "continue" button is showing). Hot reload allows to preserve components' state and helps us develop applications quickly.</p>
+            
+            <p><em>Idio</em> web server belongs to a new generation of tooling that take the maximum advantage of language features. ES6 standard has been completed in 2015, and everything that we need for web development is available to us already without any need to transpile language features, making such tools as <em>Webpack</em> and <em>Babel</em> redundant for development. And for the build step, our <a href="https://www.artd.eco">Node.JS development company</a> is using <em>Closure Compiler</em>. The requirements are thus to transpile JSX, serve packages as modules, and enable hot reload. All of these features are provided by <em>Idio</em> that aims to implement effective solutions using bare minimum of additional code, and just let browsers do the work. In this article, I'll explain, how <strong>pure</strong> hot reload can work, that is, using JavaScript itself instead of getting vendor-locked into complex packages like <em>Webpack</em>.</p>
+            
+            <p class="SectionBreak">
+              <a title="Back To Top" href="#top">
+                <img alt="section break"
+                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='15'/%3E" data-io>
+                <noscript><img alt="section break" src="/section-breaks/0.svg"></noscript></a>
+            </p>
+            </div>
+            
+            <div data-section id="history-of-hmr">
+            <h2>History of HMR</h2>
+            
+            <p>I'm not going to go into much detail since I'm not really interested in the past, but prefer to look into the future instead. I came to know Hot Module Reload like any React developer from documentation in 2017, which by then was pretty stable. But the concept of hot module reload was first discussed by <a href="https://www.youtube.com/watch?v=j-kj2qwJa_E">Bruce Hauman</a> and <a href="https://www.youtube.com/watch?v=xsSnOQynTHs">Dan Abramov</a> back in 2015. At the time, it was a pretty ground-breaking concept, welcomed with enthusiasm by many developers as it's really an essential feature of a development environment since it preserves your creativity flow.</p>
+            
+            <p>
+              <div style="position:relative;" id="c3492">
+                <img class="b-t" alt="dan abramov talk" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='652' height='362'/%3E" data-io>
+                <noscript><img class="b-t" alt="dan abramov talk" src="hot_reload/img/dan.jpg"></noscript>
+              </div>
+            </p>
+            
+            <p>Dan's idea is to use a Babel transform to update code at run-time in such a way as to record methods of a class separately and replace them in instances with proxies. When a change is detected, new methods are sent to the client, and proxies will now execute new code, therefore the actual instance and its state stay untouched. It's about wrapping methods and functions with another meta-function that would be able to perform substitutions at runtime. The transform is what makes up <a href="https://github.com/gaearon/react-hot-loader/"><span class="tm">react-hot-loader</span></a> while it's <em>Webpack</em> that is responsible for establishing client-server communication and providing an API for updates.</p>
+            
+            <p>Now I don't really know how Webpack does what it does, but as far as I can remember, it kind of implements its own modular system by analysing source code and building dependency trees, so that it can also tree-shake unused code. It will always wrap source code into its own, making it a black box for everyone who doesn't get hands on its internals. Webpack has become pretty much a standard for front-end web-development, but did you know that you're pulling 342 additional dependencies with it during installation:</p>
+            
+            <p>
+              <img class="b-t" alt="webpack dependencies graph" data-io>
+              <noscript>
+                <img class="b-t" alt="webpack dependencies graph" src="hot_reload/img/webpack.jpg">
+              </noscript>
+            </p>
+            
+            <p>This is absolute madness. This is what I hate about modern Node.JS state-of-art, it's completely bonkers. Say you want to create a very simple JS app, but to get started, you basically need a nuclear power plant in EACH of your projects! It's not acceptable and all these dependencies would repulse any sane developer, had the community not been beaten into submission by pseudo industry leaders, and developers have nothing left but to quietly obey and keep installing <em>Webpacks</em> and <em>Babels</em>. <strong>Idio</strong> is finally here to fix this and put open source right. I'm going to liberate you from this hell.</p>
+            
+            <p class="SectionBreak">
+              <a title="Back To Top" href="#top">
+                <img alt="section break"
+                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='13'/%3E" data-io>
+                <noscript><img alt="section break" src="/section-breaks/1.svg"></noscript></a>
+            </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="b-ns">
+      &copy; <a href="https://www.idio.cc">Idio</a>, 2020 | Website repo: <a title="Idio Web Server Website." class="GitHubBadge" id="ce149"
+   href="https://github.com/idiocc/www.idio.cc">
+   <span class="a">GitHub</span><span class="b" data-stargazers>⭐️ 1</span></a>
+    </footer>
+    <script>(function(){function b(){if(0<c.length){var a=c.shift();a.src=a.getAttribute("data-src");a.removeAttribute("data-src");a.onload=b;a.onerror=function(){console.warn("Could not load script %s",a.src)}}}var c=Array.prototype.slice.call(document.querySelectorAll("script[data-src]"));b()})()</script>
+  </body>
+</html>
