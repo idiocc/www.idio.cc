@@ -31,6 +31,14 @@ const meta = [{
   },
 },
 {
+  key: 'github-badge',
+  id: 'ce314',
+  props: {
+    owner: 'idiocc',
+    name: 'idio',
+  },
+},
+{
   key: 'ellipsis',
   id: 'ceb55',
   props: {

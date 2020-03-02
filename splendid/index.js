@@ -4,7 +4,11 @@ const config = {
   replacements: [
     {
       re: /{{ company }}/g,
-      replacement: '[Idio](https://idio.cc)',
+      replacement: '[Idio](https://www.idio.cc)',
+    },
+    {
+      re: / Idio /g,
+      replacement: ' _Idio_ ',
     },
   ],
   pages: '../pages',

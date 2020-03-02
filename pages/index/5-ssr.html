@@ -1,0 +1,22 @@
+##! Server-Side Rendering
+
+We believe that JSX is an essential part of JavaScript for web development. It's the most natural approach to programming for the web that requires templating. JSX is so good because it's JavaScript that can be used for marking up HTML code, and not some static HTML with parts that indicate dynamic content (e.g., like Handlebars). There's no better way to create dynamic web pages in Node.JS than with JSX, and Idio acknowledges that by providing a method to render JSX components.
+
+```jsx
+import { render } from '@idio/idio'
+
+/**
+ * @type {import('@idio/idio').Middleware}
+ */
+export default function route(ctx) {
+  ctx.body = render(<html>
+    <body>
+      <h1>Hello World!</h1>
+    </body>
+  </html>)
+}
+```
+
+Behind the scenes, SSR is using Preact 8 for rendering, so you need to install ``preact@8.5.3``. The latest version of Preact is 10, however the API for static rendering is not compatible yet.
+
+<section-break />

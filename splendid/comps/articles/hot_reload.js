@@ -30,6 +30,14 @@ const meta = [{
 },
 {
   key: 'github-badge',
+  id: 'ce314',
+  props: {
+    owner: 'idiocc',
+    name: 'idio',
+  },
+},
+{
+  key: 'github-badge',
   id: 'ce149',
   props: {
     owner: 'idiocc',

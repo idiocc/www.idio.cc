@@ -77,6 +77,14 @@ a:hover {
   color: #0056b3;
   text-decoration: underline;
 }
+pre, code {
+  font-family: SFMono-Regular , Menlo , Monaco , Consolas , "Liberation Mono" , "Courier New" , monospace;
+}
+pre {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  overflow: auto;
+}
 img {
   vertical-align: middle;
   border-style: none;
@@ -102,6 +110,21 @@ h3 {
 .img-fluid {
   max-width: 100%;
   height: auto;
+}
+code {
+  font-size: 87.5%;
+  color: #e83e8c;
+  word-break: break-word;
+}
+pre {
+  display: block;
+  font-size: 87.5%;
+  color: #212529;
+}
+pre code {
+  font-size: inherit;
+  color: inherit;
+  word-break: normal;
 }
 .container {
   width: 100%;
@@ -212,6 +235,11 @@ h3 {
   }
   a:not(.btn) {
     text-decoration: underline;
+  }
+  pre {
+    white-space: pre-wrap !important;
+    border: 1px solid #adb5bd;
+    page-break-inside: avoid;
   }
   img {
     page-break-inside: avoid;

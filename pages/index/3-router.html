@@ -1,0 +1,39 @@
+##! Router
+
+The router is one of the most important parts of the server, that allows you to specify which pages are served at which paths, as well as configuring middleware for routes as well as subroutes, therefore Idio simply returns its instance when you start a server.
+
+```js
+import idio, { Router } from '@idio/idio'
+
+(async () => {
+  const {
+    url, router, app, middleware: { pre, post, jsonBody },
+  } = await idio({
+    // 1. Configure middlewares without installing them.
+    jsonBody: {},
+    jsonErros: {},
+  })
+
+  // 2. Setup API router.
+  const api = new Router()
+  api.post('/example',
+    jsonErrors, // send errors as json
+    jsonBody,   // parse incoming body
+    (ctx) => {
+      ctx.body = {
+        ok: true,
+        request: ctx.request.body,
+      }
+    },
+  )
+  // 3. Configure main router.
+  router.use('/api', api.routes())
+  router.get('/', (ctx) => {
+    ctx.body = 'hello world'
+  })
+  app.use(router.routes())
+  return url
+})()
+```
+
+<section-break/>

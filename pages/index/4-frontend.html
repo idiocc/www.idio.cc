@@ -1,0 +1,42 @@
+##! Front End
+
+With Idio, developing front-end is very easy, because of the *front-end* middleware that can serve `node_modules`, update JSX on-the-fly and provide hot reload for ES6 modules. You can simply create you client applications using the latest browser, and then compile them for production with Closure, that will change the code into ES5 understandable by older browsers. Check out this article: [Web Development With NodeTools](https://art-deco.github.io/nodetools/web-development-with-nodetools.html).
+
+Front end makes simply makes sure that JS files you've written for the browser can be accessed via the server. Because modern browsers understand latest language features as well as import statements, there's no need to create bulky set ups and complex build processes that you can't even understand. All that is happening, is that JS you wrote, is served to the browser with a few adjustments like renaming package into into their resolved paths. As simple as that.
+
+```js
+// src:
+import fetch from 'unfetch'
+// becomes:
+import fetch from '/node_modules/unfetch/src/unfetch.mjs'
+
+fetch('/hello.txt')
+```
+
+Front End supports JSX syntax also so that _Preact_ applications can be developed easily. There's also hot reload that will re-render the interface when the source code of components (both classes and stateless) changes, preserving their state. Consult <a href="articles/hot_reload" /> to understand how our simple HR works.
+
+```js
+import { render, Component } from 'preact'
+
+class App extends Component {
+  render() {
+    return (<div>Hello World!</div>)
+  }
+}
+
+const app = <App />
+const a = render(app, window.container)
+
+/* IDIO HOT RELOAD */
+window['idioAddHotReload'] && window['idioAddHotReload'](() => {
+  render(app, window.container, a)
+})
+```
+
+Such applications can then be compiled with Closure and served as static bundles either from CDN, or the server itself.
+
+<p>
+  <a href="https://github.com/idiocc/idio/wiki/Front-End">READ WIKI</a>
+</p>
+
+<section-break/>

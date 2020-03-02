@@ -10,11 +10,13 @@ import { Component, render, h } from '@externs/preact'
 import { makeIo, init, start } from './__competent-lib'
 import Ellipsis from '../components/ellipsis.jsx'
 import GithubBadge from '../components/github-badge.jsx'
+import Highlightjs from 'splendid/build/components/highlightjs'
 import SocialButtons from 'splendid/build/components/social-buttons'
 
 const __components = {
   'ellipsis': Ellipsis,
   'github-badge': GithubBadge,
+  'highlightjs': Highlightjs,
   'social-buttons': SocialButtons,
 }
 
@@ -22,6 +24,14 @@ const io = makeIo()
 
 /** @type {!Array<!preact.PreactProps>} */
 const meta = [{
+  key: 'github-badge',
+  id: 'ce314',
+  props: {
+    owner: 'idiocc',
+    name: 'idio',
+  },
+},
+{
   key: 'social-buttons',
   id: 'cfc1c',
   props: {
@@ -31,12 +41,19 @@ const meta = [{
   },
 },
 {
+  key: 'highlightjs',
+  id: 'ccdbf,ccdbf1,ccdbf2,ccdbf3',
+  props: {
+    lang: 'javascript',
+  },
+},
+{
   key: 'ellipsis',
   id: 'ceb55',
   props: {
     timeout: 300,
   },
-  children: ["\n  Please bear one moment while I add the content\n"],
+  children: ["\n  Please bear one moment while we add more content\n"],
 },
 {
   key: 'github-badge',
