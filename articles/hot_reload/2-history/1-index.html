@@ -3,7 +3,7 @@
 I'm not going to go into much detail since I'm not really interested in the past, but prefer to look into the future instead. I came to know Hot Module Reload like any React developer from documentation in 2017, which by then was pretty stable. But the concept of hot module reload was first discussed by [Bruce Hauman](https://www.youtube.com/watch?v=j-kj2qwJa_E) and [Dan Abramov](https://www.youtube.com/watch?v=xsSnOQynTHs) back in 2015. At the time, it was a pretty ground-breaking concept, welcomed with enthusiasm by many developers as it's really an essential feature of a development environment since it preserves your creativity flow.
 
 <p>
-  <gif-video img-fluid src="../img/dan.gif" placeholder="../img/dan.jpg" alt="dan abramov talk" />
+  <gif-video webp="photo" img-fluid src="../img/dan.gif" placeholder="../img/dan.jpg" alt="dan abramov talk" />
 </p>
 
 Dan's idea is to use a Babel transform to update code at run-time in such a way as to record methods of a class separately and replace them in instances with proxies. When a change is detected, new methods are sent to the client, and proxies will now execute new code, therefore the actual instance and its state stay untouched. It's about wrapping methods and functions with another meta-function that would be able to perform substitutions at runtime. The transform is what makes up [`react-hot-loader`](https://github.com/gaearon/react-hot-loader/) while it's _Webpack_ that is responsible for establishing client-server communication and providing an API for updates.

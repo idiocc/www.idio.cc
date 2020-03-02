@@ -31,7 +31,7 @@
   "devDependencies": {
     "documentary": "^1.37.1",
     "spawncommand": "^2.2.0",
-    "splendid": "^1.17.5",
+    "splendid": "^1.17.9",
     "zoroaster": "^4.3.0"
   }
 }

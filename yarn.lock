@@ -12,18 +12,13 @@
   resolved "https://registry.yarnpkg.com/@externs/preact/-/preact-1.3.1.tgz#d97745283c30834b569399be0d85286ab7f02d80"
   integrity sha512-B6QUjtgqPCzKWpLdZ8YCCPQv2/iECNJ/JBHVy76cWWN/JPOP+HhOGxWRiEo5f1xg0A1ouf0Ca4cLfqX34W+rbQ==
 
-"@idio/idio@^1.4.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@idio/idio/-/idio-1.4.1.tgz#1788e6c5bf0a321e2c92fa9e3fd52b28382730a6"
-  integrity sha512-PyGuIfitWgVjiWJMYV6N/s5/4+dAfRQdErs5NY0oAYCK5vtSrulEF4EjmW9GyI87imIC25f05vv8zGO0plB3Gw==
+"@idio/idio@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@idio/idio/-/idio-1.5.0.tgz#43207f805a7128b19c587b0b78310a6a7863d901"
+  integrity sha512-TKCS+I5FFRzQQ9m5F0H+v+WhVR8Z1QVTk3k3C8wU2X+JoveTEA3NBRlK6tuS+8eX/3FyqnQe45j4/rdXW+IXdQ==
   dependencies:
     mime-db "^1.43.0"
     text-decoding "^1.0.0"
-
-"@idio/websocket@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@idio/websocket/-/websocket-1.1.1.tgz#61198fa435a7e9d9928ce0d83ec9485a877c3ba6"
-  integrity sha512-v4XA6C2pgKIOsgcW8zdjTvoAXOh+RtDRuSvyv0BySwxnEdfBWgN8iBFRUnN1DcJqg0DCFJZleyXrFPjLgJ3aIg==
 
 "@lemuria/absolute-proxy@^1.0.2":
   version "1.0.2"
@@ -139,14 +134,18 @@ spawncommand@^2.2.0:
   dependencies:
     catchment "^3.3.0"
 
-splendid@^1.17.5:
-  version "1.17.5"
-  resolved "https://registry.yarnpkg.com/splendid/-/splendid-1.17.5.tgz#2687d97cad4fb8833f718ff7672193005b40f685"
-  integrity sha512-key2+2vDQYEptGoXj7T6OME9f46cDzl/JOea4HfRcfHZPrVhHLRTcPJ/yCMmMm1YgxaBoxDou7+dlu+N47lJKg==
+splendid-web-components@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/splendid-web-components/-/splendid-web-components-1.0.0.tgz#6bc9cbef8254f96c2102a00e979e4dc3537c9cbb"
+  integrity sha512-oZOB2VaEoLEA/WS+SX5KybIjsm1ua3dzkqWaE1C1CAaI/hhCohA//u0WyF7YGOyph164++Wdb8dpoA0lqK5N1g==
+
+splendid@^1.17.9:
+  version "1.17.9"
+  resolved "https://registry.yarnpkg.com/splendid/-/splendid-1.17.9.tgz#48987cfd50befd21a86fa1e459add6c74bfa210c"
+  integrity sha512-GDwwbMKXGRNDZUPpeccsRc0hGpDNqY1uaN3+EraY5M6yV92ZopH5bt/PoBtBwpTWzEO68hBGf89K2HCODQ+Ilw==
   dependencies:
     "@externs/preact" "^1.3.1"
-    "@idio/idio" "^1.4.1"
-    "@idio/websocket" "^1.1.1"
+    "@idio/idio" "^1.5.0"
     "@lemuria/absolute-proxy" "^1.0.2"
     "@lemuria/font" "^1.0.4"
     "@lemuria/load-scripts" "^1.2.0"
@@ -155,6 +154,7 @@ splendid@^1.17.5:
     highlight.js "^9.18.1"
     preact "8.5.3"
     prismjs "1.19.0"
+    splendid-web-components "^1.0.0"
 
 text-decoding@^1.0.0:
   version "1.0.0"
