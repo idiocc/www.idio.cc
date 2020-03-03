@@ -3,5 +3,8 @@
     "./splendid/components/web-components.json",
     "./splendid/elements/web-components.json",
     "./node_modules/splendid-web-components/web-components.json"
+  ],
+  "cSpell.words": [
+    "templating"
   ]
 }

@@ -7,12 +7,12 @@ const config = {
       replacement: '[Idio](https://www.idio.cc)',
     },
     {
-      re: / Idio /g,
-      replacement: ' _Idio_ ',
+      re: /([ (])(Idio|Webpack|Babel|Koa|React|Preact|Closure(?: Compiler)?)([., ])/g,
+      replacement: '$1_$2_$3',
     },
     {
-      re: /^Idio /mg,
-      replacement: '_Idio_ ',
+      re: /^(Idio|Webpack|Babel|Koa|React|Preact|Closure( Compiler)?) /mg,
+      replacement: '_$1_ ',
     },
   ],
   pages: '../pages',

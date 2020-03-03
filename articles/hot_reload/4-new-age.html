@@ -1,10 +1,23 @@
 ##! New Age Solutions
 
-Even if Webpack was needed during the last 5 years, it's almost entirely served its purpose, and the room for dev utils that exploit present-day opportunities is being filled by more nimble software. Idio is a professional server which has been compiled with Closure, and has only 2 dependencies. It consists of ES6-rewritten Koa with a collection of middleware, but it also allows to develop JavaScript for the browser. To enable web development process, it ships with our in-house *Front End* middleware, that does the following:
+Open Source supposedly saves us from "vendor lock" &mdash; but does it really? Instead of corporate vendor lock into proprietary software, we now have... Open Source vendor lock into popular projects like Webpack. Most of the build pipelines are based on Webpack, _Rollup_ and Babel. And to tell you the truth: Open Source vendor lock is even worse than corporate one, because those who run such popular Open Source projects don't accept any criticism as they think that because they are volunteers, you don't have any rights as a user.
+
+<p border rounded p-2 text-right box-shadow="0 3px 11px 5px lightsteelblue">
+  <img img-fluid webp="text" src="./img/free.png" alt="free software" />
+  <br><span text-monospace>^ In Open Source, you owe your life and business to maintainers for using their "free" software. It's a disgrace what the scene has been turned into.</span>
+</p>
+
+You're now vendor locked, AND you can't ever express your dissatisfaction with something. And actually why do we have to use software like Babel and Webpack &mdash; because it's good, or because we had no choice? But now we do have a choice: in 2020, we can move on to the new age tools that provide completely transparent experience, and treat you and your code with RESPECT. They will allow you to stop being a MINDLESS USER and hostage to somebody's technology, and remain a QUALIFIED DEVELOPER who takes her profession in hand, utilising the skill to use the LANGUAGE and not 3rd party tools.
+
+<!-- so that you can expect to be a VALUED and LOVED user, and not hostage to somebody's technology. -->
+
+<!-- because it's popular Open Source developers of those projects who now think they're the rules of the world with all that popularity hitting their heads, while you're not allowed to raise any complaints about their software, because they're apparently volunteers providing software to you for free. -->
+
+It's true that Webpack as a build tool was needed during the last 5 years. It has got nice features like code splitting. But the room for dev utils that take advantage of present-day opportunities is being filled by more nimble software. Idio is a professional web server which has been compiled with Closure, and has only 2 dependencies. It consists of ES6-rewritten Koa with a collection of middleware, but it also allows to develop JavaScript for the browser. To enable web development process, it ships with our in-house *Front End* middleware, that does the following:
 
 ### 1. You specify the directory with your frontend code, e.g., `frontend`.
 
-For example, you can have the following source:
+For example, you can have the following source in ``frontend/index.js``:
 
 ```js
 import { dep } from 'my-dep'
@@ -15,7 +28,7 @@ dep(el) // execute dependency
 local(el) // execute local
 ```
 
-When the browser requests this JS module, *FrontEnd* will intersect the request, and lookup `my-dep` in your ``node_modules``, to find its package.json. From there, the module field will be read, and the served file will actually contain absolute paths required by the browser. Local dependencies can also be served, which is impossible under normal circumstances when the extension (`.js`) is not present, but the middleware can handle that.
+When the browser requests this JS module via a script tag, `<script type="module" src="frontend"></script>`, *FrontEnd* will intersect the request, and lookup `my-dep` in your ``node_modules``, to find its _package.json_. From there, the *module* field will be read, and the served file will actually contain absolute paths required by the browser. Local dependencies can also be served, which would be impossible under normal circumstances when the extension (`.js`) is not present, but the middleware can handle that.
 
 ```js
 import { dep } from '/node_modules/my-dep/src/index.js'
@@ -26,18 +39,18 @@ dep(el) // execute dependency
 local(el) // execute local
 ```
 
-Now the browser can import the dependency natively. The middleware will serve any JS files under the ``/node_module`` path, enabling direct dependency serving, without having to wrap anything in vendor modular system. This simple step drastically reduces the complexity of the toolchain, as it's the browser that's doing most of the work from this point onwards. Live modifications are made with the simplest RegEx that picks up `import` statements.
+Now the browser can import the dependency natively. The middleware will return any JS file under the ``/node_module`` path, enabling direct dependency serving, without having to wrap anything in vendor modular system. This simple step drastically reduces the complexity of the tool-chain, as it's the browser that's doing most of the work from this point onwards. On-the-fly modifications of paths are made with the simplest RegEx that picks up `import` statements.
 
 ### 2. You write JSX code in your frontend.
 
-JSX is positively THE BEST templating syntax for web development, and there's no doubt about that. Although it was initially developed by _React_, its roots actually go much deeper than that, as MXML (Flash applications) used to have similar structure.
+JSX is positively THE BEST templating syntax for web development, and there's no doubt about that. Although it was initially developed by React, its roots actually go much deeper than that, as MXML (Flash applications) used to have similar structure.
 
 <p>
   <img img-fluid webp="text" src="./img/binding.jpg" alt="flex bindings" />
   <br><span text-monospace> &copy; [Elad Elrom, Adobe](https://www.adobe.com/devnet/flex/articles/databinding_pitfalls.html) 2010</span>
 </p>
 
-JSX is a revival of MXML and an essential part of programming of the web. There's a parody on JSX called `lit-html` but it makes no sense why I should use template literals when writing tags. It's simply a hack to eliminate JSX transpilation, but it's not a replacement for JSX, which is the daddy of modern web computing.
+JSX is a revival of MXML and an essential part of programming of the web. There's an interesting alternative to JSX called `lit-html` but it makes no sense why I should use template literals when writing tags. It's simply a hack to eliminate JSX transpilation, but it's not a replacement for JSX, which is the daddy of modern web computing.
 
 <highlightjs src="./example/App.mjs"/>
 
@@ -49,7 +62,7 @@ An example of using lit html is the following:
 
 The advantage of this over JSX is that it doesn't require transpilation and can be run natively within a browser. The disadvantage is that there's no syntax highlighting (unless you use a plugin) and it's not as fluent as JSX that doesn't require calling `html` function to start a template block.
 
-You might be thinking that to transpile JSX you need Babel, but the fact is that you don't. You don't need to build ASTs and you don't need to install additional 250 dependencies that come with Babel, another "established" standard of coding. *FrontEnd* uses a [JSX transpiler](https://github.com/a-la/jsx) powered regular expressions. It includes a hack to find where the initial tag (``<``) is opening by evaluating the jsx file using the `vm` module of Node.JS. The tag is detected by listening to an error:
+You might be thinking that to transpile JSX you need Babel, but the fact is that you don't. You don't need to build ASTs and you don't need to install additional 250 dependencies that come with Babel, another "established" standard of coding. *FrontEnd* uses a [JSX transpiler](https://github.com/a-la/jsx) powered by regular expressions. It includes a hack to find where the initial tag (``<``) is opening by evaluating the jsx file using the `vm` module of Node.JS. The tag is detected by listening to an error:
 
 ```jsx
 /Users/zavr/a-la/jsx/test/fixture/Component.jsx:2
@@ -59,11 +72,11 @@ You might be thinking that to transpile JSX you need Babel, but the fact is that
 SyntaxError: Unexpected token <
 ```
 
-This evaluation is needed to prevent false positives, e.g., `if (a<example)`. After detecting the location of the angle bracket, we are able to parse text, until the closing tag is found, unless it was self-closing. Properties are also extracted using regular expressions on strings. Now look, you can think that it's very simplistic, but this stuff works and works really well. It supports comments and pretty much everything you want from JSX, except that you can't use `>` in properties, e.g.,
+This evaluation is needed to prevent false positives, e.g., `if (a<example && b)`. After detecting the location of the angle bracket, we are able to parse text, until the closing tag is found, unless it was self-closing. Properties are also extracted using regular expressions on strings. Now look, you can think that it's very simplistic, but this stuff works and works really well. It supports comments and pretty much everything you want from JSX, except that you can't use `>` in properties, e.g.,
 
 <highlightjs src="./example/Component.mjs" lang="jsx"/>
 
-But methods like that simply need to be taken out of the tag scope. You're probably not going to replace _Webpack_ with Idio at your corporate insurer job, but if you're working for fun projects, there's no reason why you can't be using this. Except for that there's no source maps, which will be added later on this year, but because the code produced looks absolutely natural, it's easy to debug it anyway.
+But methods like that simply need to be taken out of the tag scope. You're probably not going to replace Webpack with Idio at your corporate insurer job, but if you're working for fun projects, there's no reason why you can't be using this. Except for that there's no source maps, which will be added later on this year, but because the code produced looks absolutely natural, it's easy to debug it anyway (unless you've got the super-power setup where your VS Code debugger hooks up to a running Chrome process).
 
 ```js
 // JSX - compiled code
@@ -95,6 +108,8 @@ I've created many [widgets](https://akashic.page), [front-end apps](https://gith
 
 As an indie web developer, I was looking to fulfil the need to create JS applications for the web without anything getting in the way. I wanted to breath freely when working on each new project, and not be brought down by the anxiety that filled me up when my ``node_modules`` were being taken over and I lost all control. There's no happier place than to be able to direct the development process, saying, "I'm the boss here, not you, dependencies!".
 
-The *FrontEnd* solution might not be approved in corporate &mdash; which only confirms the fact they've been locked into their "Open Source" software, but for JS enthusiasts and hackers, it's perfect. After being liberated from the shackles of dependencies, I could finally focus on writing source code to build more software products for my company. Bust most of all, I've gained independence. I'm not offering you an alternative that you'll be stuck with: you can see that developing front-end is really easy in 2020, as all you need is to serve JavaScript modules with a few on-the-fly modifications. We'll discuss the build step in the end. For now, let's have a look at hot reload, the final requirement for the front-end and its simplest form of implementation.
+The *FrontEnd* solution might not be approved in corporate &mdash; which only confirms the fact they've been locked into their "Open Source" software, but for JS enthusiasts and hackers, it's perfect. After being liberated from the shackles of dependencies, I could finally focus on writing source code to build more software products for my company. But most of all, I've gained independence.
+
+I'm not offering you an alternative that you'll be stuck with: you can see that developing front-end is really easy in 2020, as all you need is to serve JavaScript modules with a few on-the-fly modifications. I've not invented a new system, I've only patched up those things that were missing. We'll discuss the build step in the end. For now, let's have a look at hot reload, the final requirement for the front-end and its simplest form of implementation.
 
 <section-break />
