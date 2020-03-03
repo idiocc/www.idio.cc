@@ -22,15 +22,6 @@ const io = makeIo()
 
 /** @type {!Array<!preact.PreactProps>} */
 const meta = [{
-  key: 'social-buttons',
-  id: 'cbbf8',
-  props: {
-    url: 'https://www.idio.cc/articles/',
-    meta: true,
-    className: 'b-xq b-Hk',
-  },
-},
-{
   key: 'github-badge',
   id: 'ce314',
   props: {
@@ -45,6 +36,15 @@ const meta = [{
     timeout: 300,
   },
   children: ["\n  Please bear one moment while I add the content\n"],
+},
+{
+  key: 'social-buttons',
+  id: 'cffb5',
+  props: {
+    url: 'https://www.idio.cc/articles/',
+    meta: true,
+    className: 'SocialSharing b-xq b-Hk',
+  },
 },
 {
   key: 'github-badge',

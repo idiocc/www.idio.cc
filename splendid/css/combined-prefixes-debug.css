@@ -60,6 +60,11 @@
 .right-column {
   -moz-hyphens: auto;
 }
+.tm, .tm2, .hljs {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -moz-hyphens: none;
+}
 .GitHubBadge .a {
   -webkit-border-radius: 2px 0 0 2px;
   -moz-border-radius: 2px 0 0 2px;

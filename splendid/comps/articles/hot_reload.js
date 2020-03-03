@@ -10,11 +10,13 @@ import { Component, render, h } from '@externs/preact'
 import { makeIo, init, start } from '../__competent-lib'
 import GifVideo from '../../components/gif-video.js'
 import GithubBadge from '../../components/github-badge.jsx'
+import Highlightjs from 'splendid/build/components/highlightjs'
 import SocialButtons from 'splendid/build/components/social-buttons'
 
 const __components = {
   'gif-video': GifVideo,
   'github-badge': GithubBadge,
+  'highlightjs': Highlightjs,
   'social-buttons': SocialButtons,
 }
 
@@ -37,6 +39,13 @@ const meta = [{
   },
 },
 {
+  key: 'highlightjs',
+  id: 'ccdbf,ccdbf1,ccdbf2,ccdbf3,ccdbf4,ccdbf5,ccdbf6',
+  props: {
+    lang: 'javascript',
+  },
+},
+{
   key: 'github-badge',
   id: 'ce149',
   props: {
@@ -46,11 +55,11 @@ const meta = [{
 },
 {
   key: 'social-buttons',
-  id: 'c28db',
+  id: 'c5130',
   props: {
     url: 'https://www.idio.cc/articles/pure-hot-reload.html',
     meta: true,
-    className: 'b-xq b-Hk',
+    className: 'SocialSharing b-xq b-Hk',
   },
 }]
 meta.forEach(({ key, id, props = {}, children = [] }) => {

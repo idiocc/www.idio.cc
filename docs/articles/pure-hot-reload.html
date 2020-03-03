@@ -6,15 +6,9 @@
     <meta
       content="Implementing the simplest native hot reload for ES6 modules, with minimal interference with the original source code and without complex bulid chains." name="description">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link sizes="57x57" rel="apple-touch-icon" href="/img/favicon-57.png">
-  <link sizes="76x76" rel="apple-touch-icon" href="/img/favicon-76.png">
-  <link sizes="120x120" rel="apple-touch-icon" href="/img/favicon-120.png">
-  <link sizes="152x152" rel="apple-touch-icon" href="/img/favicon-152.png">
-  <link sizes="167x167" rel="apple-touch-icon" href="/img/favicon-167.png">
-  <link sizes="180x180" rel="apple-touch-icon" href="/img/favicon-180.png">
-  <link sizes="192x192" rel="icon" href="/img/favicon-192.png">
-  <link sizes="128x128" rel="icon" href="/img/favicon-128.png">
-  <link sizes="32x32" rel="icon" href="/img/favicon-32.png">
+  <link sizes="57x57" rel="apple-touch-icon" href="/img/fav-57.png">
+  <link sizes="76x76" rel="apple-touch-icon" href="/img/fav-76.png">
+  <link sizes="32x32" rel="icon" href="/img/fav-32.png">
   <link
     href="https://fonts.googleapis.com/css?display=swap&amp;family=Ruda%3A400%2C700%7CShare%20Tech" rel="preload" as="fetch" crossOrigin>
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -38,7 +32,7 @@
       (function(){var b=/url\('([\s\S]+?)'\)/.exec(document.head.querySelector("#cpt").textContent);if(b){var a=document.createElement("link");a.rel="preload";a.as="font";a.href=b[1];document.head.appendChild(a)}})()
     </script>
     <script>(function(h,r){var a=Object.keys(h),c=!0;"CSS"in window&&"supports"in CSS?(a=a.reduce(function(k,b){var l=h[b];b=b.split("|");for(var m=!1,d={},f=0;f<b.length;d={a:d.a},f++)if(d.a=b[f],l.map(function(n){return function(e){e=e.split("|");for(var p=!1,g=0;g<e.length;g++){var q=e[g];if(CSS.supports(n.a,q)){p=!0;break}else k.push(n.a+": "+q)}return p}}(d)).filter(Boolean).length==l.length){m=!0;break}m||(c=!1);return k},[]),a.length?c&&console.log("\ud83d\udcbf Browser does not support CSS properties: %s",
-a.join("\n "),"but supports alternatives."):console.log("\ud83d\udcbd Browser supports all modern CSS properties.")):(c=!1,console.log("\ud83d\udce0 Browser does not support CSS checks."));c||(a=document.createElement("link"),a.rel="stylesheet",a.href=r,document.head.appendChild(a))})({"border-radius":[".25rem"],"box-shadow":["none"],"flex|-ms-flex":["0 0 25%"],"display":["flex|-ms-flexbox"],"hyphens|-webkit-hyphens|-ms-hyphens":["auto"],"flex-shrink|-ms-flex-negative":["0"],"position":["sticky|-webkit-sticky"],"flex-wrap|-ms-flex-wrap":["wrap"],"box-sizing":["border-box"],"flex-direction|-ms-flex-direction":["column"]}, '/css/articles/combined-prefixes.css')</script>
+a.join("\n "),"but supports alternatives."):console.log("\ud83d\udcbd Browser supports all modern CSS properties.")):(c=!1,console.log("\ud83d\udce0 Browser does not support CSS checks."));c||(a=document.createElement("link"),a.rel="stylesheet",a.href=r,document.head.appendChild(a))})({"border-radius":["2px"],"box-shadow":["none"],"flex|-ms-flex":["0 0 25%"],"display":["flex|-ms-flexbox"],"hyphens|-webkit-hyphens|-ms-hyphens":["auto"],"flex-shrink|-ms-flex-negative":["0"],"position":["sticky|-webkit-sticky"],"flex-wrap|-ms-flex-wrap":["wrap"],"box-sizing":["border-box"],"flex-direction|-ms-flex-direction":["column"]}, '/css/articles/combined-prefixes.css')</script>
     <script>
       (function(q,k){function x(a){for(var f=/url\((.+?)\).*?;\s+unicode-range: (.+?);/g,b={},d=[],h;h=f.exec(a);){var r=h[2];d.push({url:h[1],a:r});b[r]=1}b=Object.keys(b).reduce(function(c,e){var g=e.split(/,\s/).map(function(l){return l.replace("U+","\\u").replace("-","-\\u")}).join("").toLowerCase();c[e]=new RegExp("["+g+"]");return c},{});var t=document.body?document.body.textContent:"",y=t?Object.keys(b).reduce(function(c,e){b[e].test(t)&&(c[e]=!0);return c},{}):Object.keys(b).reduce(function(c,
       e){e in k&&(c[e]=!0);return c},{});m=d.filter(function(c){return c.a in y}).map(function(c){return c.url});if(!m.length)return u();var v=document.createDocumentFragment();m.forEach(function(c,e){var g=document.createElement("link");g.href=c;g.rel="preload";g.as="font";var l=e+1;;g.onload=function(){return u(l)};g.setAttribute("crossorigin",!0);v.appendChild(g)});document.head.appendChild(v)}k=void 0===k?{}:k;var n=document.createElement("link");if(function(a,
@@ -46,6 +40,7 @@ a.join("\n "),"but supports alternatives."):console.log("\ud83d\udcbd Browser su
       ;var p;(function(a,f){z(a.href,function(b){p=b;x(p)},"-"+(void 0===f?"link":f))})({href:q},"js");var m=[],w=0,u=function(a){w++;w>=m.length&&(a=document.createElement("style"),a.innerHTML=p,document.head.appendChild(a))}}else n.rel="stylesheet",n.href=q,document.head.appendChild(n)})('https://fonts.googleapis.com/css?display=swap&family=Ruda%3A400%2C700%7CShare%20Tech', {"U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD":true})
     </script>
     <link rel="stylesheet" href="/css/articles/combined.css">
+    <link rel="preload" as="style" href="/highlight.js/styles/default.css">
     <style>
       .no-js [data-io], .no-js .ImageHolder, .no-js [data-loading] { display: none!important }
     </style>
@@ -108,9 +103,11 @@ a.join("\n "),"but supports alternatives."):console.log("\ud83d\udcbd Browser su
                                   <ul class="OnThisPage">
                                     <li data-heading="-pure-hot-reload"><a href="#-pure-hot-reload">Pure Hot Reload</a></li>
                                     <li data-heading="history-of-hmr"><a href="#history-of-hmr">History of HMR</a></li>
+                                    <li data-heading="new-vendor-lock"><a href="#new-vendor-lock">New Vendor Lock</a></li>
+                                    <li data-heading="new-age-solutions"><a href="#new-age-solutions">New Age Solutions</a></li>
                                   </ul>
                                   <h3 id="share-now">Share Now!</h3>
-                                  <span class="b-xq b-Hk" id="c28db"><span class="b-Hk" style="height:32px" data-loading>Loading sharing buttons...</span><noscript>Please enable JavaScript to Share</noscript></span>
+                                  <span class="SocialSharing b-xq b-Hk" id="c5130"><span class="b-Hk" style="height:32px" data-loading>Loading sharing buttons...</span><noscript>Please enable JavaScript to Share</noscript></span>
                                 
                 </div>
                 <a id="HideMenu" style="color:grey!important;" href="#">hide menu</a>
@@ -155,7 +152,7 @@ a.join("\n "),"but supports alternatives."):console.log("\ud83d\udcbd Browser su
             <div data-section id="history-of-hmr">
             <h2>History of HMR</h2>
             
-            <p>I'm not going to go into much detail since I'm not really interested in the past, but prefer to look into the future instead. I came to know Hot Module Reload like any React developer from documentation in 2017, which by then was pretty stable. But the concept of hot module reload was first discussed by <a href="https://www.youtube.com/watch?v=j-kj2qwJa_E">Bruce Hauman</a> and <a href="https://www.youtube.com/watch?v=xsSnOQynTHs">Dan Abramov</a> back in 2015. At the time, it was a pretty ground-breaking concept, welcomed with enthusiasm by many developers as it's really an essential feature of a development environment since it preserves your creativity flow.</p>
+            <p>I'm not going to go into much detail since I'm not really interested in the past, but prefer to look into the future instead. I came to know Hot Module Reload like any React developer from documentation in 2017, which by then was pretty stable. But the concept of hot module reload was first discussed by <a href="https://www.youtube.com/watch?v=j-kj2qwJa_E">Bruce Hauman</a> and <a href="https://www.youtube.com/watch?v=xsSnOQynTHs">Dan Abramov</a> back in 2015. At the time, it was a pretty ground-breaking idea, welcomed with enthusiasm by many developers as it's really an essential feature of a development environment that preserves your creativity flow.</p>
             
             <p>
               <div style="position:relative;" id="c3492">
@@ -175,19 +172,215 @@ a.join("\n "),"but supports alternatives."):console.log("\ud83d\udcbd Browser su
             <p>Now I don't really know how Webpack does what it does, but as far as I can remember, it kind of implements its own modular system by analysing source code and building dependency trees, so that it can also tree-shake unused code. It will always wrap source code into its own, making it a black box for everyone who doesn't get hands on its internals. Webpack has become pretty much a standard for front-end web-development, but did you know that you're pulling 342 additional dependencies with it during installation:</p>
             
             <p>
-              <img class="b-t" alt="webpack dependencies graph" data-io>
+              <img class="b-t" alt="webpack dependencies graph" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='864' height='484'/%3E" data-io>
               <noscript>
                 <img class="b-t" alt="webpack dependencies graph" src="hot_reload/img/webpack.jpg">
               </noscript>
             </p>
             
-            <p>This is absolute madness. This is what I hate about modern Node.JS state-of-art, it's completely bonkers. Say you want to create a very simple JS app, but to get started, you basically need a nuclear power plant in EACH of your projects! It's not acceptable and all these dependencies would repulse any sane developer, had the community not been beaten into submission by pseudo industry leaders, and developers have nothing left but to quietly obey and keep installing <em>Webpacks</em> and <em>Babels</em>. <strong>Idio</strong> is finally here to fix this and put open source right. I'm going to liberate you from this hell.</p>
+            <p>This is absolute madness. This is what I hate about modern Node.JS state-of-art, it's completely bonkers. Say you want to create a very simple JS app, but to get started, you basically need a nuclear power plant, and this is repeated for EACH of your projects! It's not acceptable and all these dependencies would repulse any sane developer, had the community not been beaten into submission by current industry leaders, and developers have nothing left but to quietly obey and keep installing <em>Webpacks</em> and <em>Babels</em>. <strong>Idio</strong> is finally here to fix this and put open source right. I'm going to liberate you from this hell.</p>
             
             <p class="SectionBreak">
               <a title="Back To Top" href="#top">
                 <img alt="section break"
                   src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='13'/%3E" data-io>
                 <noscript><img alt="section break" src="/section-breaks/1.svg"></noscript></a>
+            </p>
+            </div>
+            
+            <div data-section id="new-vendor-lock">
+            <h2>New Vendor Lock</h2>
+            
+            <p>Open Source supposedly saves us from "vendor lock" &mdash; but does it really? Instead of corporate vendor lock into proprietary software, we now have... Open Source vendor lock into popular projects like WebPack. Most of the build pipelines are based on WebPack, Rollup and Babel. And to tell you the truth: Open Source vendor lock is even worse than corporate one, because it's popular Open Source developers of those projects who now think they're the rules of the world with all that popularity hitting their heads, while you're not allowed to raise any complaints about their software, because they're apparently volunteers, who provide software to you for free.</p>
+            
+            <p class="b-bk b-vk b-br b-jC" style="box-shadow: 0 3px 11px 5px lightsteelblue;">
+              <img class="ImageHolder b-t" sizes="(max-width: 575.8px) 100vw,440px" alt="free software" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='440' height='74'/%3E">
+              <noscript>
+                <picture>
+                  <source
+                    srcset="hot_reload/img/free-319.webp 319w,hot_reload/img/free-440.webp 440w" sizes="(max-width: 575.8px) 100vw,440px" type="image/webp">
+                  <img class="b-t" onLoad="webploaded(this)" alt="free software" src="hot_reload/img/free-319.png" srcset="hot_reload/img/free-319.png 319w,hot_reload/img/free-440.png 440w" sizes="(max-width: 575.8px) 100vw,440px">
+                </picture>
+              </noscript>
+              <br><span class="b-dC">^ In Open Source, you owe your life and business to maintainers for using their "free" software. It's a disgrace what this bunch have turned Open Source into.</span>
+            </p>
+            
+            <p>The situation is extremely hostile against people like myself who raise questions and doubts about where we're going, indicating the decadence of the scene and clinging to the power by those "leaders". No free speech is allowed that doesn't suit the newly established "elite". This article will never appear on any newsletter because they're afraid to face the truth. But don't worry about them &mdash; in 2020, we can move on to the new age tools that provide completely transparent experience, while treating YOU with respect, so that you can be expected to be a VALUABLE and LOVED user, and not hostage to somebody's technology.</p>
+            
+            <p class="SectionBreak">
+              <a title="Back To Top" href="#top">
+                <img alt="section break"
+                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='13'/%3E" data-io>
+                <noscript><img alt="section break" src="/section-breaks/2.svg"></noscript></a>
+            </p>
+            </div>
+            
+            <div data-section id="new-age-solutions">
+            <h2>New Age Solutions</h2>
+            
+            <p>Even if Webpack was needed during the last 5 years, it's almost entirely served its purpose, and the room for dev utils that exploit present-day opportunities is being filled by more nimble software. <em>Idio</em> is a professional server which has been compiled with Closure, and has only 2 dependencies. It consists of ES6-rewritten Koa with a collection of middleware, but it also allows to develop JavaScript for the browser. To enable web development process, it ships with our in-house <strong>Front End</strong> middleware, that does the following:</p>
+            
+            <h3 id="1-you-specify-the-directory-with-your-frontend-code-eg--innercode-1-">
+              1. You specify the directory with your frontend code, e.g., <span class="tm">frontend</span>.
+            </h3>
+            
+            <p>For example, you can have the following source:</p>
+            
+            <pre id="ccdbf3"><code class="javascript hljs">import { dep } from 'my-dep'
+import local from './local'
+
+const el = document.querySelector('#id')
+dep(el) // execute dependency
+local(el) // execute local</code></pre>
+            
+            <p>When the browser requests this JS module, <strong>FrontEnd</strong> will intersect the request, and lookup <span class="tm">my-dep</span> in your <span class="tm2">node_modules</span>, to find its package.json. From there, the module field will be read, and the served file will actually contain absolute paths required by the browser. Local dependencies can also be served, which isn't impossible under normal circumstances when the extension (<span class="tm">.js</span>) is not present, but the middleware can handle that.</p>
+            
+            <pre id="ccdbf"><code class="javascript hljs">import { dep } from '/node_modules/my-dep/src/index.js'
+import local from './local'
+
+const el = document.querySelector('#id')
+dep(el) // execute dependency
+local(el) // execute local</code></pre>
+            
+            <p>Now the browser can import the dependency natively. The middleware will serve any JS files under the <span class="tm2">/node_module</span> path, enabling direct dependency serving, without having to wrap anything in vendor modular system. This simple step drastically reduces the complexity of the toolchain, as it's the browser that's doing most of the work from this point onwards. Live modifications are made with the simplest RegEx that picks up <span class="tm">import</span> statements.</p>
+            
+            <h3 id="2-you-write-jsx-code-in-your-frontend">2. You write JSX code in your frontend.</h3>
+            
+            <p>JSX is positively THE BEST templating syntax for web development, and there's no doubt about that. Although it was initially developed by <em>React</em>, its roots actually go much deeper than that, as MXML (Flash applications) used to have similar structure.</p>
+            
+            <p>
+              <img class="ImageHolder b-t" sizes="(max-width: 575.8px) 100vw,(max-width: 991.8px) 540px,576px" alt="flex bindings" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='576' height='212'/%3E">
+              <noscript>
+                <picture>
+                  <source
+                    srcset="hot_reload/img/binding-576.webp 576w,hot_reload/img/binding-319.webp 319w,hot_reload/img/binding-576.webp 576w" sizes="(max-width: 575.8px) 100vw,(max-width: 991.8px) 540px,576px" type="image/webp">
+                  <img class="b-t" onLoad="webploaded(this)" alt="flex bindings" src="hot_reload/img/binding-576.jpg" srcset="hot_reload/img/binding-576.jpg 576w,hot_reload/img/binding-319.jpg 319w,hot_reload/img/binding-576.jpg 576w" sizes="(max-width: 575.8px) 100vw,(max-width: 991.8px) 540px,576px">
+                </picture>
+              </noscript>
+              <br><span class="b-dC"> &copy; <a href="https://www.adobe.com/devnet/flex/articles/databinding_pitfalls.html">Elad Elrom, Adobe</a> 2010</span>
+            </p>
+            
+            <p>JSX is a revival of MXML and an essential part of programming of the web. There's a parody of JSX called <span class="tm">lit-html</span> but it makes no sense why I should use template literals when writing tags. It's simply a hack to eliminate JSX transpilation, but it's not a replacement for JSX, which is the daddy of modern web computing.</p>
+            
+            <pre id="ccdbf4"><code class="javascript hljs">// JSX
+import { render, Component } from 'preact'
+
+class App extends Component {
+  constructor() {
+    super()
+    this.state = { name: 'world' }
+  }
+  render({ message }) {
+    return (&lt;div&gt;
+      Hello, &lt;span&gt;{this.state.name}&lt;/span&gt;
+      &lt;p&gt;
+        {message}
+      &lt;/p&gt;
+    &lt;/div&gt;)
+  }
+}
+
+render(&lt;App message="Idio"/&gt;, document.querySelector('.app'))</code></pre>
+            
+            <p>An example of using lit html is the following:</p>
+            
+            <pre id="ccdbf5"><code class="javascript hljs">import { define, html } from 'https://unpkg.com/hybrids@4.1.3/src/index.js'
+
+const HybridsApp = {
+  appName: 'Welcome to Hybrids!',
+
+  pageLoaded: '&lt;span&gt;No page loaded, yet.&lt;/span&gt;',
+
+  page: ({ pageLoaded }) =&gt; pageLoaded,
+
+  render: ({ appName, page }) =&gt;
+    html`
+      &lt;div&gt;
+        &lt;h1&gt;${appName}&lt;/h1&gt;
+        &lt;p&gt;Example of an unbundled Hybrids app with dynamic imports.&lt;/p&gt;
+        &lt;div&gt;
+          &lt;button onclick="${load}" page="./pages/Welcome.mjs"&gt;
+            Welcome Page
+          &lt;/button&gt;
+          &lt;button onclick="${load}" page="./pages/Other.mjs"&gt;
+            Other Page
+          &lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    `,
+}</code></pre>
+            
+            <p><span class="b-dC">&copy; F1LT3R 2020, <a href="https://github.com/F1LT3R/hybrids-dynamic-load"><span class="tm">hybrids-dynamic-load</span></a>.</span></p>
+            
+            <p>The advantage of this over JSX is that it doesn't require transpilation and can be run natively within a browser. The disadvantage is that there's no syntax highlighting (unless you use a plugin) and it's not as fluent as JSX that doesn't require calling <span class="tm">html</span> function to start a template block.</p>
+            
+            <p>You might be thinking that to transpile JSX you need Babel, but the fact is that you don't. You don't need to build ASTs and you don't need to install additional 250 dependencies that come with Babel, another "established" standard of coding. <strong>FrontEnd</strong> uses a <a href="https://github.com/a-la/jsx">JSX transpiler</a> that uses regular expressions. It includes a hack to find where the initial tag (<span class="tm2">&lt;</span>) is opening by evaluating the jsx file using the <span class="tm">vm</span> module of Node.JS. The tag is detected by listening to an error:</p>
+            
+            <pre id="ccdbf1"><code class="javascript hljs">/Users/zavr/a-la/jsx/test/fixture/Component.jsx:2
+  &lt;div className={className}&gt;
+  ^
+
+SyntaxError: Unexpected token &lt;</code></pre>
+            
+            <p>From then on, we are able to parse text, until the closing tag is found, unless it was self-closing. Properties are also extracted using regular expressions on strings. Now look, you can think that it's very simplistic, but this stuff works and works really well. It supports comments and pretty much everything you want from JSX, except that you can't use <span class="tm">&gt;</span> in properties, e.g.,</p>
+            
+            <pre id="ccdbf6"><code class="javascript hljs">const Next = () =&gt; (&lt;a href="#"&gt;Next Page&lt;/a&gt;)
+
+const Component = ({ data = [] }) =&gt; {
+  return (&lt;div&gt; {
+    data.map((i, j) =&gt; {
+      if (j &gt; 10) return &lt;Next /&gt;
+      return i
+    })
+  }
+  &lt;/div&gt;)
+}</code></pre>
+            
+            <p>But methods like that simply need to be taken out of the tag scope. You're probably not going to replace <em>Webpack</em> with <em>Idio</em> at your corporate insurer job, but if you're working for fun projects, there's no reason why you can't be using this. Except for that there's no source maps, which will be added later on this year, but because the code produced looks absolutely natural, it's easy to debug it anyway.</p>
+            
+            <pre id="ccdbf2"><code class="javascript hljs">// JSX - compiled code
+import { render, Component } from 'preact'
+
+class App extends Component {
+  constructor() {
+    super()
+    this.state = { name: 'world' }
+  }
+  render({ message }) {
+    return (h('div',{},
+      `Hello, `,h('span',{},this.state.name),
+      h('p',{},
+        message,
+      ),
+    ))
+  }
+}
+
+render(h(App,{message:"Idio"}), document.querySelector('.app'))</code></pre>
+            
+            <p>I've created many <a href="https://akashic.page">widgets</a>, <a href="https://github.com/art-deco/file-upload.artdeco.app">front-end apps</a> and back-end servers with SSR powered by this transpiler. There hasn't been any problems. Maybe it will throw errors on some very advanced edge use cases (never happened for me, although your usage might be something I've never tested), but simplifying code will always help. Its simplicity is the key.</p>
+            
+            <p>
+              <img class="ImageHolder b-vk b-t" sizes="(max-width: 575.8px) 100vw,(max-width: 991.8px) 540px,(max-width: 1199.8px) 720px,855px" alt="control photo with birds" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2816' height='1880'/%3E">
+              <noscript>
+                <picture>
+                  <source
+                    srcset="hot_reload/img/control-1140.webp 1140w,hot_reload/img/control-768.webp 768w,hot_reload/img/control-576.webp 576w,hot_reload/img/control-319.webp 319w" sizes="(max-width: 575.8px) 100vw,(max-width: 991.8px) 540px,(max-width: 1199.8px) 720px,855px"
+                    type="image/webp">
+                  <img class="b-vk b-t" onLoad="webploaded(this)" alt="control photo with birds" src="hot_reload/img/control-1140.jpg" srcset="hot_reload/img/control-1140.jpg 1140w,hot_reload/img/control-768.jpg 768w,hot_reload/img/control-576.jpg 576w,hot_reload/img/control-319.jpg 319w" sizes="(max-width: 575.8px) 100vw,(max-width: 991.8px) 540px,(max-width: 1199.8px) 720px,855px">
+                </picture>
+              </noscript>
+            </p>
+            
+            <p>As an indie web developer, I was looking to fulfil the need to create JS applications for the web without anything getting in the way. I wanted to breath freely when working on each new project, and not be brought down by the anxiety that filled me up when my <span class="tm2">node_modules</span> were being taken over and I lost all control. There's no happier place than to be able to direct the development process, saying, "I'm the boss here, not dependencies!".</p>
+            
+            <p>The <strong>FrontEnd</strong> solution might not be approved in corporate &mdash; which only proves they've been locked into other "Open Source" software, but for JS enthusiasts and hackers, it's perfect. After being liberated from the shackles of dependencies, I could finally focus on writing source code to build more software products for my company. Bust most of, I've gained independence. I'm not offering you an alternative that you'll be stuck with instead: instead, you can see that developing front-end is really easy in 2020, as all you need is JavaScript modules. We'll discuss the build step in the end. For now, let's look at hot reload, the final requirement for the front-end and its simplest implementation.</p>
+            
+            <p class="SectionBreak">
+              <a title="Back To Top" href="#top">
+                <img alt="section break"
+                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='9'/%3E" data-io>
+                <noscript><img alt="section break" src="/section-breaks/3.svg"></noscript></a>
             </p>
             </div>
           </div>

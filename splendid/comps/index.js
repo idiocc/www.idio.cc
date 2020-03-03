@@ -33,11 +33,11 @@ const meta = [{
 },
 {
   key: 'social-buttons',
-  id: 'cfc1c',
+  id: 'cfee3',
   props: {
     url: 'https://www.idio.cc/',
     meta: true,
-    className: 'b-xq b-Hk',
+    className: 'SocialSharing b-xq b-Hk',
   },
 },
 {

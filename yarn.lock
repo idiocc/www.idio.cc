@@ -2,6 +2,19 @@
 # yarn lockfile v1
 
 
+"@a-la/detect-jsx@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@a-la/detect-jsx/-/detect-jsx-1.0.2.tgz#8bf79bb5f977a9b41581c37b4fc835cb3995f64c"
+  integrity sha512-ud0BJXhJnI70hMksAa3e6HebyHuoa7YdP0W3kDXR326foLjiFSZVBwwY2YSqUKOL92Xek2R8sNtK4TPuTyNN4g==
+
+"@a-la/jsx@^1.7.2":
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/@a-la/jsx/-/jsx-1.7.2.tgz#e60dab2811980259c6a9377db018b6de7c671fd4"
+  integrity sha512-Wr0jN+v91BOeYatPv6F0KMW6kNbnK4DvCwozWkhvGndUq/dzFOLY9am8lOLndalwXGxJtAMr+c9n6pYwiPhkkw==
+  dependencies:
+    "@a-la/detect-jsx" "^1.0.2"
+    restream "^3.7.4"
+
 "@artdeco/clean-stack@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@artdeco/clean-stack/-/clean-stack-1.1.1.tgz#0a68b9a061b5076ebaf948c150ea26d09c1e753f"
@@ -122,6 +135,14 @@ prismjs@1.19.0:
   optionalDependencies:
     clipboard "^2.0.0"
 
+restream@^3.7.4:
+  version "3.7.4"
+  resolved "https://registry.yarnpkg.com/restream/-/restream-3.7.4.tgz#e86c455f92ba65ce41d9e450ed54d065a130f89c"
+  integrity sha512-heKiPfU5CLE/jTLcs53MyvE1jje/V/JViAD95LMY1p0XVDLyVcyM4iUo0iYUnuNUYTUxrJyKpXDTu7GKOr0pFA==
+  dependencies:
+    "@artdeco/clean-stack" "^1.1.1"
+    catchment "^3.3.0"
+
 select@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/select/-/select-1.1.2.tgz#0e7350acdec80b1108528786ec1d4418d11b396d"
@@ -139,10 +160,10 @@ splendid-web-components@^1.0.0:
   resolved "https://registry.yarnpkg.com/splendid-web-components/-/splendid-web-components-1.0.0.tgz#6bc9cbef8254f96c2102a00e979e4dc3537c9cbb"
   integrity sha512-oZOB2VaEoLEA/WS+SX5KybIjsm1ua3dzkqWaE1C1CAaI/hhCohA//u0WyF7YGOyph164++Wdb8dpoA0lqK5N1g==
 
-splendid@^1.17.9:
-  version "1.17.9"
-  resolved "https://registry.yarnpkg.com/splendid/-/splendid-1.17.9.tgz#48987cfd50befd21a86fa1e459add6c74bfa210c"
-  integrity sha512-GDwwbMKXGRNDZUPpeccsRc0hGpDNqY1uaN3+EraY5M6yV92ZopH5bt/PoBtBwpTWzEO68hBGf89K2HCODQ+Ilw==
+splendid@^1.17.10:
+  version "1.17.10"
+  resolved "https://registry.yarnpkg.com/splendid/-/splendid-1.17.10.tgz#fbb7dac65d74a32df662ae404d45eba29fd3283e"
+  integrity sha512-+Kggz5SUvdER+pZNkZzgdgo1VFTA8GrUv3ttme3NHc7Ra0rbi5W9ZxP9OKeyANB/AbpCaMqVz96o02nirB6wLA==
   dependencies:
     "@externs/preact" "^1.3.1"
     "@idio/idio" "^1.5.0"
