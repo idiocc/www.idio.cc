@@ -233,7 +233,7 @@ const el = document.querySelector('#id')
 dep(el) // execute dependency
 local(el) // execute local</code></pre>
             
-            <p>When the browser requests this JS module, <strong>FrontEnd</strong> will intersect the request, and lookup <span class="tm">my-dep</span> in your <span class="tm2">node_modules</span>, to find its package.json. From there, the module field will be read, and the served file will actually contain absolute paths required by the browser. Local dependencies can also be served, which isn't impossible under normal circumstances when the extension (<span class="tm">.js</span>) is not present, but the middleware can handle that.</p>
+            <p>When the browser requests this JS module, <strong>FrontEnd</strong> will intersect the request, and lookup <span class="tm">my-dep</span> in your <span class="tm2">node_modules</span>, to find its package.json. From there, the module field will be read, and the served file will actually contain absolute paths required by the browser. Local dependencies can also be served, which is impossible under normal circumstances when the extension (<span class="tm">.js</span>) is not present, but the middleware can handle that.</p>
             
             <pre id="ccdbf1"><code class="javascript hljs">import { dep } from '/node_modules/my-dep/src/index.js'
 import local from './local'

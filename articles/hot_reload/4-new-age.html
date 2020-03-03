@@ -15,7 +15,7 @@ dep(el) // execute dependency
 local(el) // execute local
 ```
 
-When the browser requests this JS module, *FrontEnd* will intersect the request, and lookup `my-dep` in your ``node_modules``, to find its package.json. From there, the module field will be read, and the served file will actually contain absolute paths required by the browser. Local dependencies can also be served, which isn't impossible under normal circumstances when the extension (`.js`) is not present, but the middleware can handle that.
+When the browser requests this JS module, *FrontEnd* will intersect the request, and lookup `my-dep` in your ``node_modules``, to find its package.json. From there, the module field will be read, and the served file will actually contain absolute paths required by the browser. Local dependencies can also be served, which is impossible under normal circumstances when the extension (`.js`) is not present, but the middleware can handle that.
 
 ```js
 import { dep } from '/node_modules/my-dep/src/index.js'
