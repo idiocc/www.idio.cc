@@ -106,6 +106,7 @@ a.join("\n "),"but supports alternatives."):console.log("\ud83d\udcbd Browser su
                                     <li data-heading="-pure-hot-reload"><a href="#-pure-hot-reload">Pure Hot Reload</a></li>
                                     <li data-heading="history-of-hmr"><a href="#history-of-hmr">History of HMR</a></li>
                                     <li data-heading="new-age-solutions"><a href="#new-age-solutions">New Age Solutions</a></li>
+                                    <li data-heading="scientific-approach"><a href="#scientific-approach">Scientific Approach</a></li>
                                   </ul>
                                   <h3 id="share-now">Share Now!</h3>
                                   <span class="SocialSharing b-xq b-Hk" id="c5130"><span class="b-Hk" style="height:32px" data-loading>Loading sharing buttons...</span><noscript>Please enable JavaScript to Share</noscript></span>
@@ -230,7 +231,7 @@ a.join("\n "),"but supports alternatives."):console.log("\ud83d\udcbd Browser su
             
             <p>For example, you can have the following source in <span class="tm2">frontend/index.js</span>:</p>
             
-            <pre id="ccdbf3"><code class="javascript hljs">import { dep } from 'my-dep'
+            <pre id="ccdbf"><code class="javascript hljs">import { dep } from 'my-dep'
 import local from './local'
 
 const el = document.querySelector('#id')
@@ -239,7 +240,7 @@ local(el) // execute local</code></pre>
             
             <p>When the browser requests this JS module via a script tag, <span class="tm">&lt;script type=&quot;module&quot; src=&quot;frontend&quot;&gt;&lt;/script&gt;</span>, <strong>FrontEnd</strong> will intersect the request, and lookup <span class="tm">my-dep</span> in your <span class="tm2">node_modules</span>, to find its <em>package.json</em>. From there, the <strong>module</strong> field will be read, and the served file will actually contain absolute paths required by the browser. Local dependencies can also be served, which would be impossible under normal circumstances when the extension (<span class="tm">.js</span>) is not present, but the middleware can handle that.</p>
             
-            <pre id="ccdbf"><code class="javascript hljs">import { dep } from '/node_modules/my-dep/src/index.js'
+            <pre id="ccdbf1"><code class="javascript hljs">import { dep } from '/node_modules/my-dep/src/index.js'
 import local from './local'
 
 const el = document.querySelector('#id')
@@ -320,7 +321,7 @@ const HybridsApp = {
             
             <p>You might be thinking that to transpile JSX you need <em>Babel</em>, but the fact is that you don't. You don't need to build ASTs and you don't need to install additional 250 dependencies that come with <em>Babel</em>, another "established" standard of coding. <strong>FrontEnd</strong> uses a <a href="https://github.com/a-la/jsx">JSX transpiler</a> powered by regular expressions. It includes a hack to find where the initial tag (<span class="tm2">&lt;</span>) is opening by evaluating the jsx file using the <span class="tm">vm</span> module of Node.JS. The tag is detected by listening to an error:</p>
             
-            <pre id="ccdbf1"><code class="javascript hljs">/Users/zavr/a-la/jsx/test/fixture/Component.jsx:2
+            <pre id="ccdbf2"><code class="javascript hljs">/Users/zavr/a-la/jsx/test/fixture/Component.jsx:2
   &lt;div className={className}&gt;
   ^
 
@@ -342,7 +343,7 @@ const Component = ({ data = [] }) =&gt; {
             
             <p>But methods like that simply need to be taken out of the tag scope. You're probably not going to replace <em>Webpack</em> with <em>Idio</em> at your corporate insurer job, but if you're working for fun projects, there's no reason why you can't be using this. Except for that there's no source maps, which will be added later on this year, but because the code produced looks absolutely natural, it's easy to debug it anyway (unless you've got the super-power setup where your VS Code debugger hooks up to a running Chrome RDP process).</p>
             
-            <pre id="ccdbf2"><code class="javascript hljs">// JSX - compiled code
+            <pre id="ccdbf3"><code class="javascript hljs">// JSX - compiled code
 import { render, Component } from 'preact'
 
 class App extends Component {
@@ -396,7 +397,7 @@ render(h(App,{message:"Idio"}), document.querySelector('.app'))</code></pre>
               <li>[read below] implement hot reload for ES6 exports.</li>
             </ol>
             
-            <p>These 4 things enable clear development environment with minimum technical debt. Software engineering is about coming up with SOLUTIONS and not worshipping tools. It's true that we'll also need to combine our frontend code into a bundle, but we'll discuss the build step in the end. For now, let's have a look at hot reload, the final requirement for the front-end and its simplest form of implementation.</p>
+            <p>These 4 things enable clear development environment with minimum technical debt. Software engineering is about coming up with SOLUTIONS and not worshipping tools. It's true that we'll also need to combine our frontend code into a bundle, but we'll discuss the build step at the end. For now, let's have a look at hot reload, the final requirement for the front-end and its simplest form of implementation.</p>
             
             <p class="SectionBreak">
               <a title="Back To Top" href="#top">
@@ -405,6 +406,51 @@ render(h(App,{message:"Idio"}), document.querySelector('.app'))</code></pre>
                 <noscript><img alt="section break" src="/section-breaks/2.svg"></noscript></a>
             </p>
             </div>
+            
+            <div data-section id="scientific-approach">
+            <h2>Scientific Approach</h2>
+            
+            <p>Making software isn't about programming. If you think that you can just install a bunch of dependencies, and add a bit of code, you're making a script. The purpose of going to University to learn Computer Science, is to get trained as a scientist which isn't about programming at all. If you want to learn frameworks, don't bother with a degree. Making software and professional Software Engineering is pure science. The job of a scientist is a process:</p>
+            
+            <ul>
+              <li>Understand the problem at hand, do the research.</li>
+              <li>Come up with a hypothesis, i.e. how you're going to solve the problem, what results do you expect.</li>
+              <li>Prepare and conduct your experiments to get empirical data.</li>
+              <li>Evaluate the hypothesis against the results. If they don't match, report it to understand why and start over.</li>
+            </ul>
+            
+            <p>I'm going to show how I take scientific approach to solving problems. If Computer <strong>Science</strong> is a theoretical framework for your life (not just computation theory), Software <strong>Engineering</strong> is a practical application of this framework. Each step in the former corresponds to a step in the latter so let me draw parallels.</p>
+            
+            <p>
+              <img class="ImageHolder b-vk b-t" sizes="(max-width: 575.8px) 100vw,(max-width: 991.8px) 540px,(max-width: 1199.8px) 720px,855px" alt="software engineering is science" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1500' height='1000'/%3E">
+              <noscript>
+                <picture>
+                  <source
+                    srcset="hot_reload/img/science-1140.webp 1140w,hot_reload/img/science-768.webp 768w,hot_reload/img/science-576.webp 576w,hot_reload/img/science-319.webp 319w" sizes="(max-width: 575.8px) 100vw,(max-width: 991.8px) 540px,(max-width: 1199.8px) 720px,855px"
+                    type="image/webp">
+                  <img class="b-vk b-t" onLoad="webploaded(this)" alt="software engineering is science" src="hot_reload/img/science-1140.jpg" srcset="hot_reload/img/science-1140.jpg 1140w,hot_reload/img/science-768.jpg 768w,hot_reload/img/science-576.jpg 576w,hot_reload/img/science-319.jpg 319w" sizes="(max-width: 575.8px) 100vw,(max-width: 991.8px) 540px,(max-width: 1199.8px) 720px,855px">
+                </picture>
+              </noscript>
+            </p>
+            
+            <p>Traditional Software Engineering makes use of the waterfall model:</p>
+            
+            <ol>
+              <li><strong>Requirements study</strong>: talk to the client and stakeholders to draw and agree requirements, to limit the scope of the system.</li>
+              <li><strong>Designs</strong>: produce designs of the system, such as UML, use cases, and come up with a few early prototypes. This will guide your development process and help to communicate with the client.</li>
+              <li><strong>Implementation</strong>: get on with building the system, spawning dev/staging environments and deploying code as it comes.</li>
+              <li><strong>Testing</strong>: today we usually write tests during implementation, and even tend to utilise TDD. But every developer will know that tests can be sloppy when we were in the flow of programming and didn't bother to add tests. At this stage, we can pull up our test coverage so that our software product is of acceptable quality. More integration and manual testing is also done here.</li>
+              <li><strong>Evaluation</strong>: speak to the client, to see if the built solution matches the agreed requirements.</li>
+              <li><strong>Delivery & Maintenance</strong>: software is deployed to production and handed over to the client. Most often than not, the same development company will maintain it. Plan for next versions from the points raised in evaluation.</li>
+            </ol>
+            
+            <p>Today, we mostly hear about "agile" and "iterative process", but traditional approach is more conservative and allows to prevent scope creeping. We focus on the RESULT that we want to achieve with our system &mdash; whereas within this main process, we can apply agile for implementation.</p>
+            
+            
+            
+            <h3 id="the-problem">The problem</h3>
+            
+            <p>Understanding the problem</p>
           </div>
         </div>
       </div>
