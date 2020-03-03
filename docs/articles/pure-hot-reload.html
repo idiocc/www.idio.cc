@@ -41,6 +41,8 @@ a.join("\n "),"but supports alternatives."):console.log("\ud83d\udcbd Browser su
     </script>
     <link rel="stylesheet" href="/css/articles/combined.css">
     <link rel="preload" as="style" href="/highlight.js/styles/default.css">
+    <link rel="preload" as="script" href="/@artdeco/snapsvg-animator/svg-anim.min.js">
+    <link rel="preload" as="script" href="/snapsvg/dist/snap.svg-min.js">
     <style>
       .no-js [data-io], .no-js .ImageHolder, .no-js [data-loading] { display: none!important }
     </style>
@@ -228,7 +230,7 @@ a.join("\n "),"but supports alternatives."):console.log("\ud83d\udcbd Browser su
             
             <p>For example, you can have the following source in <span class="tm2">frontend/index.js</span>:</p>
             
-            <pre id="ccdbf"><code class="javascript hljs">import { dep } from 'my-dep'
+            <pre id="ccdbf3"><code class="javascript hljs">import { dep } from 'my-dep'
 import local from './local'
 
 const el = document.querySelector('#id')
@@ -237,7 +239,7 @@ local(el) // execute local</code></pre>
             
             <p>When the browser requests this JS module via a script tag, <span class="tm">&lt;script type=&quot;module&quot; src=&quot;frontend&quot;&gt;&lt;/script&gt;</span>, <strong>FrontEnd</strong> will intersect the request, and lookup <span class="tm">my-dep</span> in your <span class="tm2">node_modules</span>, to find its <em>package.json</em>. From there, the <strong>module</strong> field will be read, and the served file will actually contain absolute paths required by the browser. Local dependencies can also be served, which would be impossible under normal circumstances when the extension (<span class="tm">.js</span>) is not present, but the middleware can handle that.</p>
             
-            <pre id="ccdbf1"><code class="javascript hljs">import { dep } from '/node_modules/my-dep/src/index.js'
+            <pre id="ccdbf"><code class="javascript hljs">import { dep } from '/node_modules/my-dep/src/index.js'
 import local from './local'
 
 const el = document.querySelector('#id')
@@ -318,7 +320,7 @@ const HybridsApp = {
             
             <p>You might be thinking that to transpile JSX you need <em>Babel</em>, but the fact is that you don't. You don't need to build ASTs and you don't need to install additional 250 dependencies that come with <em>Babel</em>, another "established" standard of coding. <strong>FrontEnd</strong> uses a <a href="https://github.com/a-la/jsx">JSX transpiler</a> powered by regular expressions. It includes a hack to find where the initial tag (<span class="tm2">&lt;</span>) is opening by evaluating the jsx file using the <span class="tm">vm</span> module of Node.JS. The tag is detected by listening to an error:</p>
             
-            <pre id="ccdbf2"><code class="javascript hljs">/Users/zavr/a-la/jsx/test/fixture/Component.jsx:2
+            <pre id="ccdbf1"><code class="javascript hljs">/Users/zavr/a-la/jsx/test/fixture/Component.jsx:2
   &lt;div className={className}&gt;
   ^
 
@@ -338,9 +340,9 @@ const Component = ({ data = [] }) =&gt; {
   &lt;/div&gt;)
 }</code></pre>
             
-            <p>But methods like that simply need to be taken out of the tag scope. You're probably not going to replace <em>Webpack</em> with <em>Idio</em> at your corporate insurer job, but if you're working for fun projects, there's no reason why you can't be using this. Except for that there's no source maps, which will be added later on this year, but because the code produced looks absolutely natural, it's easy to debug it anyway (unless you've got the super-power setup where your VS Code debugger hooks up to a running Chrome process).</p>
+            <p>But methods like that simply need to be taken out of the tag scope. You're probably not going to replace <em>Webpack</em> with <em>Idio</em> at your corporate insurer job, but if you're working for fun projects, there's no reason why you can't be using this. Except for that there's no source maps, which will be added later on this year, but because the code produced looks absolutely natural, it's easy to debug it anyway (unless you've got the super-power setup where your VS Code debugger hooks up to a running Chrome RDP process).</p>
             
-            <pre id="ccdbf3"><code class="javascript hljs">// JSX - compiled code
+            <pre id="ccdbf2"><code class="javascript hljs">// JSX - compiled code
 import { render, Component } from 'preact'
 
 class App extends Component {
@@ -378,7 +380,23 @@ render(h(App,{message:"Idio"}), document.querySelector('.app'))</code></pre>
             
             <p>The <strong>FrontEnd</strong> solution might not be approved in corporate &mdash; which only confirms the fact they've been locked into their "Open Source" software, but for JS enthusiasts and hackers, it's perfect. After being liberated from the shackles of dependencies, I could finally focus on writing source code to build more software products for my company. But most of all, I've gained independence.</p>
             
-            <p>I'm not offering you an alternative that you'll be stuck with: you can see that developing front-end is really easy in 2020, as all you need is to serve JavaScript modules with a few on-the-fly modifications. I've not invented a new system, I've only patched up those things that were missing. We'll discuss the build step in the end. For now, let's have a look at hot reload, the final requirement for the front-end and its simplest form of implementation.</p>
+            <div class="b-xq">
+              <div class="b-tp" id="c259c">
+                <img class="b-t" alt="frontend middleware" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='622' height='256'/%3E" data-io>
+                <noscript><img class="b-t" alt="frontend middleware" src="hot_reload/img/frontend.png"></noscript>
+              </div>
+            </div>
+            
+            <p>I'm not offering you an alternative that you'll be stuck with: you can see that developing front-end is really easy in 2020, as all you need is to serve JavaScript modules with a few on-the-fly modifications. I've not invented a new system, I've only patched up those things that were missing:</p>
+            
+            <ol>
+              <li>rename imported package names into paths: <span class="tm2">'dep'</span> -> <span class="tm">'/node_modules/dep/src/module.js'</span>;</li>
+              <li>serve packages and other JS files even without extensions (<span class="tm">'./lib'</span>);</li>
+              <li>transpile JSX on the fly via MVP transpiler;</li>
+              <li>[read below] implement hot reload for ES6 exports.</li>
+            </ol>
+            
+            <p>These 4 things enable clear development environment with minimum technical debt. Software engineering is about coming up with SOLUTIONS and not worshipping tools. It's true that we'll also need to combine our frontend code into a bundle, but we'll discuss the build step in the end. For now, let's have a look at hot reload, the final requirement for the front-end and its simplest form of implementation.</p>
             
             <p class="SectionBreak">
               <a title="Back To Top" href="#top">

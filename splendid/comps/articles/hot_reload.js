@@ -8,12 +8,14 @@ const renameMaps = { 'styles/sidebar.css': __renameMap0,
 __initOnThisPage(),__initSidebar()
 import { Component, render, h } from '@externs/preact'
 import { makeIo, init, start } from '../__competent-lib'
+import Animation from '../../components/animation.js'
 import GifVideo from '../../components/gif-video.js'
 import GithubBadge from '../../components/github-badge.jsx'
 import Highlightjs from 'splendid/build/components/highlightjs'
 import SocialButtons from 'splendid/build/components/social-buttons'
 
 const __components = {
+  'animation': Animation,
   'gif-video': GifVideo,
   'github-badge': GithubBadge,
   'highlightjs': Highlightjs,
@@ -29,6 +31,15 @@ const meta = [{
   props: {
     owner: 'idiocc',
     name: 'idio',
+  },
+},
+{
+  key: 'animation',
+  id: 'c259c',
+  props: {
+    path: '../flash/animate/frontend.json',
+    width: 623,
+    height: 256,
   },
 },
 {

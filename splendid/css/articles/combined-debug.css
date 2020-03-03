@@ -61,7 +61,7 @@ body {
 h1, h2, h3 {
   margin-top: 0;
 }
-p, ul {
+p, ol, ul {
   margin-top: 0;
   margin-bottom: 1rem;
 }
@@ -199,6 +199,9 @@ pre code {
 .flex-shrink-0 {
   -ms-flex-negative: 0 !important;
   flex-shrink: 0 !important;
+}
+.position-relative {
+  position: relative !important;
 }
 @supports ((position:-webkit-sticky) or (position:sticky)) {
   .sticky-top {

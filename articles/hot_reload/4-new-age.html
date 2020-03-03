@@ -76,7 +76,7 @@ This evaluation is needed to prevent false positives, e.g., `if (a<example && b)
 
 <highlightjs src="./example/Component.mjs" lang="jsx"/>
 
-But methods like that simply need to be taken out of the tag scope. You're probably not going to replace Webpack with Idio at your corporate insurer job, but if you're working for fun projects, there's no reason why you can't be using this. Except for that there's no source maps, which will be added later on this year, but because the code produced looks absolutely natural, it's easy to debug it anyway (unless you've got the super-power setup where your VS Code debugger hooks up to a running Chrome process).
+But methods like that simply need to be taken out of the tag scope. You're probably not going to replace Webpack with Idio at your corporate insurer job, but if you're working for fun projects, there's no reason why you can't be using this. Except for that there's no source maps, which will be added later on this year, but because the code produced looks absolutely natural, it's easy to debug it anyway (unless you've got the super-power setup where your VS Code debugger hooks up to a running Chrome RDP process).
 
 ```js
 // JSX - compiled code
@@ -110,6 +110,21 @@ As an indie web developer, I was looking to fulfil the need to create JS applica
 
 The *FrontEnd* solution might not be approved in corporate &mdash; which only confirms the fact they've been locked into their "Open Source" software, but for JS enthusiasts and hackers, it's perfect. After being liberated from the shackles of dependencies, I could finally focus on writing source code to build more software products for my company. But most of all, I've gained independence.
 
-I'm not offering you an alternative that you'll be stuck with: you can see that developing front-end is really easy in 2020, as all you need is to serve JavaScript modules with a few on-the-fly modifications. I've not invented a new system, I've only patched up those things that were missing. We'll discuss the build step in the end. For now, let's have a look at hot reload, the final requirement for the front-end and its simplest form of implementation.
+<div mb-3>
+  <animation
+    src="./img/frontend.png" alt="frontend middleware" width="623" height="256"
+    path="../../flash/animate/frontend.json" noscript="./img/frontend.gif" />
+</div>
+
+I'm not offering you an alternative that you'll be stuck with: you can see that developing front-end is really easy in 2020, as all you need is to serve JavaScript modules with a few on-the-fly modifications. I've not invented a new system, I've only patched up those things that were missing:
+
+<ol>
+  - rename imported package names into paths: ``'dep'`` -> `'/node_modules/dep/src/module.js'`;
+  - serve packages and other JS files even without extensions (`'./lib'`);
+  - transpile JSX on the fly via MVP transpiler;
+  - [read below] implement hot reload for ES6 exports.
+</ol>
+
+These 4 things enable clear development environment with minimum technical debt. Software engineering is about coming up with SOLUTIONS and not worshipping tools. It's true that we'll also need to combine our frontend code into a bundle, but we'll discuss the build step in the end. For now, let's have a look at hot reload, the final requirement for the front-end and its simplest form of implementation.
 
 <section-break />

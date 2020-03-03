@@ -30,7 +30,9 @@
   "homepage": "https://www.idio.cc",
   "devDependencies": {
     "@a-la/jsx": "^1.7.2",
+    "@artdeco/snapsvg-animator": "^0.3.0",
     "documentary": "^1.37.1",
+    "snapsvg": "^0.5.1",
     "spawncommand": "^2.2.0",
     "splendid": "^1.17.10",
     "zoroaster": "^4.3.0"
