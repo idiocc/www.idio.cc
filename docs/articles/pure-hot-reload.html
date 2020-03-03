@@ -314,7 +314,7 @@ const HybridsApp = {
             
             <p>The advantage of this over JSX is that it doesn't require transpilation and can be run natively within a browser. The disadvantage is that there's no syntax highlighting (unless you use a plugin) and it's not as fluent as JSX that doesn't require calling <span class="tm">html</span> function to start a template block.</p>
             
-            <p>You might be thinking that to transpile JSX you need Babel, but the fact is that you don't. You don't need to build ASTs and you don't need to install additional 250 dependencies that come with Babel, another "established" standard of coding. <strong>FrontEnd</strong> uses a <a href="https://github.com/a-la/jsx">JSX transpiler</a> that uses regular expressions. It includes a hack to find where the initial tag (<span class="tm2">&lt;</span>) is opening by evaluating the jsx file using the <span class="tm">vm</span> module of Node.JS. The tag is detected by listening to an error:</p>
+            <p>You might be thinking that to transpile JSX you need Babel, but the fact is that you don't. You don't need to build ASTs and you don't need to install additional 250 dependencies that come with Babel, another "established" standard of coding. <strong>FrontEnd</strong> uses a <a href="https://github.com/a-la/jsx">JSX transpiler</a> powered regular expressions. It includes a hack to find where the initial tag (<span class="tm2">&lt;</span>) is opening by evaluating the jsx file using the <span class="tm">vm</span> module of Node.JS. The tag is detected by listening to an error:</p>
             
             <pre id="ccdbf2"><code class="javascript hljs">/Users/zavr/a-la/jsx/test/fixture/Component.jsx:2
   &lt;div className={className}&gt;
@@ -322,7 +322,7 @@ const HybridsApp = {
 
 SyntaxError: Unexpected token &lt;</code></pre>
             
-            <p>From then on, we are able to parse text, until the closing tag is found, unless it was self-closing. Properties are also extracted using regular expressions on strings. Now look, you can think that it's very simplistic, but this stuff works and works really well. It supports comments and pretty much everything you want from JSX, except that you can't use <span class="tm">&gt;</span> in properties, e.g.,</p>
+            <p>This evaluation is needed to prevent false positives, e.g., <span class="tm">if (a&lt;example)</span>. After detecting the location of the angle bracket, we are able to parse text, until the closing tag is found, unless it was self-closing. Properties are also extracted using regular expressions on strings. Now look, you can think that it's very simplistic, but this stuff works and works really well. It supports comments and pretty much everything you want from JSX, except that you can't use <span class="tm">&gt;</span> in properties, e.g.,</p>
             
             <pre id="ccdbf6"><code class="javascript hljs">const Next = () =&gt; (&lt;a href="#"&gt;Next Page&lt;/a&gt;)
 
