@@ -167,7 +167,7 @@ a.join("\n "),"but supports alternatives."):console.log("\ud83d\udcbd Browser su
               </div>
             </p>
             
-            <p>Dan's idea is to use a Babel transform to update code at run-time in such a way as to record methods of a class separately and replace them in instances with proxies. When a change is detected, new methods are sent to the client, and proxies will now execute new code, therefore the actual instance and its state stay untouched. It's about wrapping methods and functions with another meta-function that would be able to perform substitutions at runtime. The transform is what makes up <a href="https://github.com/gaearon/react-hot-loader/"><span class="tm">react-hot-loader</span></a> while it's <em>Webpack</em> that is responsible for establishing client-server communication and providing an API for updates.</p>
+            <p>Dan's solution is to use a Babel transform to update code at run-time in such a way as to record methods of a class separately and replace them in instances with proxies. When a change is detected, new methods are sent to the client, and proxies will now execute new code, therefore the actual instance and its state stay untouched. It's about wrapping methods and functions with another meta-function that would be able to perform substitutions at runtime. The transform is what makes up <a href="https://github.com/gaearon/react-hot-loader/"><span class="tm">react-hot-loader</span></a> while it's <em>Webpack</em> that is responsible for establishing client-server communication and providing an API for updates.</p>
             
             <p>Now I don't really know how Webpack does what it does, but as far as I can remember, it kind of implements its own modular system by analysing source code and building dependency trees, so that it can also tree-shake unused code. It will always wrap source code into its own, making it a black box for everyone who doesn't get hands on its internals. Webpack has become pretty much a standard for front-end web-development, but did you know that you're pulling 342 additional dependencies with it during installation:</p>
             
@@ -191,7 +191,7 @@ a.join("\n "),"but supports alternatives."):console.log("\ud83d\udcbd Browser su
             <div data-section id="new-vendor-lock">
             <h2>New Vendor Lock</h2>
             
-            <p>Open Source supposedly saves us from "vendor lock" &mdash; but does it really? Instead of corporate vendor lock into proprietary software, we now have... Open Source vendor lock into popular projects like WebPack. Most of the build pipelines are based on WebPack, Rollup and Babel. And to tell you the truth: Open Source vendor lock is even worse than corporate one, because it's popular Open Source developers of those projects who now think they're the rules of the world with all that popularity hitting their heads, while you're not allowed to raise any complaints about their software, because they're apparently volunteers, who provide software to you for free.</p>
+            <p>Open Source supposedly saves us from "vendor lock" &mdash; but does it really? Instead of corporate vendor lock into proprietary software, we now have... Open Source vendor lock into popular projects like WebPack. Most of the build pipelines are based on WebPack, Rollup and Babel. And to tell you the truth: Open Source vendor lock is even worse than corporate one, because it's popular Open Source developers of those projects who now think they're the rules of the world with all that popularity hitting their heads, while you're not allowed to raise any complaints about their software, because they're apparently volunteers providing software to you for free.</p>
             
             <p class="b-bk b-vk b-br b-jC" style="box-shadow: 0 3px 11px 5px lightsteelblue;">
               <img class="ImageHolder b-t" sizes="(max-width: 575.8px) 100vw,440px" alt="free software" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='440' height='74'/%3E">
@@ -205,7 +205,7 @@ a.join("\n "),"but supports alternatives."):console.log("\ud83d\udcbd Browser su
               <br><span class="b-dC">^ In Open Source, you owe your life and business to maintainers for using their "free" software. It's a disgrace what this bunch have turned Open Source into.</span>
             </p>
             
-            <p>The situation is extremely hostile against people like myself who raise questions and doubts about where we're going, indicating the decadence of the scene and clinging to the power by those "leaders". No free speech is allowed that doesn't suit the newly established "elite". This article will never appear on any newsletter because they're afraid to face the truth. But don't worry about them &mdash; in 2020, we can move on to the new age tools that provide completely transparent experience, while treating YOU with respect, so that you can be expected to be a VALUABLE and LOVED user, and not hostage to somebody's technology.</p>
+            <p>The situation is extremely hostile against people like myself who raise questions and doubts about where we're going, indicating the decadence of the scene and clinging to the power by those "leaders". No free speech is allowed that doesn't suit the newly established "elite". This article will never appear on any newsletter because they're afraid to face the truth. But don't worry about them &mdash; in 2020, we can move on to the new age tools that provide completely transparent experience, while treating YOU with respect, so that you can expect to be a VALUABLE and LOVED user, and not hostage to somebody's technology.</p>
             
             <p class="SectionBreak">
               <a title="Back To Top" href="#top">
@@ -226,7 +226,7 @@ a.join("\n "),"but supports alternatives."):console.log("\ud83d\udcbd Browser su
             
             <p>For example, you can have the following source:</p>
             
-            <pre id="ccdbf3"><code class="javascript hljs">import { dep } from 'my-dep'
+            <pre id="ccdbf"><code class="javascript hljs">import { dep } from 'my-dep'
 import local from './local'
 
 const el = document.querySelector('#id')
@@ -235,7 +235,7 @@ local(el) // execute local</code></pre>
             
             <p>When the browser requests this JS module, <strong>FrontEnd</strong> will intersect the request, and lookup <span class="tm">my-dep</span> in your <span class="tm2">node_modules</span>, to find its package.json. From there, the module field will be read, and the served file will actually contain absolute paths required by the browser. Local dependencies can also be served, which isn't impossible under normal circumstances when the extension (<span class="tm">.js</span>) is not present, but the middleware can handle that.</p>
             
-            <pre id="ccdbf"><code class="javascript hljs">import { dep } from '/node_modules/my-dep/src/index.js'
+            <pre id="ccdbf1"><code class="javascript hljs">import { dep } from '/node_modules/my-dep/src/index.js'
 import local from './local'
 
 const el = document.querySelector('#id')
@@ -316,7 +316,7 @@ const HybridsApp = {
             
             <p>You might be thinking that to transpile JSX you need Babel, but the fact is that you don't. You don't need to build ASTs and you don't need to install additional 250 dependencies that come with Babel, another "established" standard of coding. <strong>FrontEnd</strong> uses a <a href="https://github.com/a-la/jsx">JSX transpiler</a> that uses regular expressions. It includes a hack to find where the initial tag (<span class="tm2">&lt;</span>) is opening by evaluating the jsx file using the <span class="tm">vm</span> module of Node.JS. The tag is detected by listening to an error:</p>
             
-            <pre id="ccdbf1"><code class="javascript hljs">/Users/zavr/a-la/jsx/test/fixture/Component.jsx:2
+            <pre id="ccdbf2"><code class="javascript hljs">/Users/zavr/a-la/jsx/test/fixture/Component.jsx:2
   &lt;div className={className}&gt;
   ^
 
@@ -338,7 +338,7 @@ const Component = ({ data = [] }) =&gt; {
             
             <p>But methods like that simply need to be taken out of the tag scope. You're probably not going to replace <em>Webpack</em> with <em>Idio</em> at your corporate insurer job, but if you're working for fun projects, there's no reason why you can't be using this. Except for that there's no source maps, which will be added later on this year, but because the code produced looks absolutely natural, it's easy to debug it anyway.</p>
             
-            <pre id="ccdbf2"><code class="javascript hljs">// JSX - compiled code
+            <pre id="ccdbf3"><code class="javascript hljs">// JSX - compiled code
 import { render, Component } from 'preact'
 
 class App extends Component {
