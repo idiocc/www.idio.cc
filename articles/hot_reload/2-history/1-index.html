@@ -1,14 +1,40 @@
-##! History of HMR
+##! HMR 101
 
-I'm not going to go into much detail since I'm not really interested in the past, but prefer to look into the future instead. I came to know Hot Module Reload like any React developer from documentation in 2017, which by then was pretty stable. But the concept of hot module reload was first discussed by [Bruce Hauman](https://www.youtube.com/watch?v=j-kj2qwJa_E) and [Dan Abramov](https://www.youtube.com/watch?v=xsSnOQynTHs) back in 2015. At the time, it was a pretty ground-breaking idea, welcomed with enthusiasm by many developers as it's really an essential feature of a development environment that preserves your creativity flow.
+<!-- I'm not going to go into much detail since I'm not really interested in the past, but prefer to look into the future instead.  -->
+I came to know Hot Module Reload like any React developer from documentation in 2017, which by then was pretty stable. But the concept of hot module reload was first discussed by [Bruce Hauman](https://www.youtube.com/watch?v=j-kj2qwJa_E) and [Dan Abramov](https://www.youtube.com/watch?v=xsSnOQynTHs) back in 2015. At the time, it was a pretty ground-breaking idea, welcomed with enthusiasm by many developers as it's really an essential feature of a development environment that preserves your creativity flow.
 
 <p>
   <gif-video webp="photo" img-fluid src="../img/dan.gif" placeholder="../img/dan.jpg" alt="dan abramov talk" />
 </p>
 
-Dan's solution is to use a Babel transform to update code at run-time in such a way as to record methods of a class separately and replace them in instances with proxies. When a change is detected, new methods are sent to the client, and proxies will now execute new code, therefore the actual instance and its state stay untouched. It's about wrapping methods and functions with another meta-function that would be able to perform substitutions at runtime. The transform is what makes up [`react-hot-loader`](https://github.com/gaearon/react-hot-loader/) while it's _Webpack_ that is responsible for establishing client-server communication and providing an API for updates.
+Dan's solution is to record methods of a class separately and replace them in instances with proxies. When a change is detected, new methods are sent to the client, and proxies will now execute new code, therefore the actual instance and its state stay untouched. It's about wrapping methods and functions with another meta-function that would be able to perform substitutions at runtime.
 
-Webpack's internal logic is very easy to understand<ellipsis /> NOT!
+To enable the reload for React, we need to import the ``hot`` method and wrap the default method with it:
+
+```js
+import { Component } from 'react'
+import { hot } from 'react-hot-loader'
+
+class App extends Component {
+  render() {}
+}
+
+export default hot(module)(App)
+```
+
+When calling the ``hot`` method for the first time, its code will register a proxy for the class.
+
+<highlightjs src="../example/wrapper.mjs" />
+
+A proxy means that methods of the prototype were wrapped by a function that can will call updated methods when they arrive. This is why when you step into an method of a class when hot reload is activated, you'll not get to it straight away, but will end up in the `wrappedMethod` instead as shown on the video below.
+
+<gif-video img-fluid rounded border mb-3 webp="text" placeholder="./img/devtools.jpg" src="./img/devtools.gif" alt="using the debugger" />
+
+The wrapper and other features make up [`react-hot-loader`](https://github.com/gaearon/react-hot-loader/) while it's _Webpack_ that is responsible for establishing client-server communication and providing an API for updates of MODULES (everything that's exported), but not classes (refreshes to which are more refined by React's hot loader).
+
+###! Webpack Modules
+
+Whereas the `react-hot-loader` can be seen as "software" reloading mechanism, the modular system of Webpack can then be thought of as underlying "hardware". Its internal logic is very easy to understand<ellipsis /> NOT!
 
 <p text-center>
   <img rounded webp="drawing" img-fluid src="../img/webpack.png" alt="depack modular system" />
@@ -49,5 +75,7 @@ Webpack has become pretty much a default for front-end web-development, but did 
 Your ``node_modules`` will be 20MB after that, but it seems like nobody cares about that sort of thing anymore. Everyone is so used to this sad reality of life, that it just became normal. Webpack is probably OK for larger projects but if you want to create a very simple JS app, you basically need a nuclear power plant, and this is repeated for each new project. Webpack is good software that has helped to put together many websites, but it doesn't have to be a standard. I'm not very happy with jamming my `node_modules` so that I can produce a bundle.
 
 <!-- This is absolute madness. This is what I hate about modern Node.JS state-of-art, it's completely bonkers. It's not acceptable and all these dependencies would repulse any sane developer, had the community not been beaten into submission by current industry leaders, and developers have nothing left but to quietly obey and keep installing _Webpacks_ and _Babels_. *Idio* is finally here to fix this and put open source right. I'm going to liberate you from this hell. -->
+
+</div>
 
 <section-break />

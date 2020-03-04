@@ -123,10 +123,10 @@ render(h(App,{message:"Idio"}), document.querySelector('.app'))
 I've created many [widgets](https://akashic.page), [front-end apps](https://github.com/art-deco/file-upload.artdeco.app) and back-end servers with SSR powered by this transpiler. There hasn't been any problems. Maybe it will throw errors on some very advanced edge use cases (never happened for me, although your usage might be something I've never tested), but simplifying code will always help. Its simplicity is the key.
 
 <row d-flex align-items-center>
-  <column lg-7 mb-3>
+  <column lg-6 xl-7 mb-3>
     <img rounded img-fluid src="./img/control.jpg" webp="photo" alt="control photo with birds" />
   </column>
-  <column lg-5>
+  <column lg-6 xl-5>
 
     As an indie web developer, I was looking to fulfil the need to create JS applications for the web without anything getting in the way. I wanted to breath freely when working on each new project, and not be brought down by the anxiety that filled me up when my ``node_modules`` were being taken over and I lost all control. There's no happier place than to be able to direct the development process, saying, "I'm the boss here, not you, dependencies!".
   </column>
@@ -149,6 +149,6 @@ The *FrontEnd* solution might not be approved in corporate &mdash; which only co
     path="../../flash/animate/frontend.json" noscript="./img/frontend.gif" />
 </div>
 
-These 4 things enable clean development environment with minimum technical debt. Software engineering is about coming up with SOLUTIONS and not worshipping tools and standards. It's true that we'll also need to combine our frontend code into a bundle, but we'll discuss the build step at the end. For now, let's have a look at hot reload, the final requirement for the front-end and its simplest form of implementation.
+These 4 things enable clean development environment with minimum technical debt. With browsers supporting modules, we can leave build tools for building, but develop code natively. All features that we might want are implemented by Chrome &mdash; happy days. It's true that we'll also need to combine our frontend code into a bundle, but we'll discuss the build step at the end. For now, let's have a look at hot reload, the final requirement for the front-end and its simplest form of implementation.
 
 <section-break />

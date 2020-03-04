@@ -29,6 +29,14 @@ const io = makeIo()
 
 /** @type {!Array<!preact.PreactProps>} */
 const meta = [{
+  key: 'gif-video',
+  id: 'c5c99',
+  props: {
+    src: 'hot_reload/2-history/img/devtools.mp4',
+    webm: 'hot_reload/2-history/img/devtools.webm',
+  },
+},
+{
   key: 'github-badge',
   id: 'ce314',
   props: {
@@ -58,7 +66,7 @@ const meta = [{
 },
 {
   key: 'highlightjs',
-  id: 'ccdbf,ccdbf1,ccdbf2,ccdbf3,ccdbf4,ccdbf5,ccdbf6,ccdbf7',
+  id: 'ccdbf,ccdbf1,ccdbf2,ccdbf3,ccdbf4,ccdbf5,ccdbf6,ccdbf7,ccdbf8,ccdbf9',
   props: {
     lang: 'javascript',
   },

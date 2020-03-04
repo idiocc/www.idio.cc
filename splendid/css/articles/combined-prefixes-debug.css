@@ -37,12 +37,19 @@ button {
   }
 }
 @media (min-width:992px) {
-  .col-lg-5 {
+  .col-lg-6 {
+    -webkit-box-flex: 0 0 50%;
+    -moz-box-flex: 0 0 50%;
+    -webkit-flex: 0 0 50%;
+  }
+}
+@media (min-width:1200px) {
+  .col-xl-5 {
     -webkit-box-flex: 0 0 41.666667%;
     -moz-box-flex: 0 0 41.666667%;
     -webkit-flex: 0 0 41.666667%;
   }
-  .col-lg-7 {
+  .col-xl-7 {
     -webkit-box-flex: 0 0 58.333333%;
     -moz-box-flex: 0 0 58.333333%;
     -webkit-flex: 0 0 58.333333%;

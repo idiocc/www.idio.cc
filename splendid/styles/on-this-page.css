@@ -1,6 +1,9 @@
 li.Active > a {
   font-weight: 700;
 }
+li.Active > ul {
+  font-weight: normal;
+}
 li.Active ~ li.Active > a {
   font-weight: normal;
 }

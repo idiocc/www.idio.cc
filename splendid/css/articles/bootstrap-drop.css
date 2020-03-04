@@ -11,7 +11,7 @@
   background-color: #fff;}h1,h2,h3{margin-top: 0;
   margin-bottom: 0.5rem;}p{margin-top: 0;
   margin-bottom: 1rem;}ol,ul{margin-top: 0;
-  margin-bottom: 1rem;}strong{font-weight: bolder;}a{color: #007bff;
+  margin-bottom: 1rem;}ul ul{margin-bottom: 0;}strong{font-weight: bolder;}a{color: #007bff;
   text-decoration: none;
   background-color: transparent;}a:hover{color: #0056b3;
   text-decoration: underline;}pre,code{font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -43,7 +43,7 @@
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   margin-right: -15px;
-  margin-left: -15px;}.col,.col-md-3,.col-md-9,.col-lg-5,.col-lg-7{position: relative;
+  margin-left: -15px;}.col,.col-md-3,.col-md-9,.col-lg-6,.col-xl-5,.col-xl-7{position: relative;
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;}.col{-ms-flex-preferred-size: 0;
@@ -54,9 +54,11 @@
     flex: 0 0 25%;
     max-width: 25%;}.col-md-9{-ms-flex: 0 0 75%;
     flex: 0 0 75%;
-    max-width: 75%;}}@media (min-width: 992px){.col-lg-5{-ms-flex: 0 0 41.666667%;
+    max-width: 75%;}}@media (min-width: 992px){.col-lg-6{-ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;}}@media (min-width: 1200px){.col-xl-5{-ms-flex: 0 0 41.666667%;
     flex: 0 0 41.666667%;
-    max-width: 41.666667%;}.col-lg-7{-ms-flex: 0 0 58.333333%;
+    max-width: 41.666667%;}.col-xl-7{-ms-flex: 0 0 58.333333%;
     flex: 0 0 58.333333%;
     max-width: 58.333333%;}}.btn{display: inline-block;
   font-weight: 400;
@@ -91,7 +93,7 @@
   background-color: #ffc107;
   border-color: #ffc107;}.btn-warning:not(:disabled):not(.disabled):active{color: #212529;
   background-color: #d39e00;
-  border-color: #c69500;}.btn-warning:not(:disabled):not(.disabled):active:focus{box-shadow: 0 0 0 0.2rem rgba(222, 170, 12, 0.5);}.rounded{border-radius: 0.25rem !important;}.d-inline-block{display: inline-block !important;}.d-block{display: block !important;}.d-flex{display: -ms-flexbox !important;
+  border-color: #c69500;}.btn-warning:not(:disabled):not(.disabled):active:focus{box-shadow: 0 0 0 0.2rem rgba(222, 170, 12, 0.5);}.border{border: 1px solid #dee2e6 !important;}.rounded{border-radius: 0.25rem !important;}.d-inline-block{display: inline-block !important;}.d-block{display: block !important;}.d-flex{display: -ms-flexbox !important;
   display: flex !important;}.flex-column{-ms-flex-direction: column !important;
   flex-direction: column !important;}.flex-shrink-0{-ms-flex-negative: 0 !important;
   flex-shrink: 0 !important;}.align-items-center{-ms-flex-align: center !important;

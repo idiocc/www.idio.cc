@@ -65,6 +65,9 @@ p, ol, ul {
   margin-top: 0;
   margin-bottom: 1rem;
 }
+ul ul {
+  margin-bottom: 0;
+}
 strong {
   font-weight: bolder;
 }
@@ -184,7 +187,7 @@ pre code {
   margin-right: -15px;
   margin-left: -15px;
 }
-.col, .col-md-3, .col-md-9, .col-lg-5, .col-lg-7 {
+.col, .col-md-3, .col-md-9, .col-lg-6, .col-xl-5, .col-xl-7 {
   position: relative;
   width: 100%;
   padding-right: 15px;
@@ -210,12 +213,19 @@ pre code {
   }
 }
 @media (min-width:992px) {
-  .col-lg-5 {
+  .col-lg-6 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+@media (min-width:1200px) {
+  .col-xl-5 {
     -ms-flex: 0 0 41.666667%;
     flex: 0 0 41.666667%;
     max-width: 41.666667%;
   }
-  .col-lg-7 {
+  .col-xl-7 {
     -ms-flex: 0 0 58.333333%;
     flex: 0 0 58.333333%;
     max-width: 58.333333%;
@@ -306,6 +316,9 @@ pre code {
 }
 .btn-warning:not(:disabled):not(.disabled):active:focus {
   box-shadow: 0 0 0 .2rem rgba(222,170,12,.5);
+}
+.border {
+  border: 1px solid #dee2e6 !important;
 }
 .rounded {
   border-radius: .25rem !important;
@@ -541,7 +554,7 @@ footer {
 .OnThisPage li.Active>a {
   font-weight: 700;
 }
-.OnThisPage li.Active~li.Active>a {
+.OnThisPage li.Active>ul, .OnThisPage li.Active~li.Active>a {
   font-weight: normal;
 }
 .OnThisPage li>ul {

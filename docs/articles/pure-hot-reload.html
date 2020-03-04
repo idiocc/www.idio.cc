@@ -88,7 +88,7 @@ a.join("\n "),"but supports alternatives."):console.log("\ud83d\udcbd Browser su
                   <span class="a">GitHub</span><span class="b" data-stargazers>⭐️ 2</span></a>
                 <a
                   title="2-Dependency _Koa_ Web Server Compiled With _Closure Compiler_ And Bundled With Essential Middleware: Static, Compress, Session, Cors, File Upload, Router And JSX Front End." class="NPMBadge" href="https://www.npmjs.com/package/@idio/idio">
-                  <span class="a"><em>Idio</em></span><span class="b">1.5.0</span></a>
+                  <span class="a"><em>Idio</em></span><span class="b">1.5.1</span></a>
               </div>
               <h3 id="pages">Pages</h3>
               <ul><li class><a data-file="index" href="/">Www.idio.cc</a></li></ul>
@@ -104,7 +104,10 @@ a.join("\n "),"but supports alternatives."):console.log("\ud83d\udcbd Browser su
                                   <h3 id="on-this-page">On This Page</h3>
                                   <ul class="OnThisPage">
                                     <li data-heading="-pure-hot-reload"><a href="#-pure-hot-reload">Pure Hot Reload</a></li>
-                                    <li data-heading="history-of-hmr"><a href="#history-of-hmr">History of HMR</a></li>
+                                    <li data-heading="hmr-101">
+                                      <a href="#hmr-101">HMR 101</a>
+                                      <ul><li data-heading="webpack-modules"><a href="#webpack-modules"><em>Webpack</em> Modules</a></li></ul>
+                                    </li>
                                     <li data-heading="new-age-solutions"><a href="#new-age-solutions">New Age Solutions</a></li>
                                     <li data-heading="scientific-approach"><a href="#scientific-approach">Scientific Approach</a></li>
                                   </ul>
@@ -151,10 +154,11 @@ a.join("\n "),"but supports alternatives."):console.log("\ud83d\udcbd Browser su
             </p>
             </div>
             
-            <div data-section id="history-of-hmr">
-            <h2>History of HMR</h2>
+            <div data-section id="hmr-101">
+            <h2>HMR 101</h2>
             
-            <p>I'm not going to go into much detail since I'm not really interested in the past, but prefer to look into the future instead. I came to know Hot Module Reload like any <em>React</em> developer from documentation in 2017, which by then was pretty stable. But the concept of hot module reload was first discussed by <a href="https://www.youtube.com/watch?v=j-kj2qwJa_E">Bruce Hauman</a> and <a href="https://www.youtube.com/watch?v=xsSnOQynTHs">Dan Abramov</a> back in 2015. At the time, it was a pretty ground-breaking idea, welcomed with enthusiasm by many developers as it's really an essential feature of a development environment that preserves your creativity flow.</p>
+            
+            I came to know Hot Module Reload like any <em>React</em> developer from documentation in 2017, which by then was pretty stable. But the concept of hot module reload was first discussed by <a href="https://www.youtube.com/watch?v=j-kj2qwJa_E">Bruce Hauman</a> and <a href="https://www.youtube.com/watch?v=xsSnOQynTHs">Dan Abramov</a> back in 2015. At the time, it was a pretty ground-breaking idea, welcomed with enthusiasm by many developers as it's really an essential feature of a development environment that preserves your creativity flow.
             
             <p>
               <div style="position:relative;" id="c3492">
@@ -169,9 +173,65 @@ a.join("\n "),"but supports alternatives."):console.log("\ud83d\udcbd Browser su
               </div>
             </p>
             
-            <p>Dan's solution is to use a <em>Babel</em> transform to update code at run-time in such a way as to record methods of a class separately and replace them in instances with proxies. When a change is detected, new methods are sent to the client, and proxies will now execute new code, therefore the actual instance and its state stay untouched. It's about wrapping methods and functions with another meta-function that would be able to perform substitutions at runtime. The transform is what makes up <a href="https://github.com/gaearon/react-hot-loader/"><span class="tm">react-hot-loader</span></a> while it's <em>Webpack</em> that is responsible for establishing client-server communication and providing an API for updates.</p>
+            <p>Dan's solution is to record methods of a class separately and replace them in instances with proxies. When a change is detected, new methods are sent to the client, and proxies will now execute new code, therefore the actual instance and its state stay untouched. It's about wrapping methods and functions with another meta-function that would be able to perform substitutions at runtime.</p>
             
-            <p><em>Webpack</em>'s internal logic is very easy to understand<span id="c06ef"></span> NOT!</p>
+            <p>To enable the reload for <em>React</em>, we need to import the <span class="tm2">hot</span> method and wrap the default method with it:</p>
+            
+            <pre id="ccdbf"><code class="javascript hljs">import { Component } from 'react'
+import { hot } from 'react-hot-loader'
+
+class App extends Component {
+  render() {}
+}
+
+export default hot(module)(App)</code></pre>
+            
+            <p>When calling the <span class="tm2">hot</span> method for the first time, its code will register a proxy for the class.</p>
+            
+            <pre id="ccdbf6"><code class="javascript hljs">// hot will call:
+reactHotLoader.register(
+  WrappedComponent,
+  getComponentDisplayName(WrappedComponent),
+  'RHL' + moduleId
+);
+
+// register =&gt; createClassProxy =&gt;
+// defineProxyMethods =&gt; fakeBasePrototype =&gt;
+
+/* Each method is going to be wrapped now */
+function methodWrapperFactory(wrapperName, realMethod) {
+  return copyMethodDescriptors(function wrappedMethod() {
+    for (var _len2 = arguments.length,
+      rest = Array(_len2),
+      _key2 = 0; _key2 &lt; _len2; _key2++
+    ) {
+      rest[_key2] = arguments[_key2];
+    }
+
+    return realMethod.apply(this, rest);
+  }, realMethod);
+}</code></pre>
+            
+            <p>A proxy means that methods of the prototype were wrapped by a function that can will call updated methods when they arrive. This is why when you step into an method of a class when hot reload is activated, you'll not get to it straight away, but will end up in the <span class="tm">wrappedMethod</span> instead as shown on the video below.</p>
+            
+            <div style="position:relative;" id="c5c99">
+              <img class="ImageHolder b-t b-vk b-bk b-xq" sizes="(max-width: 575.8px) 100vw,(max-width: 991.8px) 540px,(max-width: 1199.8px) 720px,855px" alt="using the debugger" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='914' height='346'/%3E">
+              <noscript>
+                <picture>
+                  <source
+                    srcset="hot_reload/2-history/img/devtools-768.webp 768w,hot_reload/2-history/img/devtools-576.webp 576w,hot_reload/2-history/img/devtools-319.webp 319w,hot_reload/2-history/img/devtools-914.webp 914w" sizes="(max-width: 575.8px) 100vw,(max-width: 991.8px) 540px,(max-width: 1199.8px) 720px,855px"
+                    type="image/webp">
+                  <img class="b-t b-vk b-bk b-xq" onLoad="webploaded(this)" alt="using the debugger" src="hot_reload/2-history/img/devtools-768.jpg" srcset="hot_reload/2-history/img/devtools-768.jpg 768w,hot_reload/2-history/img/devtools-576.jpg 576w,hot_reload/2-history/img/devtools-319.jpg 319w,hot_reload/2-history/img/devtools-914.jpg 914w" sizes="(max-width: 575.8px) 100vw,(max-width: 991.8px) 540px,(max-width: 1199.8px) 720px,855px">
+                </picture>
+              </noscript>
+            </div>
+            
+            <p>The wrapper and other features make up <a href="https://github.com/gaearon/react-hot-loader/"><span class="tm">react-hot-loader</span></a> while it's <em>Webpack</em> that is responsible for establishing client-server communication and providing an API for updates of MODULES (everything that's exported), but not classes (refreshes to which are more refined by <em>React</em>'s hot loader).</p>
+            
+            <div data-section id="webpack-modules">
+            <h3><em>Webpack</em> Modules</h3>
+            
+            <p>Whereas the <span class="tm">react-hot-loader</span> can be seen as "software" reloading mechanism, the modular system of <em>Webpack</em> can then be thought of as underlying "hardware". Its internal logic is very easy to understand<span id="c06ef"></span> NOT!</p>
             
             <p class="b-kC">
               <img class="ImageHolder b-vk b-t" sizes="(max-width: 575.8px) 100vw,(max-width: 991.8px) 540px,667px" alt="depack modular system" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='667' height='374'/%3E">
@@ -187,7 +247,7 @@ a.join("\n "),"but supports alternatives."):console.log("\ud83d\udcbd Browser su
             
             <p>What you see is a complex build tool that implements its own modular system. In short, it analyses source code, builds dependency trees, and puts everything together (it can also tree-shake unused code). It will always wrap source code into its own, making it a black box for everyone who doesn't get hands on its internals. The total code can then be served to the browser in chunks, but it's all tied up to <em>Webpack</em>'s own modules.</p>
             
-            <pre id="ccdbf4"><code class="javascript hljs">/* index.js */
+            <pre id="ccdbf1"><code class="javascript hljs">/* index.js */
 const a = lib()
 
 // becomes:
@@ -220,6 +280,8 @@ const lib = () =&gt; {
             <p>Your <span class="tm2">node_modules</span> will be 20MB after that, but it seems like nobody cares about that sort of thing anymore. Everyone is so used to this sad reality of life, that it just became normal. <em>Webpack</em> is probably OK for larger projects but if you want to create a very simple JS app, you basically need a nuclear power plant, and this is repeated for each new project. <em>Webpack</em> is good software that has helped to put together many websites, but it doesn't have to be a standard. I'm not very happy with jamming my <span class="tm">node_modules</span> so that I can produce a bundle.</p>
             
             
+            
+            </div>
             
             <p class="SectionBreak">
               <a title="Back To Top" href="#top">
@@ -290,13 +352,13 @@ const lib = () =&gt; {
             
             <p><em>Idio</em> is a professional web server which has been compiled with <em>Closure</em>, and has only 2 dependencies. It consists of ES6-rewritten <em>Koa</em> with a collection of middleware, but it also allows to develop JavaScript for the browser. To enable web development process, it ships with our in-house <strong>Front End</strong> middleware &mdash; one of the modules-era nimble tools that does the following:</p>
             
-            <h3 id="1-you-specify-the-directory-with-your-frontend-code-eg--innercode-5-">
+            <h3 id="1-you-specify-the-directory-with-your-frontend-code-eg--innercode-9-">
               1. You specify the directory with your frontend code, e.g., <span class="tm">frontend</span>.
             </h3>
             
             <p>For example, you can have the following source in <span class="tm2">frontend/index.js</span>:</p>
             
-            <pre id="ccdbf"><code class="javascript hljs">import { dep } from 'my-dep'
+            <pre id="ccdbf2"><code class="javascript hljs">import { dep } from 'my-dep'
 import local from './local'
 
 const el = document.querySelector('#id')
@@ -305,7 +367,7 @@ local(el) // execute local</code></pre>
             
             <p>When the browser requests this JS module via a script tag, <span class="tm">&lt;script type=&quot;module&quot; src=&quot;frontend&quot;&gt;&lt;/script&gt;</span>, <strong>FrontEnd</strong> will intersect the request, and lookup <span class="tm">my-dep</span> in your <span class="tm2">node_modules</span>, to find its <em>package.json</em>. From there, the <strong>module</strong> field will be read, and the served file will actually contain absolute paths required by the browser. Local dependencies can also be served, which would be impossible under normal circumstances when the extension (<span class="tm">.js</span>) is not present, but the middleware can handle that.</p>
             
-            <pre id="ccdbf1"><code class="javascript hljs">import { dep } from '/node_modules/my-dep/src/index.js'
+            <pre id="ccdbf3"><code class="javascript hljs">import { dep } from '/node_modules/my-dep/src/index.js'
 import local from './local'
 
 const el = document.querySelector('#id')
@@ -332,7 +394,7 @@ local(el) // execute local</code></pre>
             
             <p>JSX is a revival of MXML and an essential part of programming of the web. There's an interesting alternative to JSX called <span class="tm">lit-html</span> but it makes no sense why I should use template literals when writing tags. It's simply a hack to eliminate JSX transpilation, but it's not a replacement for JSX, which is the daddy of modern web computing.</p>
             
-            <pre id="ccdbf5"><code class="javascript hljs">// JSX
+            <pre id="ccdbf7"><code class="javascript hljs">// JSX
 import { render, Component } from 'preact'
 
 class App extends Component {
@@ -354,7 +416,7 @@ render(&lt;App message="Idio"/&gt;, document.querySelector('.app'))</code></pre>
             
             <p>An example of using lit html is the following:</p>
             
-            <pre id="ccdbf6"><code class="javascript hljs">import { define, html } from 'https://unpkg.com/hybrids@4.1.3/src/index.js'
+            <pre id="ccdbf8"><code class="javascript hljs">import { define, html } from 'https://unpkg.com/hybrids@4.1.3/src/index.js'
 
 const HybridsApp = {
   appName: 'Welcome to Hybrids!',
@@ -386,7 +448,7 @@ const HybridsApp = {
             
             <p>You might be thinking that to transpile JSX you need <em>Babel</em>, but the fact is that you don't. You don't need to build ASTs and you don't need to install additional 250 dependencies that come with <em>Babel</em>, another "established" standard of coding. <strong>FrontEnd</strong> uses a <a href="https://github.com/a-la/jsx">JSX transpiler</a> powered by regular expressions. It includes a hack to find where the initial tag (<span class="tm2">&lt;</span>) is opening by evaluating the jsx file using the <span class="tm">vm</span> module of Node.JS. The tag is detected by listening to an error:</p>
             
-            <pre id="ccdbf2"><code class="javascript hljs">/Users/zavr/a-la/jsx/test/fixture/Component.jsx:2
+            <pre id="ccdbf4"><code class="javascript hljs">/Users/zavr/a-la/jsx/test/fixture/Component.jsx:2
   &lt;div className={className}&gt;
   ^
 
@@ -394,7 +456,7 @@ SyntaxError: Unexpected token &lt;</code></pre>
             
             <p>This evaluation is needed to prevent false positives, e.g., <span class="tm">if (a&lt;example &amp;&amp; b)</span>. After detecting the location of the angle bracket, we are able to parse text, until the closing tag is found, unless it was self-closing. Properties are also extracted using regular expressions on strings. Now look, you can think that it's very simplistic, but this stuff works and works really well. It supports comments and pretty much everything you want from JSX, except that you can't use <span class="tm">&gt;</span> in properties, e.g.,</p>
             
-            <pre id="ccdbf7"><code class="javascript hljs">const Next = () =&gt; (&lt;a href="#"&gt;Next Page&lt;/a&gt;)
+            <pre id="ccdbf9"><code class="javascript hljs">const Next = () =&gt; (&lt;a href="#"&gt;Next Page&lt;/a&gt;)
 
 const Component = ({ data = [] }) =&gt; {
   return (&lt;div&gt; {
@@ -408,7 +470,7 @@ const Component = ({ data = [] }) =&gt; {
             
             <p>But methods like that simply need to be taken out of the tag scope. You're probably not going to replace <em>Webpack</em> with <em>Idio</em> at your corporate insurer job, but if you're working for fun projects, there's no reason why you can't be using this. Except for that there's no source maps, which will be added later on this year, but because the code produced looks absolutely natural, it's easy to debug it anyway (unless you've got the super-power setup where your VS Code debugger hooks up to a running Chrome RDP process).</p>
             
-            <pre id="ccdbf3"><code class="javascript hljs">// JSX - compiled code
+            <pre id="ccdbf5"><code class="javascript hljs">// JSX - compiled code
 import { render, Component } from 'preact'
 
 class App extends Component {
@@ -431,18 +493,18 @@ render(h(App,{message:"Idio"}), document.querySelector('.app'))</code></pre>
             <p>I've created many <a href="https://akashic.page">widgets</a>, <a href="https://github.com/art-deco/file-upload.artdeco.app">front-end apps</a> and back-end servers with SSR powered by this transpiler. There hasn't been any problems. Maybe it will throw errors on some very advanced edge use cases (never happened for me, although your usage might be something I've never tested), but simplifying code will always help. Its simplicity is the key.</p>
             
             <div class="b-B b-Mk b-gm">
-              <div class="b-xq b-zb">
-                <img class="ImageHolder b-vk b-t" sizes="(max-width: 575.8px) 100vw,(max-width: 991.8px) 510px,(max-width: 1199.8px) 388px,466px" alt="control photo with birds" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2816' height='1880'/%3E">
+              <div class="b-xq b-yb b-Nb">
+                <img class="ImageHolder b-vk b-t" sizes="(max-width: 575.8px) 100vw,(max-width: 991.8px) 510px,(max-width: 1199.8px) 330px,466px" alt="control photo with birds" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2816' height='1880'/%3E">
                 <noscript>
                   <picture>
                     <source
-                      srcset="hot_reload/img/control-1140.webp 1140w,hot_reload/img/control-768.webp 768w,hot_reload/img/control-576.webp 576w,hot_reload/img/control-319.webp 319w" sizes="(max-width: 575.8px) 100vw,(max-width: 991.8px) 510px,(max-width: 1199.8px) 388px,466px"
+                      srcset="hot_reload/img/control-1140.webp 1140w,hot_reload/img/control-768.webp 768w,hot_reload/img/control-576.webp 576w,hot_reload/img/control-319.webp 319w" sizes="(max-width: 575.8px) 100vw,(max-width: 991.8px) 510px,(max-width: 1199.8px) 330px,466px"
                       type="image/webp">
-                    <img class="b-vk b-t" onLoad="webploaded(this)" alt="control photo with birds" src="hot_reload/img/control-1140.jpg" srcset="hot_reload/img/control-1140.jpg 1140w,hot_reload/img/control-768.jpg 768w,hot_reload/img/control-576.jpg 576w,hot_reload/img/control-319.jpg 319w" sizes="(max-width: 575.8px) 100vw,(max-width: 991.8px) 510px,(max-width: 1199.8px) 388px,466px">
+                    <img class="b-vk b-t" onLoad="webploaded(this)" alt="control photo with birds" src="hot_reload/img/control-1140.jpg" srcset="hot_reload/img/control-1140.jpg 1140w,hot_reload/img/control-768.jpg 768w,hot_reload/img/control-576.jpg 576w,hot_reload/img/control-319.jpg 319w" sizes="(max-width: 575.8px) 100vw,(max-width: 991.8px) 510px,(max-width: 1199.8px) 330px,466px">
                   </picture>
                 </noscript>
               </div>
-              <div class="b-xb">
+              <div class="b-yb b-Lb">
                 <p>As an indie web developer, I was looking to fulfil the need to create JS applications for the web without anything getting in the way. I wanted to breath freely when working on each new project, and not be brought down by the anxiety that filled me up when my <span class="tm2">node_modules</span> were being taken over and I lost all control. There's no happier place than to be able to direct the development process, saying, "I'm the boss here, not you, dependencies!".</p>
               </div>
             </div>
@@ -465,7 +527,7 @@ render(h(App,{message:"Idio"}), document.querySelector('.app'))</code></pre>
               </div>
             </div>
             
-            <p>These 4 things enable clean development environment with minimum technical debt. Software engineering is about coming up with SOLUTIONS and not worshipping tools and standards. It's true that we'll also need to combine our frontend code into a bundle, but we'll discuss the build step at the end. For now, let's have a look at hot reload, the final requirement for the front-end and its simplest form of implementation.</p>
+            <p>These 4 things enable clean development environment with minimum technical debt. With browsers supporting modules, we can leave build tools for building, but develop code natively. All features that we might want are implemented by Chrome &mdash; happy days. It's true that we'll also need to combine our frontend code into a bundle, but we'll discuss the build step at the end. For now, let's have a look at hot reload, the final requirement for the front-end and its simplest form of implementation.</p>
             
             <p class="SectionBreak">
               <a title="Back To Top" href="#top">

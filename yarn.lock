@@ -58,6 +58,13 @@
   resolved "https://registry.yarnpkg.com/@lemuria/popup/-/popup-1.1.1.tgz#95fe588e83648450d140dccd333c77aff8b5c01c"
   integrity sha512-biZJo/R63BDV47xhGxwIMPSj05S1Ekv9o5EZyTyd6fTQ9rQv3y1VIPCWEZdXNwZPNpzfO8KMeAy6FOtK3cwRIQ==
 
+"@wrote/ensure-path@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@wrote/ensure-path/-/ensure-path-1.1.0.tgz#2b5875dd4e215f209329c9c774702e4e67c3e07f"
+  integrity sha512-yZigiFQhgAMAVrec9BoPdJzqjSBdHuCyDrAacWSHIUByxiMcmY9i/1dGM4RbGZg/bN8XWrxDDmcWLuPUmsJYFg==
+  dependencies:
+    makepromise "^3.1.0"
+
 "@zoroaster/assert@^1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@zoroaster/assert/-/assert-1.0.2.tgz#8ffe2ebb10c81d570d4965080f942af688321a1f"
@@ -127,6 +134,13 @@ highlight.js@^9.18.1:
   version "9.18.1"
   resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-9.18.1.tgz#ed21aa001fe6252bb10a3d76d47573c6539fe13c"
   integrity sha512-OrVKYz70LHsnCgmbXctv/bfuvntIKDz177h0Co37DQ5jamGZLVmoCVMtjMtNZY3X9DrCcKfklHPNeA0uPZhSJg==
+
+makepromise@^3.1.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/makepromise/-/makepromise-3.2.0.tgz#5967d982e01cdc5d044c544489c9e2a7abebc3b0"
+  integrity sha512-Hb8mGdLkE/rba1McbPdQl3NU86ovEm3RXhKFsuxUQ2SxLfMOXP5aES/2BLVWigpS0hoBy0NBIYnHHvouLdDuzg==
+  dependencies:
+    erotic "^2.1.0"
 
 mime-db@^1.43.0:
   version "1.43.0"

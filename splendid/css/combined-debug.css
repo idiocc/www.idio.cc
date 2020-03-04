@@ -396,7 +396,7 @@ footer {
 .OnThisPage li.Active>a {
   font-weight: 700;
 }
-.OnThisPage li.Active~li.Active>a {
+.OnThisPage li.Active>ul, .OnThisPage li.Active~li.Active>a {
   font-weight: normal;
 }
 .OnThisPage li>ul {
