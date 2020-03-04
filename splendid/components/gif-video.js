@@ -22,15 +22,22 @@ export default class {
   }
   render({ src, webm }) {
     const img = this.el.querySelector('img')
-    const picture = this.el.querySelector('picture')
+    let pcl = ''
+    try {
+      const picture = this.el.querySelector('picture')
+      pcl = picture.className
+    } catch (err) {
+      // ok
+    }
     const vid = this.makeVideo(src, webm)
     vid.style = img.style
     vid.style.position = 'absolute'
     vid.style.top = 0
     vid.style.left = 0
-    vid.className = img.className + ` ${picture.className}`
+    const className = (img.className.replace('ImageHolder', '') + ` ${pcl}`)
+      .split(' ').filter(Boolean).join(' ')
+    vid.className = className
     this.el.appendChild(vid)
     this.el = null
-    this.img = null
   }
 }
