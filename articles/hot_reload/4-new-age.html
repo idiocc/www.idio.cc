@@ -1,19 +1,39 @@
 ##! New Age Solutions
 
-Open Source supposedly saves us from "vendor lock" &mdash; but does it really? Instead of corporate vendor lock into proprietary software, we now have... Open Source vendor lock into popular projects like Webpack. Most of the build pipelines are based on Webpack, _Rollup_ and Babel. And to tell you the truth: Open Source vendor lock is even worse than corporate one, because those who run such popular Open Source projects don't accept any criticism as they think that because they are volunteers, you don't have any rights as a user.
+Open Source supposedly saves us from "vendor lock" &mdash; but does it really? Instead of corporate vendor lock into proprietary software, we now have<ellipsis/> Open Source vendor lock into popular projects like Webpack. This is because the web was still maturing in the last 5 years.
 
-<p border rounded p-2 text-right box-shadow="0 3px 11px 5px lightsteelblue">
+However now we can explore another way: in 2020, we can move on to the new age tools that provide completely transparent experience, thanks to the adoption of modules by browsers. They will allow you to stop being a USER of 3rd party technology, and remain a DEVELOPER who takes her profession in hand. Today web developers can finally focus on utilising language and worry less about bundling. We still need to build for older browsers which is fine, but development process can go directly through  the browser, bypassing custom modular systems of build tools that were required before browsers supported modules. This is how nice and important ES6 is, benefits of which we are ripping today.
+
+### Which One Are You?
+
+<row mb-3 py-3 border-bottom=".5rem dotted #dbc3c0">
+  <column text-center>
+    <img rounded d-block mb-3 img-fluid webp="photo" src="./img/user.jpg" alt="user of software"/>
+    <span><button id="user" btn btn-warning>I'm a user!</button></span>
+  </column>
+  <column text-center>
+    <img rounded d-block mb-3 img-fluid webp="photo" src="./img/developer.jpg" alt="developer of software"/>
+    <span><button id="developer" btn btn-success>I'm a developer!</button></span>
+  </column>
+</row>
+
+
+<!-- Most of the build pipelines are based on Webpack, _Rollup_ and Babel. And to tell you the truth: Open Source vendor lock is even worse than corporate one, because those who run such popular Open Source projects don't accept any criticism as they think that because they are volunteers, you don't have any rights as a user. -->
+
+<!-- <p border rounded p-2 text-right box-shadow="0 3px 11px 5px lightsteelblue">
   <img img-fluid webp="text" src="./img/free.png" alt="free software" />
   <br><span text-monospace>^ In Open Source, you owe your life and business to maintainers for using their "free" software. It's a disgrace what the scene has been turned into.</span>
-</p>
+</p> -->
 
-You're now vendor locked, AND you can't ever express your dissatisfaction with something. And actually why do we have to use software like Babel and Webpack &mdash; because it's good, or because we had no choice? But now we do have a choice: in 2020, we can move on to the new age tools that provide completely transparent experience, and treat you and your code with RESPECT. They will allow you to stop being a MINDLESS USER and hostage to somebody's technology, and remain a QUALIFIED DEVELOPER who takes her profession in hand, utilising the skill to use the LANGUAGE and not 3rd party tools.
+<!-- You're now vendor locked, AND you can't ever express your dissatisfaction with something. And actually why do we have to use software like Babel and Webpack &mdash; because it's good, or because we had no choice?  -->
 
 <!-- so that you can expect to be a VALUED and LOVED user, and not hostage to somebody's technology. -->
 
 <!-- because it's popular Open Source developers of those projects who now think they're the rules of the world with all that popularity hitting their heads, while you're not allowed to raise any complaints about their software, because they're apparently volunteers providing software to you for free. -->
 
-It's true that Webpack as a build tool was needed during the last 5 years. It has got nice features like code splitting. But the room for dev utils that take advantage of present-day opportunities is being filled by more nimble software. Idio is a professional web server which has been compiled with Closure, and has only 2 dependencies. It consists of ES6-rewritten Koa with a collection of middleware, but it also allows to develop JavaScript for the browser. To enable web development process, it ships with our in-house *Front End* middleware, that does the following:
+<!-- It's true that Webpack as a build tool was needed during the last 5 years. It has got nice features like code splitting. But the room for dev utils that take advantage of present-day opportunities is being filled by more nimble software.  -->
+
+Idio is a professional web server which has been compiled with Closure, and has only 2 dependencies. It consists of ES6-rewritten Koa with a collection of middleware, but it also allows to develop JavaScript for the browser. To enable web development process, it ships with our in-house *Front End* middleware &mdash; one of the modules-era nimble tools that does the following:
 
 ### 1. You specify the directory with your frontend code, e.g., `frontend`.
 
@@ -102,21 +122,17 @@ render(h(App,{message:"Idio"}), document.querySelector('.app'))
 
 I've created many [widgets](https://akashic.page), [front-end apps](https://github.com/art-deco/file-upload.artdeco.app) and back-end servers with SSR powered by this transpiler. There hasn't been any problems. Maybe it will throw errors on some very advanced edge use cases (never happened for me, although your usage might be something I've never tested), but simplifying code will always help. Its simplicity is the key.
 
-<p>
-  <img rounded img-fluid src="./img/control.jpg" webp="photo" alt="control photo with birds" />
-</p>
+<row d-flex align-items-center>
+  <column lg-7 mb-3>
+    <img rounded img-fluid src="./img/control.jpg" webp="photo" alt="control photo with birds" />
+  </column>
+  <column lg-5>
 
-As an indie web developer, I was looking to fulfil the need to create JS applications for the web without anything getting in the way. I wanted to breath freely when working on each new project, and not be brought down by the anxiety that filled me up when my ``node_modules`` were being taken over and I lost all control. There's no happier place than to be able to direct the development process, saying, "I'm the boss here, not you, dependencies!".
+    As an indie web developer, I was looking to fulfil the need to create JS applications for the web without anything getting in the way. I wanted to breath freely when working on each new project, and not be brought down by the anxiety that filled me up when my ``node_modules`` were being taken over and I lost all control. There's no happier place than to be able to direct the development process, saying, "I'm the boss here, not you, dependencies!".
+  </column>
+</row>
 
-The *FrontEnd* solution might not be approved in corporate &mdash; which only confirms the fact they've been locked into their "Open Source" software, but for JS enthusiasts and hackers, it's perfect. After being liberated from the shackles of dependencies, I could finally focus on writing source code to build more software products for my company. But most of all, I've gained independence.
-
-<div mb-3>
-  <animation
-    src="./img/frontend.png" alt="frontend middleware" width="623" height="256"
-    path="../../flash/animate/frontend.json" noscript="./img/frontend.gif" />
-</div>
-
-I'm not offering you an alternative that you'll be stuck with: you can see that developing front-end is really easy in 2020, as all you need is to serve JavaScript modules with a few on-the-fly modifications. I've not invented a new system, I've only patched up those things that were missing:
+The *FrontEnd* solution might not be approved in corporate &mdash; which only confirms the fact they've been locked into their "Open Source" software, but for JS enthusiasts and hackers, it's perfect. I'm not offering you an alternative that you'll be stuck with: you can see that developing front-end is really easy in 2020, as all you need is to serve JavaScript modules with a few on-the-fly modifications. I've not invented a new system, I've only patched up those things that were missing:
 
 <ol>
   - rename imported package names into paths: ``'dep'`` -> `'/node_modules/dep/src/module.js'`;
@@ -125,6 +141,14 @@ I'm not offering you an alternative that you'll be stuck with: you can see that 
   - [read below] implement hot reload for ES6 exports.
 </ol>
 
-These 4 things enable clear development environment with minimum technical debt. Software engineering is about coming up with SOLUTIONS and not worshipping tools. It's true that we'll also need to combine our frontend code into a bundle, but we'll discuss the build step at the end. For now, let's have a look at hot reload, the final requirement for the front-end and its simplest form of implementation.
+<!-- After being liberated from the shackles of dependencies, I could finally focus on writing source code to build more software products for my company. But most of all, I've gained independence. -->
+
+<div mb-3>
+  <animation
+    src="./img/frontend.png" alt="frontend middleware" width="623" height="256"
+    path="../../flash/animate/frontend.json" noscript="./img/frontend.gif" />
+</div>
+
+These 4 things enable clean development environment with minimum technical debt. Software engineering is about coming up with SOLUTIONS and not worshipping tools and standards. It's true that we'll also need to combine our frontend code into a bundle, but we'll discuss the build step at the end. For now, let's have a look at hot reload, the final requirement for the front-end and its simplest form of implementation.
 
 <section-break />

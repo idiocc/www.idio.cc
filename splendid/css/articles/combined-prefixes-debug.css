@@ -7,12 +7,22 @@
 *::after {
   -webkit-box-sizing: border-box;
 }
+button {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+}
 .row {
   display: -webkit-box;
   display: -moz-box;
   display: -webkit-flex;
   -moz-flex-wrap: wrap;
   -webkit-flex-wrap: wrap;
+}
+.col {
+  -webkit-flex-basis: 0;
+  -webkit-box-flex: 1;
+  box-flex: 1;
+  -webkit-flex-grow: 1;
 }
 @media (min-width:768px) {
   .col-md-3 {
@@ -25,6 +35,50 @@
     -moz-box-flex: 0 0 75%;
     -webkit-flex: 0 0 75%;
   }
+}
+@media (min-width:992px) {
+  .col-lg-5 {
+    -webkit-box-flex: 0 0 41.666667%;
+    -moz-box-flex: 0 0 41.666667%;
+    -webkit-flex: 0 0 41.666667%;
+  }
+  .col-lg-7 {
+    -webkit-box-flex: 0 0 58.333333%;
+    -moz-box-flex: 0 0 58.333333%;
+    -webkit-flex: 0 0 58.333333%;
+  }
+}
+.btn {
+  -webkit-border-radius: .25rem;
+  -moz-border-radius: .25rem;
+  -webkit-transition: color .15s ease-in-out , background-color .15s ease-in-out , border-color .15s ease-in-out , box-shadow .15s ease-in-out;
+  -o-transition: color .15s ease-in-out , background-color .15s ease-in-out , border-color .15s ease-in-out , box-shadow .15s ease-in-out;
+}
+@media (prefers-reduced-motion:reduce) {
+  .btn {
+    -webkit-transition: none;
+    -o-transition: none;
+  }
+}
+.btn:focus {
+  -webkit-box-shadow: 0 0 0 .2rem rgba(0,123,255,.25);
+  -moz-box-shadow: 0 0 0 .2rem rgba(0,123,255,.25);
+}
+.btn-success:focus {
+  -webkit-box-shadow: 0 0 0 .2rem rgba(72,180,97,.5);
+  -moz-box-shadow: 0 0 0 .2rem rgba(72,180,97,.5);
+}
+.btn-success:not(:disabled):not(.disabled):active:focus {
+  -webkit-box-shadow: 0 0 0 .2rem rgba(72,180,97,.5);
+  -moz-box-shadow: 0 0 0 .2rem rgba(72,180,97,.5);
+}
+.btn-warning:focus {
+  -webkit-box-shadow: 0 0 0 .2rem rgba(222,170,12,.5);
+  -moz-box-shadow: 0 0 0 .2rem rgba(222,170,12,.5);
+}
+.btn-warning:not(:disabled):not(.disabled):active:focus {
+  -webkit-box-shadow: 0 0 0 .2rem rgba(222,170,12,.5);
+  -moz-box-shadow: 0 0 0 .2rem rgba(222,170,12,.5);
 }
 .rounded {
   -webkit-border-radius: .25rem !important;
@@ -40,6 +94,9 @@
 }
 .flex-shrink-0 {
   -webkit-flex-shrink: 0 !important;
+}
+.align-items-center {
+  -webkit-align-items: center !important;
 }
 @supports ((position:-webkit-sticky) or (position:sticky)) {
 }

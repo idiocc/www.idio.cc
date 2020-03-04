@@ -1,5 +1,6 @@
 import __initOnThisPage from '../__init/on-this-page'
 import __initSidebar from '../__init/sidebar'
+import '../../../articles/hot_reload/index'
 import __renameMap0 from '../__rename-maps/styles/sidebar'
 import __renameMap1 from '../__rename-maps/styles/on-this-page'
 import makeClassGetter from '../__mcg'
@@ -9,6 +10,7 @@ __initOnThisPage(),__initSidebar()
 import { Component, render, h } from '@externs/preact'
 import { makeIo, init, start } from '../__competent-lib'
 import Animation from '../../components/animation.js'
+import Ellipsis from '../../components/ellipsis.jsx'
 import GifVideo from '../../components/gif-video.js'
 import GithubBadge from '../../components/github-badge.jsx'
 import Highlightjs from 'splendid/build/components/highlightjs'
@@ -16,6 +18,7 @@ import SocialButtons from 'splendid/build/components/social-buttons'
 
 const __components = {
   'animation': Animation,
+  'ellipsis': Ellipsis,
   'gif-video': GifVideo,
   'github-badge': GithubBadge,
   'highlightjs': Highlightjs,
@@ -32,6 +35,10 @@ const meta = [{
     owner: 'idiocc',
     name: 'idio',
   },
+},
+{
+  key: 'ellipsis',
+  id: 'c06ef,c06ef1',
 },
 {
   key: 'animation',
@@ -51,7 +58,7 @@ const meta = [{
 },
 {
   key: 'highlightjs',
-  id: 'ccdbf,ccdbf1,ccdbf2,ccdbf3,ccdbf4,ccdbf5,ccdbf6',
+  id: 'ccdbf,ccdbf1,ccdbf2,ccdbf3,ccdbf4,ccdbf5,ccdbf6,ccdbf7',
   props: {
     lang: 'javascript',
   },

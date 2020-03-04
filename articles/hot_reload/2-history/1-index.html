@@ -8,12 +8,46 @@ I'm not going to go into much detail since I'm not really interested in the past
 
 Dan's solution is to use a Babel transform to update code at run-time in such a way as to record methods of a class separately and replace them in instances with proxies. When a change is detected, new methods are sent to the client, and proxies will now execute new code, therefore the actual instance and its state stay untouched. It's about wrapping methods and functions with another meta-function that would be able to perform substitutions at runtime. The transform is what makes up [`react-hot-loader`](https://github.com/gaearon/react-hot-loader/) while it's _Webpack_ that is responsible for establishing client-server communication and providing an API for updates.
 
-Now I don't really know how Webpack does what it does, but as far as I can remember, it kind of implements its own modular system by analysing source code and building dependency trees, so that it can also tree-shake unused code. It will always wrap source code into its own, making it a black box for everyone who doesn't get hands on its internals. Webpack has become pretty much a standard for front-end web-development, but did you know that you're pulling 342 additional dependencies with it during installation:
+Webpack's internal logic is very easy to understand<ellipsis /> NOT!
 
-<p>
-  <img img-fluid src="../img/webpack.jpg" alt="webpack dependencies graph" />
+<p text-center>
+  <img rounded webp="drawing" img-fluid src="../img/webpack.png" alt="depack modular system" />
+  <br><span text-monospace>&copy; [Tobias Koppers](http://docplayer.net/94651783-How-works-tobias-koppers.html)</span>
 </p>
 
-This is absolute madness. This is what I hate about modern Node.JS state-of-art, it's completely bonkers. Say you want to create a very simple JS app, but to get started, you basically need a nuclear power plant, and this is repeated for EACH of your projects! It's not acceptable and all these dependencies would repulse any sane developer, had the community not been beaten into submission by current industry leaders, and developers have nothing left but to quietly obey and keep installing _Webpacks_ and _Babels_. *Idio* is finally here to fix this and put open source right. I'm going to liberate you from this hell.
+What you see is a complex build tool that implements its own modular system. In short, it analyses source code, builds dependency trees, and puts everything together (it can also tree-shake unused code). It will always wrap source code into its own, making it a black box for everyone who doesn't get hands on its internals. The total code can then be served to the browser in chunks, but it's all tied up to Webpack's own modules.
+
+```js
+/* index.js */
+const a = lib()
+
+// becomes:
+const a = Object(_lib__WEBPACK_IMPORTED_MODULE_3__["lib"])();
+
+/* lib.js */
+export const lib = () => {
+  console.log('lib')
+}
+
+// becomes
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "lib", function() { return lib; });
+const lib = () => {
+  return 'example';
+};
+```
+
+Both files are concatenated into a single chunk. The code above shows that the lynchpin of Webpack is `__webpack_require__` that ties together all modules in the whole of the bundle. It's quite similar to browserify that also makes use of CommonJS require method (via its [``prelude``](https://github.com/browserify/browser-pack/blob/master/prelude.js)) to make dependencies aware of each other.
+
+Webpack has become pretty much a default for front-end web-development, but did you know that the price for this complexity is 342 additional dependencies you're pulling along during its installation:
+
+<p text-center>
+  <img rounded img-fluid src="../img/webpack.jpg" alt="webpack dependencies graph" />
+</p>
+
+Your ``node_modules`` will be 20MB after that, but it seems like nobody cares about that sort of thing anymore. Everyone is so used to this sad reality of life, that it just became normal. Webpack is probably OK for larger projects but if you want to create a very simple JS app, you basically need a nuclear power plant, and this is repeated for each new project. Webpack is good software that has helped to put together many websites, but it doesn't have to be a standard. I'm not very happy with jamming my `node_modules` so that I can produce a bundle.
+
+<!-- This is absolute madness. This is what I hate about modern Node.JS state-of-art, it's completely bonkers. It's not acceptable and all these dependencies would repulse any sane developer, had the community not been beaten into submission by current industry leaders, and developers have nothing left but to quietly obey and keep installing _Webpacks_ and _Babels_. *Idio* is finally here to fix this and put open source right. I'm going to liberate you from this hell. -->
 
 <section-break />

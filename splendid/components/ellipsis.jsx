@@ -62,6 +62,11 @@ class Dots extends Component {
     clearInterval(this.int)
   }
   render() {
-    return (<span>{'.'.repeat(this.state.inc)}</span>)
+    const current = this.state.inc
+    const res = 3 - current
+    return (<span>
+      <span>{'.'.repeat(current)}</span>
+      <span style="opacity:0;">{'.'.repeat(res)}</span>
+    </span>)
   }
 }

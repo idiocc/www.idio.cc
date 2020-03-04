@@ -89,6 +89,29 @@ img {
   vertical-align: middle;
   border-style: none;
 }
+button {
+  border-radius: 0;
+}
+button:focus {
+  outline: 1px dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+button {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  overflow: visible;
+  text-transform: none;
+  -webkit-appearance: button;
+}
+button:not(:disabled) {
+  cursor: pointer;
+}
+button::-moz-focus-inner {
+  padding: 0;
+  border-style: none;
+}
 ::-webkit-file-upload-button {
   font: inherit;
   -webkit-appearance: button;
@@ -161,11 +184,18 @@ pre code {
   margin-right: -15px;
   margin-left: -15px;
 }
-.col-md-3, .col-md-9 {
+.col, .col-md-3, .col-md-9, .col-lg-5, .col-lg-7 {
   position: relative;
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
+}
+.col {
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  max-width: 100%;
 }
 @media (min-width:768px) {
   .col-md-3 {
@@ -179,14 +209,112 @@ pre code {
     max-width: 75%;
   }
 }
-.border {
-  border: 1px solid #dee2e6 !important;
+@media (min-width:992px) {
+  .col-lg-5 {
+    -ms-flex: 0 0 41.666667%;
+    flex: 0 0 41.666667%;
+    max-width: 41.666667%;
+  }
+  .col-lg-7 {
+    -ms-flex: 0 0 58.333333%;
+    flex: 0 0 58.333333%;
+    max-width: 58.333333%;
+  }
+}
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  color: #212529;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out , background-color .15s ease-in-out , border-color .15s ease-in-out , box-shadow .15s ease-in-out;
+}
+@media (prefers-reduced-motion:reduce) {
+  .btn {
+    transition: none;
+  }
+}
+.btn:hover {
+  color: #212529;
+  text-decoration: none;
+}
+.btn:focus {
+  outline: 0;
+  box-shadow: 0 0 0 .2rem rgba(0,123,255,.25);
+}
+.btn:disabled {
+  opacity: .65;
+}
+.btn-success {
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
+}
+.btn-success:hover {
+  color: #fff;
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+.btn-success:focus {
+  box-shadow: 0 0 0 .2rem rgba(72,180,97,.5);
+}
+.btn-success:disabled {
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
+}
+.btn-success:not(:disabled):not(.disabled):active {
+  color: #fff;
+  background-color: #1e7e34;
+  border-color: #1c7430;
+}
+.btn-success:not(:disabled):not(.disabled):active:focus {
+  box-shadow: 0 0 0 .2rem rgba(72,180,97,.5);
+}
+.btn-warning {
+  color: #212529;
+  background-color: #ffc107;
+  border-color: #ffc107;
+}
+.btn-warning:hover {
+  color: #212529;
+  background-color: #e0a800;
+  border-color: #d39e00;
+}
+.btn-warning:focus {
+  box-shadow: 0 0 0 .2rem rgba(222,170,12,.5);
+}
+.btn-warning:disabled {
+  color: #212529;
+  background-color: #ffc107;
+  border-color: #ffc107;
+}
+.btn-warning:not(:disabled):not(.disabled):active {
+  color: #212529;
+  background-color: #d39e00;
+  border-color: #c69500;
+}
+.btn-warning:not(:disabled):not(.disabled):active:focus {
+  box-shadow: 0 0 0 .2rem rgba(222,170,12,.5);
 }
 .rounded {
   border-radius: .25rem !important;
 }
 .d-inline-block {
   display: inline-block !important;
+}
+.d-block {
+  display: block !important;
 }
 .d-flex {
   display: -ms-flexbox !important;
@@ -199,6 +327,10 @@ pre code {
 .flex-shrink-0 {
   -ms-flex-negative: 0 !important;
   flex-shrink: 0 !important;
+}
+.align-items-center {
+  -ms-flex-align: center !important;
+  align-items: center !important;
 }
 .position-relative {
   position: relative !important;
@@ -217,20 +349,18 @@ pre code {
 .mb-3 {
   margin-bottom: 1rem !important;
 }
-.p-2 {
-  padding: .5rem !important;
-}
 .pt-3 {
   padding-top: 1rem !important;
+}
+.py-3 {
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
 }
 .mt-auto {
   margin-top: auto !important;
 }
 .text-monospace {
   font-family: SFMono-Regular , Menlo , Monaco , Consolas , "Liberation Mono" , "Courier New" , monospace !important;
-}
-.text-right {
-  text-align: right !important;
 }
 .text-center {
   text-align: center !important;
