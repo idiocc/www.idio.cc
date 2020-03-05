@@ -30,10 +30,10 @@
   resolved "https://registry.yarnpkg.com/@externs/preact/-/preact-1.3.1.tgz#d97745283c30834b569399be0d85286ab7f02d80"
   integrity sha512-B6QUjtgqPCzKWpLdZ8YCCPQv2/iECNJ/JBHVy76cWWN/JPOP+HhOGxWRiEo5f1xg0A1ouf0Ca4cLfqX34W+rbQ==
 
-"@idio/idio@^1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@idio/idio/-/idio-1.5.0.tgz#43207f805a7128b19c587b0b78310a6a7863d901"
-  integrity sha512-TKCS+I5FFRzQQ9m5F0H+v+WhVR8Z1QVTk3k3C8wU2X+JoveTEA3NBRlK6tuS+8eX/3FyqnQe45j4/rdXW+IXdQ==
+"@idio/idio@^1.5.1":
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@idio/idio/-/idio-1.5.1.tgz#86ad2bdeb15b0bf54ce6fa1af9572a03f14f4924"
+  integrity sha512-cZ+mOTlad79oMagTiWK8BAQm2KT7q+UohwhFxvKoJClNEP/Fc1L0mo5olmblcXMXJ75RjulsikNLI+QyST64Zg==
   dependencies:
     mime-db "^1.43.0"
     text-decoding "^1.0.0"
@@ -191,13 +191,13 @@ splendid-web-components@^1.0.0:
   resolved "https://registry.yarnpkg.com/splendid-web-components/-/splendid-web-components-1.0.0.tgz#6bc9cbef8254f96c2102a00e979e4dc3537c9cbb"
   integrity sha512-oZOB2VaEoLEA/WS+SX5KybIjsm1ua3dzkqWaE1C1CAaI/hhCohA//u0WyF7YGOyph164++Wdb8dpoA0lqK5N1g==
 
-splendid@^1.17.10:
-  version "1.17.10"
-  resolved "https://registry.yarnpkg.com/splendid/-/splendid-1.17.10.tgz#fbb7dac65d74a32df662ae404d45eba29fd3283e"
-  integrity sha512-+Kggz5SUvdER+pZNkZzgdgo1VFTA8GrUv3ttme3NHc7Ra0rbi5W9ZxP9OKeyANB/AbpCaMqVz96o02nirB6wLA==
+splendid@^1.18.1:
+  version "1.18.1"
+  resolved "https://registry.yarnpkg.com/splendid/-/splendid-1.18.1.tgz#d7e54a175abf1968d7964abb9c412e1a2634f92c"
+  integrity sha512-Mq9sXD+hVJ8tYrKhld6ioSylomLkH85Klok88mY7F4XqNzjIgK/i0Chkd9mr3gN7qgo63rd0BlrEPV7jwcAuYg==
   dependencies:
     "@externs/preact" "^1.3.1"
-    "@idio/idio" "^1.5.0"
+    "@idio/idio" "^1.5.1"
     "@lemuria/absolute-proxy" "^1.0.2"
     "@lemuria/font" "^1.0.4"
     "@lemuria/load-scripts" "^1.2.0"

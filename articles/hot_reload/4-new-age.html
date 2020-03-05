@@ -9,14 +9,20 @@ However now we can explore another way: in 2020, we can move on to the new age t
 <row mb-3 py-3 border-bottom=".5rem dotted #dbc3c0">
   <column text-center>
     <img rounded d-block mb-3 img-fluid webp="photo" src="./img/user.jpg" alt="user of software"/>
-    <span><button id="user" btn btn-warning>I'm a user!</button></span>
+    <span>
+      <button class="UDB" btn btn-warning>I'm a user!</button>
+      <span style="display:none;">You give developers something to do! Preorder [Art Deco JavaScript](art-deco-js) to learn easy professional JS coding to become a developer yourself.</span>
+    </span>
+
   </column>
   <column text-center>
     <img rounded d-block mb-3 img-fluid webp="photo" src="./img/developer.jpg" alt="developer of software"/>
-    <span><button id="developer" btn btn-success>I'm a developer!</button></span>
+    <span>
+      <button class="UDB" btn btn-success>I'm a developer!</button>
+      <span style="display:none;">The internet is made by people like you. Why not try [Alibaba Cloud Hosting](alibaba) and receive a 1GB instance free for 12 months?</span>
+    </span>
   </column>
 </row>
-
 
 <!-- Most of the build pipelines are based on Webpack, _Rollup_ and Babel. And to tell you the truth: Open Source vendor lock is even worse than corporate one, because those who run such popular Open Source projects don't accept any criticism as they think that because they are volunteers, you don't have any rights as a user. -->
 
@@ -134,12 +140,10 @@ I've created many [widgets](https://akashic.page), [front-end apps](https://gith
 
 The *FrontEnd* solution might not be approved in corporate &mdash; which only confirms the fact they've been locked into their "Open Source" software, but for JS enthusiasts and hackers, it's perfect. I'm not offering you an alternative that you'll be stuck with: you can see that developing front-end is really easy in 2020, as all you need is to serve JavaScript modules with a few on-the-fly modifications. I've not invented a new system, I've only patched up those things that were missing:
 
-<ol>
-  - rename imported package names into paths: ``'dep'`` -> `'/node_modules/dep/src/module.js'`;
-  - serve packages and other JS files even without extensions (`'./lib'`);
-  - transpile JSX on the fly via MVP transpiler;
-  - [read below] implement hot reload for ES6 exports.
-</ol>
+1. rename imported package names into paths: ``'dep'`` -> `'/node_modules/dep/src/module.js'`;
+1. serve packages and other JS files even without extensions (`'./lib'`);
+1. transpile JSX on the fly via MVP transpiler;
+1. [read below] implement hot reload for ES6 exports.
 
 <!-- After being liberated from the shackles of dependencies, I could finally focus on writing source code to build more software products for my company. But most of all, I've gained independence. -->
 

@@ -25,6 +25,10 @@ const config = {
   // required when pages are at org.github.io/pages-name
   /* mount: '/', */
   potracePath: '~/.splendid/potrace',
+  links: {
+    alibaba: 'https://www.alibabacloud.com/referral?referralCode=927pzb',
+    'art-deco-js': 'https://opencollective.com/nodetools/contribute/pre-order-art-deco-javascript-late-2020-13457',
+  },
 }
 
 export default config
