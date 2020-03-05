@@ -93,7 +93,17 @@
   background-color: #ffc107;
   border-color: #ffc107;}.btn-warning:not(:disabled):not(.disabled):active{color: #212529;
   background-color: #d39e00;
-  border-color: #c69500;}.btn-warning:not(:disabled):not(.disabled):active:focus{box-shadow: 0 0 0 0.2rem rgba(222, 170, 12, 0.5);}.border{border: 1px solid #dee2e6 !important;}.rounded{border-radius: 0.25rem !important;}.d-inline-block{display: inline-block !important;}.d-block{display: block !important;}.d-flex{display: -ms-flexbox !important;
+  border-color: #c69500;}.btn-warning:not(:disabled):not(.disabled):active:focus{box-shadow: 0 0 0 0.2rem rgba(222, 170, 12, 0.5);}.badge{display: inline-block;
+  padding: 0.25em 0.4em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;}@media (prefers-reduced-motion: reduce){.badge{transition: none;}}.badge:empty{display: none;}.badge-success{color: #fff;
+  background-color: #28a745;}.border{border: 1px solid #dee2e6 !important;}.rounded{border-radius: 0.25rem !important;}.d-inline-block{display: inline-block !important;}.d-block{display: block !important;}.d-flex{display: -ms-flexbox !important;
   display: flex !important;}.flex-column{-ms-flex-direction: column !important;
   flex-direction: column !important;}.flex-shrink-0{-ms-flex-negative: 0 !important;
   flex-shrink: 0 !important;}.align-items-center{-ms-flex-align: center !important;
@@ -105,4 +115,4 @@
     box-shadow: none !important;}a:not(.btn){text-decoration: underline;}pre{white-space: pre-wrap !important;}pre{border: 1px solid #adb5bd;
     page-break-inside: avoid;}img{page-break-inside: avoid;}p,h2,h3{orphans: 3;
     widows: 3;}h2,h3{page-break-after: avoid;}@page{size: a3;
-  }body{min-width: 992px !important;}.container{min-width: 992px !important;}}
+  }body{min-width: 992px !important;}.container{min-width: 992px !important;}.badge{border: 1px solid #000;}}

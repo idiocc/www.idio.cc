@@ -178,7 +178,7 @@ a.join("\n "),"but supports alternatives."):console.log("\ud83d\udcbd Browser su
             
             <p>To enable the reload for <em>React</em>, we need to import the <span class="tm2">hot</span> method and wrap the default method with it:</p>
             
-            <pre id="ccdbf"><code class="javascript hljs">import { Component } from 'react'
+            <pre id="ccdbf5"><code class="javascript hljs">import { Component } from 'react'
 import { hot } from 'react-hot-loader'
 
 class App extends Component {
@@ -248,7 +248,7 @@ function methodWrapperFactory(wrapperName, realMethod) {
             
             <p>What you see is a complex build tool that implements its own modular system. In short, it analyses source code, builds dependency trees, and puts everything together (it can also tree-shake unused code). It will always wrap source code into its own, making it a black box for everyone who doesn't get hands on its internals. The total code can then be served to the browser in chunks, but it's all tied up to <em>Webpack</em>'s own modules.</p>
             
-            <pre id="ccdbf1"><code class="javascript hljs">/* index.js */
+            <pre id="ccdbf"><code class="javascript hljs">/* index.js */
 const a = lib()
 
 // becomes:
@@ -341,7 +341,7 @@ const lib = () =&gt; {
                 </noscript>
                 <span>
                   <button class="UDB b-Af b-If">I'm a developer!</button>
-                  <span style="display:none;">The internet is made by people like you. Why not try <a href="https://www.alibabacloud.com/referral?referralCode=927pzb">Alibaba Cloud Hosting</a> and receive a 1GB instance free for 12 months?</span>
+                  <span style="display:none;">The internet is made by people like you. Why not try <a href="https://www.alibabacloud.com/referral?referralCode=927pzb">Alibaba Cloud Hosting</a> and receive a 1GB instance free for 12 months? + complimentary <span class="b-Oh b-Sh">.tech</span> domain!</span>
                 </span>
               </div>
             </div>
@@ -366,7 +366,7 @@ const lib = () =&gt; {
             
             <p>For example, you can have the following source in <span class="tm2">frontend/index.js</span>:</p>
             
-            <pre id="ccdbf2"><code class="javascript hljs">import { dep } from 'my-dep'
+            <pre id="ccdbf1"><code class="javascript hljs">import { dep } from 'my-dep'
 import local from './local'
 
 const el = document.querySelector('#id')
@@ -375,7 +375,7 @@ local(el) // execute local</code></pre>
             
             <p>When the browser requests this JS module via a script tag, <span class="tm">&lt;script type=&quot;module&quot; src=&quot;frontend&quot;&gt;&lt;/script&gt;</span>, <strong>FrontEnd</strong> will intersect the request, and lookup <span class="tm">my-dep</span> in your <span class="tm2">node_modules</span>, to find its <em>package.json</em>. From there, the <strong>module</strong> field will be read, and the served file will actually contain absolute paths required by the browser. Local dependencies can also be served, which would be impossible under normal circumstances when the extension (<span class="tm">.js</span>) is not present, but the middleware can handle that.</p>
             
-            <pre id="ccdbf3"><code class="javascript hljs">import { dep } from '/node_modules/my-dep/src/index.js'
+            <pre id="ccdbf2"><code class="javascript hljs">import { dep } from '/node_modules/my-dep/src/index.js'
 import local from './local'
 
 const el = document.querySelector('#id')
@@ -456,7 +456,7 @@ const HybridsApp = {
             
             <p>You might be thinking that to transpile JSX you need <em>Babel</em>, but the fact is that you don't. You don't need to build ASTs and you don't need to install additional 250 dependencies that come with <em>Babel</em>, another "established" standard of coding. <strong>FrontEnd</strong> uses a <a href="https://github.com/a-la/jsx">JSX transpiler</a> powered by regular expressions. It includes a hack to find where the initial tag (<span class="tm2">&lt;</span>) is opening by evaluating the jsx file using the <span class="tm">vm</span> module of Node.JS. The tag is detected by listening to an error:</p>
             
-            <pre id="ccdbf4"><code class="javascript hljs">/Users/zavr/a-la/jsx/test/fixture/Component.jsx:2
+            <pre id="ccdbf3"><code class="javascript hljs">/Users/zavr/a-la/jsx/test/fixture/Component.jsx:2
   &lt;div className={className}&gt;
   ^
 
@@ -478,7 +478,7 @@ const Component = ({ data = [] }) =&gt; {
             
             <p>But methods like that simply need to be taken out of the tag scope. You're probably not going to replace <em>Webpack</em> with <em>Idio</em> at your corporate insurer job, but if you're working for fun projects, there's no reason why you can't be using this. Except for that there's no source maps, which will be added later on this year, but because the code produced looks absolutely natural, it's easy to debug it anyway (unless you've got the super-power setup where your VS Code debugger hooks up to a running Chrome RDP process).</p>
             
-            <pre id="ccdbf5"><code class="javascript hljs">// JSX - compiled code
+            <pre id="ccdbf4"><code class="javascript hljs">// JSX - compiled code
 import { render, Component } from 'preact'
 
 class App extends Component {
