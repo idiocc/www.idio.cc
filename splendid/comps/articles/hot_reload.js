@@ -30,6 +30,14 @@ const io = makeIo()
 /** @type {!Array<!preact.PreactProps>} */
 const meta = [{
   key: 'gif-video',
+  id: 'c2ed2',
+  props: {
+    src: 'hot_reload/2-history/wysywyg/ar.mp4',
+    webm: 'hot_reload/2-history/wysywyg/ar.webm',
+  },
+},
+{
+  key: 'gif-video',
   id: 'c5c99',
   props: {
     src: 'hot_reload/2-history/img/devtools.mp4',
@@ -86,6 +94,14 @@ const meta = [{
     url: 'https://www.idio.cc/articles/pure-hot-reload.html',
     meta: true,
     className: 'SocialSharing b-xq b-Hk',
+  },
+},
+{
+  key: 'gif-video',
+  id: 'cd409',
+  props: {
+    src: 'hot_reload/2-history/wysywyg/br.mp4',
+    webm: 'hot_reload/2-history/wysywyg/br.webm',
   },
 }]
 meta.forEach(({ key, id, props = {}, children = [] }) => {

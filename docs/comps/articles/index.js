@@ -1,5 +1,5 @@
 var ma={"styles/sidebar.css":D,"styles/on-this-page.css":E};B();C();var na={ellipsis:N,"github-badge":P,"social-buttons":Q},oa=K();
 [{key:"github-badge",id:"ce314",props:{o:"idiocc",name:"idio"}},{key:"ellipsis",id:"ceb55",props:{timeout:300},children:["\n  Please bear one moment while I add the content\n"]},{key:"social-buttons",id:"cffb5",props:{url:"https://www.idio.cc/articles/",c:!0,className:"SocialSharing b-xq b-Hk"}},{key:"github-badge",id:"ce149",props:{o:"idiocc",name:"www.idio.cc"}}].forEach(function(a){var b=a.key,c=a.id,d=void 0===a.props?{}:a.props,e=void 0===a.children?[]:a.children,f=na[b],l=f.plain||/^\s*class\s+/.test(f.toString())&&
-!I.isPrototypeOf(f);d.l={i:"/",D:function(g){return F(ma[g])}};c.split(",").forEach(function(g){var m=J(g,b),k=m.parent,h=m.b;if(h){var n={key:b,id:g,plain:l},p;h.render=function(){return p=M(n,f,p,h,k,d,e)};h.render.c=n;oa.observe(h)}})});
+!I.isPrototypeOf(f);d.l={i:"/",F:function(g){return F(ma[g])}};c.split(",").forEach(function(g){var m=J(g,b),k=m.parent,h=m.b;if(h){var n={key:b,id:g,plain:l},p;h.render=function(){return p=M(n,f,p,h,k,d,e)};h.render.c=n;oa.observe(h)}})});
 
 //# sourceMappingURL=index.js.map

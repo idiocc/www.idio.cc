@@ -1,0 +1,17 @@
+###! Price of Stack
+
+From this quick research we're drawing a conclusion that our web interfaces today are based on a build platform, such as Webpack, and on a framework, such as React. Both of them imply their additional cost: in terms of dependencies, and complexity introduced into the system (e.g., clicking 3 times to step into a function).
+
+We've looked at the complexity derived from an implementation of the modules' wireframe, so let's quickly discuss the technical cost in terms of 3rd party dependencies. Webpack has become pretty much a default for front-end web-development, but did you know that you're pulling along 342 additional dependencies during its installation:
+
+<p text-center>
+  <img rounded img-fluid src="../img/webpack.jpg" alt="webpack dependencies graph" />
+</p>
+
+Your ``node_modules`` will be 20MB after that, but it seems like nobody cares about that sort of thing anymore. Everyone is so used to this sad reality of life, that it just became normal. Webpack is probably OK for larger projects but if you want to create a very simple JS app, you basically need a nuclear power plant, and this is repeated for each new project. Webpack is good software that has helped to put together many websites, but it doesn't have to be a standard, and many people have been experimenting with other bundlers like Rollup, _Parcel_, and _Closure Compiler_.
+
+<!-- I'm not very happy with jamming my `node_modules` so that I can produce a bundle, are you? -->
+
+<!-- This is absolute madness. This is what I hate about modern Node.JS state-of-art, it's completely bonkers. It's not acceptable and all these dependencies would repulse any sane developer, had the community not been beaten into submission by current industry leaders, and developers have nothing left but to quietly obey and keep installing _Webpacks_ and _Babels_. *Idio* is finally here to fix this and put open source right. I'm going to liberate you from this hell. -->
+
+</div>

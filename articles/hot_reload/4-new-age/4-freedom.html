@@ -1,0 +1,32 @@
+###! Developer Freedom
+
+Personally, I really wanted to breath freely when working on each new project, and not be brought down by the anxiety that filled me up when:
+
+- MY ``node_modules`` were being taken over;
+- MY code was wrapped in somebody else's system; and
+- I lost all control.
+
+There's no happier place than to be able to direct the development process yourself, being able to say, "I'm the boss here, not you, dependencies and bundlers!".
+
+<p>
+  <img rounded img-fluid src="./img/control2.jpg" webp="photo" alt="control photo with birds" />
+</p>
+
+The *FrontEnd* solution might not be approved in corporate &mdash; which only confirms the fact they've been locked into their "Open Source" software, but for JS enthusiasts and hackers, it's perfect. I'm not offering an alternative that you'll be stuck with: you can see that developing front-end is really easy in 2020, as all you need is to serve JavaScript modules with a few on-the-fly modifications. I've not invented a new system, I've only patched up those things that were missing:
+
+1. rename imported package names into paths: ``'dep'`` -> `'/node_modules/dep/src/module.js'`;
+1. serve packages and other JS files even without extensions (`'./lib'`);
+1. transpile JSX on the fly via an MVP transpiler;
+1. [read below] implement hot reload for ES6 exports.
+
+<!-- After being liberated from the shackles of dependencies, I could finally focus on writing source code to build more software products for my company. But most of all, I've gained independence. -->
+
+<div mb-3>
+  <animation
+    src="./img/frontend.png" alt="frontend middleware" width="623" height="256"
+    path="../../../flash/animate/frontend.json" noscript="./img/frontend.gif" />
+</div>
+
+These 4 things enable clean development environment with minimum technical debt. With browsers supporting modules, we can leave build tools for building, but develop code natively. All features that we might want are implemented by Chrome and iOS Safari for us to test &mdash; happy days. It's true that we'll also need to combine our frontend code into a bundle, but we'll discuss the build step at the end. For now, let's have a look at hot reload, the final requirement for the front-end and its simplest form of implementation.
+
+</div>

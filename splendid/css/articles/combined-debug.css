@@ -58,7 +58,7 @@ body {
   text-align: left;
   background-color: #fff;
 }
-h1, h2, h3 {
+h1, h2, h3, h4 {
   margin-top: 0;
 }
 p, ol, ul {
@@ -119,7 +119,7 @@ button::-moz-focus-inner {
   font: inherit;
   -webkit-appearance: button;
 }
-h1, h2, h3 {
+h1, h2, h3, h4 {
   margin-bottom: .5rem;
   font-weight: 500;
   line-height: 1.2;
@@ -132,6 +132,9 @@ h2 {
 }
 h3 {
   font-size: 1.75rem;
+}
+h4 {
+  font-size: 1.5rem;
 }
 .img-fluid {
   max-width: 100%;
@@ -187,7 +190,7 @@ pre code {
   margin-right: -15px;
   margin-left: -15px;
 }
-.col, .col-md-3, .col-md-9, .col-lg-6, .col-xl-5, .col-xl-7 {
+.col, .col-md-3, .col-md-9 {
   position: relative;
   width: 100%;
   padding-right: 15px;
@@ -210,25 +213,6 @@ pre code {
     -ms-flex: 0 0 75%;
     flex: 0 0 75%;
     max-width: 75%;
-  }
-}
-@media (min-width:992px) {
-  .col-lg-6 {
-    -ms-flex: 0 0 50%;
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
-}
-@media (min-width:1200px) {
-  .col-xl-5 {
-    -ms-flex: 0 0 41.666667%;
-    flex: 0 0 41.666667%;
-    max-width: 41.666667%;
-  }
-  .col-xl-7 {
-    -ms-flex: 0 0 58.333333%;
-    flex: 0 0 58.333333%;
-    max-width: 58.333333%;
   }
 }
 .btn {
@@ -364,10 +348,6 @@ pre code {
 .flex-shrink-0 {
   -ms-flex-negative: 0 !important;
   flex-shrink: 0 !important;
-}
-.align-items-center {
-  -ms-flex-align: center !important;
-  align-items: center !important;
 }
 .position-relative {
   position: relative !important;

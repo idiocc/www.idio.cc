@@ -36,25 +36,6 @@ button {
     -webkit-flex: 0 0 75%;
   }
 }
-@media (min-width:992px) {
-  .col-lg-6 {
-    -webkit-box-flex: 0 0 50%;
-    -moz-box-flex: 0 0 50%;
-    -webkit-flex: 0 0 50%;
-  }
-}
-@media (min-width:1200px) {
-  .col-xl-5 {
-    -webkit-box-flex: 0 0 41.666667%;
-    -moz-box-flex: 0 0 41.666667%;
-    -webkit-flex: 0 0 41.666667%;
-  }
-  .col-xl-7 {
-    -webkit-box-flex: 0 0 58.333333%;
-    -moz-box-flex: 0 0 58.333333%;
-    -webkit-flex: 0 0 58.333333%;
-  }
-}
 .btn {
   -webkit-border-radius: .25rem;
   -moz-border-radius: .25rem;
@@ -113,9 +94,6 @@ button {
 }
 .flex-shrink-0 {
   -webkit-flex-shrink: 0 !important;
-}
-.align-items-center {
-  -webkit-align-items: center !important;
 }
 @supports ((position:-webkit-sticky) or (position:sticky)) {
 }
