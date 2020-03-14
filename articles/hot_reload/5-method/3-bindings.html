@@ -1,0 +1,56 @@
+###! Bindings Intro
+
+To dig deeper, we need to understand the essential property of ES6 modules. It is that we always export a binding and not the actual object or primitive value. It's quite different from traditional CommonJS modules, such that are used in Node.JS. Consider the illustration below:
+
+```js
+// lib.js
+export let a = 10
+export const changeA = () => {
+  a = a + 1
+}
+```
+
+Here, we export 2 BINDINGS from the lib file: a binding of the variable ``a``, and a binding of variable ``changeA``. In case of `changeA`, the binding is constant which means that this variable can't bind to anything else other than it's original assignment (or slot in memory in other words).
+
+```js
+// index.js
+import { a, changeA } from './lib.js'
+
+console.log(a) // 10
+changeA()
+console.log(a) // 11
+```
+
+When we import those BINDINGS and execute the `changeA` function, despite the fact that the value of `a` is primitive, it's changed to 11, because in the original file we updated the value of the binding. But this only works because we declared `a` as a ``let``. As you know, we can't assign over consts:
+
+```js
+// lib.js
+export const a = 10
+export const changeA = () => {
+  a = a + 1
+  // a++ is also illegal
+}
+```
+
+If we change the binding to be *const*ant like above, we won't be able to make changes to it.
+
+```js
+// index.js
+import { a, changeA } from './lib.js'
+
+console.log(a) // 10
+changeA() // throws: Assignment to constant variable.
+```
+
+This is a very short intro, but just for the sake of completeness, you obviously can exports objects and then reassign to their properties. It's common sense.
+
+```js
+export const a = {}
+export const changeA = () => {
+  a.b = 'hello world'
+}
+```
+
+How does this help us with hot reload?
+
+</div>

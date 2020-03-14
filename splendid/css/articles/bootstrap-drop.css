@@ -11,7 +11,7 @@
   background-color: #fff;}h1,h2,h3,h4{margin-top: 0;
   margin-bottom: 0.5rem;}p{margin-top: 0;
   margin-bottom: 1rem;}ol,ul{margin-top: 0;
-  margin-bottom: 1rem;}ul ul{margin-bottom: 0;}strong{font-weight: bolder;}a{color: #007bff;
+  margin-bottom: 1rem;}ul ul{margin-bottom: 0;}blockquote{margin: 0 0 1rem;}strong{font-weight: bolder;}a{color: #007bff;
   text-decoration: none;
   background-color: transparent;}a:hover{color: #0056b3;
   text-decoration: underline;}pre,code{font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -27,7 +27,8 @@
   border-style: none;}::-webkit-file-upload-button{font: inherit;
   -webkit-appearance: button;}h1,h2,h3,h4{margin-bottom: 0.5rem;
   font-weight: 500;
-  line-height: 1.2;}h1{font-size: 2.5rem;}h2{font-size: 2rem;}h3{font-size: 1.75rem;}h4{font-size: 1.5rem;}.img-fluid{max-width: 100%;
+  line-height: 1.2;}h1{font-size: 2.5rem;}h2{font-size: 2rem;}h3{font-size: 1.75rem;}h4{font-size: 1.5rem;}.blockquote{margin-bottom: 1rem;
+  font-size: 1.25rem;}.img-fluid{max-width: 100%;
   height: auto;}code{font-size: 87.5%;
   color: #e83e8c;
   word-break: break-word;}pre{display: block;
@@ -105,7 +106,7 @@
     position: sticky;
     top: 0;
     z-index: 1020;}}.h-100{height: 100% !important;}.mb-3{margin-bottom: 1rem !important;}.pt-3,.py-3{padding-top: 1rem !important;}.py-3{padding-bottom: 1rem !important;}.mt-auto{margin-top: auto !important;}.text-monospace{font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;}.text-center{text-align: center !important;}@media print{*,*::before,*::after{text-shadow: none !important;
-    box-shadow: none !important;}a:not(.btn){text-decoration: underline;}pre{white-space: pre-wrap !important;}pre{border: 1px solid #adb5bd;
+    box-shadow: none !important;}a:not(.btn){text-decoration: underline;}pre{white-space: pre-wrap !important;}pre,blockquote{border: 1px solid #adb5bd;
     page-break-inside: avoid;}img{page-break-inside: avoid;}p,h2,h3{orphans: 3;
     widows: 3;}h2,h3{page-break-after: avoid;}@page{size: a3;
   }body{min-width: 992px !important;}.container{min-width: 992px !important;}.badge{border: 1px solid #000;}}

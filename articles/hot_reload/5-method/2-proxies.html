@@ -1,0 +1,64 @@
+###! Requirements
+
+There are 2 main areas that we need to focus on:
+
+*1. Updating functions, such as*
+
+```js
+export const fn = () => { console.log('hello world') }
+```
+
+*2. Updating classes, e.g.,*
+
+```js
+export class MyClass { constructor() }
+```
+
+We also assume there's some entry code that renders our JS on the page, and we can execute it again upon refresh. However, there's a big difference between 2 of the above scenarios: whereas functions are always executed independently of their state (unless they reference some file-scoped variable), instances of classes are created only once, and need to preserve their state. If we update some code for a class whereas its instance has already been constructed, unlike with a pure function, we can't just "call" it again.
+
+Let's try to solve the problem step by step. The main question is then, how to update the source code of a function?
+
+</div>
+
+###! Proxies Approach
+
+The initial idea is to intercept requests to JS modules, find each export that it has, record it in `window._exports[{FILE_NAME}][{EXPORT_NAME}]`, and reexport a proxy method that calls the real export by path. Upon updates, we'll change the `_exports` object to point to the new version, but the proxy stays the same.
+
+<div mb-3>
+  <animation
+    src="./img/proxies.png" alt="proxies approach" width="598" height="233"
+    path="../../../flash/animate/proxies.json" noscript="./img/proxies.gif" />
+</div>
+
+- When the file is requested for the first time, the `_exports` object will be populated for it to contain pointers to its exports. The actual exports are overridden with their proxies that call them via the global `_exports` object.
+- When a file is refreshed, the `_exports` is updated to point to new versions of exports. Since it was proxies that were initially exported from the file, only they are called throughout the front-end code and not actual exports.
+
+The draft implementation is as follows:
+
+```js
+/** @type {import('koa').Middleware} */
+export default (ctx) => {
+  ctx.type = 'application/javascript'
+  // read the source code of the file
+  const s = readFileSync(join(FRONTEND, ctx.path), 'utf8')
+  // path the source code (assume a `test` method was exported)
+  ctx.body = `${src.replace('export', '      ')}
+window._exports = window._exports || {}
+window._exports['${ctx.path}'] = window._exports['${ctx.path}'] || {}
+window._exports['${ctx.path}']['test'] = test
+const testProxy = (...args) =>
+  window._exports['${ctx.path}']['test'](...args)
+export { testProxy as test }
+${s}`
+}
+```
+
+We read the source file, and patch it on the fly to remove actual export statements and wrap methods (hard-coded as ``test`` in this example) in a proxy which is then exported. When this file is requested again by an adapter that listens to Websocket updates, the `window._exports[ctx.path]['test']` will be updated to a new function. Because initially we exported a proxy that calls the current version of the method by its path, all code that executes the proxy, will now call the new version.
+
+Let me just reiterate the following:
+
+<block-quote>Once we export a function, it's always the first version that's going to live through out the whole front-end code. This function we call a ``proxy``.</block-quote>
+
+The proxies method is the only solution to updating source code of functions, because there isn't anything like `function.source = () => { return 'new source' }`. It's not perfect as we introduce a quite complex mechanism and also we'll need to click twice to step into methods, which is preferable to avoid. Is there a better solution?
+
+</div>

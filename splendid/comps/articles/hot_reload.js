@@ -74,9 +74,18 @@ const meta = [{
 },
 {
   key: 'highlightjs',
-  id: 'ccdbf,ccdbf1,ccdbf2,ccdbf3,ccdbf4,ccdbf5,ccdbf6,ccdbf7,ccdbf8,ccdbf9',
+  id: 'ccdbf,ccdbf1,ccdbf10,ccdbf11,ccdbf12,ccdbf13,ccdbf14,ccdbf15,ccdbf16,ccdbf17,ccdbf2,ccdbf3,ccdbf4,ccdbf5,ccdbf6,ccdbf7,ccdbf8,ccdbf9',
   props: {
     lang: 'javascript',
+  },
+},
+{
+  key: 'animation',
+  id: 'c4cb1',
+  props: {
+    path: '../flash/animate/proxies.json',
+    width: 598,
+    height: 233,
   },
 },
 {

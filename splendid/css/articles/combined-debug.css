@@ -68,6 +68,9 @@ p, ol, ul {
 ul ul {
   margin-bottom: 0;
 }
+blockquote {
+  margin: 0 0 1rem;
+}
 strong {
   font-weight: bolder;
 }
@@ -135,6 +138,10 @@ h3 {
 }
 h4 {
   font-size: 1.5rem;
+}
+.blockquote {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
 }
 .img-fluid {
   max-width: 100%;
@@ -400,6 +407,10 @@ pre code {
   }
   pre {
     white-space: pre-wrap !important;
+    border: 1px solid #adb5bd;
+    page-break-inside: avoid;
+  }
+  blockquote {
     border: 1px solid #adb5bd;
     page-break-inside: avoid;
   }
